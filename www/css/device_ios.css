@@ -1,0 +1,39 @@
+.iosheader
+{
+    /*20 ios 4 andr*/
+    padding-top:20px !important;
+}
+
+.dashboard-m
+{    
+    /*140 ios 121 andr*/
+    margin-top: 140px; display: block;
+}
+
+.friend-m
+{    
+    /*134px ios 142px andr*/
+    margin-top: 134px; display: block;
+}
+/*35px ios 12px andr*/
+.networkpayment-h 
+{
+    margin-top: 16px;
+}
+
+/*137px ios 121px andr*/
+#dashboard 
+{  
+    top: 137px;
+    bottom: 60px; 
+    position: absolute; 
+    width: 100%;
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch;   
+}
+
+.networklist-t{
+    
+    top: 66px;
+}
+
