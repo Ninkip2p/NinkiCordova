@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="description" content="Ninki Wallet is a Bitcoin wallet that allows you to send money to anyone in the world- for free." />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.01" />
     <link rel="stylesheet" href="css/bootstrap-mobile.css?v=4" type="text/css" />
     <link rel="stylesheet" href="css/pinscreen.css?v=2" type="text/css" />
     <link rel="stylesheet" href="css/calcscreen.css?v=2" type="text/css" />
@@ -637,7 +637,8 @@
                             </ul>
                         </div>
                         <!-- /btn-group -->
-                        <div id="amount" class="btn-large nopost">amount</div>
+                        <div id="amount" class="btn-large nopost">
+                            amount</div>
                         <span id="ccystdamt" class="input-group-addon" style="font-size: 18px"></span>
                         <input id="hdamount" type="hidden" />
                     </div>
@@ -1164,7 +1165,7 @@
         <div id="mainWallet">
             <div id="dashboard" style="display: none">
                 <div class="col-md-4" style="padding-left: 0px; padding-right: 0px">
-                    <section class="panel">
+                    <section class="panel-default">
                         <div class="panel-heading b-b">
                             <a href="#" class="font-bold">Timeline</a>
                         </div>
@@ -1186,7 +1187,7 @@
                         padding-top: 0px;">
                         <div id="networkpayments" class="networkpayment-h">
                             <div class="col-md-4" style="padding-left: 0px; padding-right: 0px">
-                                <section class="panel b-a">
+                                <section class="panel-default b-a">
                                     <div class="panel-heading b-b">
                                         <a href="#" class="font-bold">Payments</a>
                                     </div>
@@ -1197,17 +1198,20 @@
                         </div>
                         <div id="pnlfriendinv" class="networkpayment-h" style="display: none">
                             <div class="col-md-4" style="padding-left: 0px; padding-right: 0px">
-                                <section class="panel b-a">
-                                    <div class="panel-heading b-b">
-                                        <a href="#" class="font-bold">Invoices</a>
-                                    </div>
+                                <section class="panel">
                                     <section class="panel panel-default">
-                                        <header class="panel-heading">
+                                        <header class="panel-heading" style="">
                                             <ul class="nav nav-tabs">
-                                                <li id="lifor" class="active"><a id="invformelink"><i class="fa fa-list text-muted">
-                                                </i>&nbsp;for me</a> </li>
-                                                <li id="liby"><a id="invbymelink"><i class="fa fa-list text-muted"></i>&nbsp;by me</a>
+                                                <li style="">
+                                                    
+                                                        <a href="#" class="font-bold">Invoices</a>
+                                                    
                                                 </li>
+                                                <li id="liby" class="pull-right"><a id="invbymelink"><i class="fa fa-list text-muted">
+                                                </i>&nbsp;by me</a> </li>
+                                                <li id="lifor" class="pull-right active"><a id="invformelink"><i class="fa fa-list text-muted">
+                                                </i>&nbsp;for me</a> </li>
+
                                             </ul>
                                         </header>
                                         <div id="invtapspinner">
@@ -1332,21 +1336,25 @@
                             Scan a QR code</p>
                     </div>
                     <div>
-                        <button tabindex="1" class="btn btn-lg btn-default" id="qr" type="button">
+                        <div tabindex="1" class="btn btn-lg btn-default" id="qr" type="button">
                             <span class="text"><i class="fa fa-qrcode fa-2x text-success"></i></span>
-                        </button>
-                    </div>
-                    <div id="addrfade" style="display: none">
-                        <div class="m-t-lg">
-                            <p>
-                                Or enter an address</p>
-                        </div>
-                        <div>
-                            <input id="toAddress" autocomplete="off" type="text" class="form-control nopost"
-                                placeholder="" tabindex="-1" />
-                            <span class="input-group-btn"></span>
                         </div>
                     </div>
+                    <div class="m-t-lg">
+                        <p>
+                            Paste from clipboard</p>
+                    </div>
+                    <div>
+                        <div tabindex="1" class="btn btn-lg btn-default" id="clip" type="button">
+                            <span class="text"><i class="fa fa-paste fa-2x text-success"></i></span>
+                        </div>
+                    </div>
+                    <div>
+                        <input id="toAddress" type="hidden" class="form-control nopost" tabindex="-1" />
+                        <span class="input-group-btn"></span>
+                    </div>
+                    <div id="addressinvalid" class="panel-heading m-t-lg">
+                        Invalid Bitcoin address or URL</div>
                 </div>
             </div>
         </section>
@@ -1363,12 +1371,13 @@
                 </div>
             </header>
             <div class="panel-body" style="padding-bottom: 0px;">
-                <button class="btn btn-default pull-right" id="btngenaddr">
-                    <i class="fa fa-refresh text"></i>
-                </button>
-                <div id="copyaddress" class="btn btn-default" style="margin-top: 3px; margin-right: 3px;">
+                <div id="copyaddress" class="btn btn-default pull-right" style="margin-top: 3px;
+                    margin-right: 3px;">
                     <i class="fa fa-copy"></i>
                 </div>
+                <button class="btn btn-default" id="btngenaddr">
+                    <i class="fa fa-refresh text"></i>
+                </button>
             </div>
             <div class="panel-body" style="padding-top: 0px;">
                 <div id="newaddrspinner">
@@ -1457,7 +1466,7 @@
                     </div>
                 </div>
             </header>
-            <div class="" style="padding:3px">
+            <div class="" style="padding: 3px">
                 <table class="table m-b-none m-t-md">
                     <tbody>
                         <tr>
@@ -1468,14 +1477,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td> 
+                            <td>
                                 <span class="text-primary">Transaction Id</span>
                                 <div id="copyinfotran" class="btn btn-default pull-right" style="margin-top: 3px;">
                                     <i class="fa fa-copy"></i>
                                 </div>
-                                <div id="infotranid" style="width: 80%;>
+                                <div id="infotranid" style="width: 80%;">
                                 </div>
-                                <div id="infofulltran" style="display:none"></div>
+                                <input type="hidden" id="infofulltran" />
                             </td>
                         </tr>
                         <tr>

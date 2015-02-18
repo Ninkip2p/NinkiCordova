@@ -59,8 +59,8 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
 
         document.addEventListener("pause", this.onPause, false);
-        
-    
+
+
 
         document.getElementById('qr').addEventListener('touchstart', this.scan, false);
 
@@ -70,10 +70,10 @@ var app = {
 
         document.getElementById('qrpair').addEventListener('touchstart', this.scanpair, false);
 
-        
+
         //here lets setup the platform specific css adjustiments
-        
-        
+
+
 
     },
 
@@ -98,7 +98,9 @@ var app = {
 
         if (!app.isScanning) {
 
-
+            if (window.updateUIInterval) {
+                clearInterval(window.updateUIInterval);
+            }
 
             //console.log(window.hasSession());
 
