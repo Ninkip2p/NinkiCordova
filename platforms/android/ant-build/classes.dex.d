@@ -13,6 +13,10 @@
 /Users/ninki/Ninki/platforms/android/ant-build/classes/com/example/mytest/R$string.class \
 /Users/ninki/Ninki/platforms/android/ant-build/classes/com/example/mytest/R$xml.class \
 /Users/ninki/Ninki/platforms/android/ant-build/classes/com/example/mytest/R.class \
+/Users/ninki/Ninki/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$1.class \
+/Users/ninki/Ninki/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$2.class \
+/Users/ninki/Ninki/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard$3.class \
+/Users/ninki/Ninki/platforms/android/ant-build/classes/com/ionic/keyboard/IonicKeyboard.class \
 /Users/ninki/Ninki/platforms/android/ant-build/classes/com/ninki/wallet/BuildConfig.class \
 /Users/ninki/Ninki/platforms/android/ant-build/classes/com/ninki/wallet/Ninki.class \
 /Users/ninki/Ninki/platforms/android/ant-build/classes/com/ninki/wallet/R$array.class \

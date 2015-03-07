@@ -133,6 +133,7 @@ a:hover .caret-white {
 .progress-bar {
   -webkit-box-shadow: none;
   box-shadow: none;
+  margin-bottom:10px;
 }
 .breadcrumb {
   background-color: #fff;
@@ -160,7 +161,7 @@ a:hover .caret-white {
 }
 .form-control {
   border-color: #cbd5dd;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 .form-control,
 .form-control:focus {
@@ -3690,4 +3691,8 @@ fieldset[disabled] .i-checks input + i:before {
        -moz-animation: fadeIt 0.3s ease-in-out; 
          -o-animation: fadeIt 0.3s ease-in-out; 
             animation: fadeIt 0.3s ease-in-out; 
+}
+
+textarea, input[type="text"], input[type="email"], input[type="password"], input[type="tel"]  {
+-webkit-appearance: none;
 }

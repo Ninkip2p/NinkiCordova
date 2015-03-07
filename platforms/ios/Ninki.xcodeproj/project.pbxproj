@@ -34,6 +34,8 @@
 		DFCAFEBE03F8439BB2A8B29C /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 305C8973A86D43A187A2D11F /* zxing-all-in-one.cpp */; };
 		F5C416FE8A9A4A9E848931E3 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02CA560B365B479583CB6251 /* scannerOverlay.xib */; };
 		C97A384CDA344B22BF5B7BD3 /* CDVClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE97DDDBB9544ADAEEF90A8 /* CDVClipboard.m */; };
+		32F3B084E6D945A69080C992 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D572D7AB224872881EBA77 /* IonicKeyboard.m */; };
+		5ADDF95646DD46DFBD1FE0A7 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 091357A99A39405083A0F245 /* UIWebViewExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,10 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Ninki/config.xml; sourceTree = "<group>"; };
 		0AE97DDDBB9544ADAEEF90A8 /* CDVClipboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVClipboard.m"; path = "com.verso.cordova.clipboard/CDVClipboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		94B9D06397E14D77B4C939CF /* CDVClipboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVClipboard.h"; path = "com.verso.cordova.clipboard/CDVClipboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C2D572D7AB224872881EBA77 /* IonicKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "IonicKeyboard.m"; path = "com.ionic.keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		091357A99A39405083A0F245 /* UIWebViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebViewExtension.m"; path = "com.ionic.keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		21089B37FD114B6D83F3ABB1 /* IonicKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IonicKeyboard.h"; path = "com.ionic.keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C14E8335162947CCB8EF06FE /* UIWebViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebViewExtension.h"; path = "com.ionic.keyboard/UIWebViewExtension.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +248,10 @@
 				A6A157E3E27C40DC8F30448B /* CDVDevice.h */,
 				0AE97DDDBB9544ADAEEF90A8 /* CDVClipboard.m */,
 				94B9D06397E14D77B4C939CF /* CDVClipboard.h */,
+				C2D572D7AB224872881EBA77 /* IonicKeyboard.m */,
+				091357A99A39405083A0F245 /* UIWebViewExtension.m */,
+				21089B37FD114B6D83F3ABB1 /* IonicKeyboard.h */,
+				C14E8335162947CCB8EF06FE /* UIWebViewExtension.h */,
 			);
 			name = Plugins;
 			path = Ninki/Plugins;
@@ -395,6 +405,8 @@
 				BD1A68731A4D30710073C320 /* StringFunctions.m in Sources */,
 				7ED911DDED764BFD819C400A /* CDVDevice.m in Sources */,
 				C97A384CDA344B22BF5B7BD3 /* CDVClipboard.m in Sources */,
+				32F3B084E6D945A69080C992 /* IonicKeyboard.m in Sources */,
+				5ADDF95646DD46DFBD1FE0A7 /* UIWebViewExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

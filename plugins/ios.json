@@ -53,6 +53,10 @@
                         {
                             "xml": "<feature name=\"Clipboard\"><param name=\"ios-package\" value=\"CDVClipboard\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -67,6 +71,9 @@
             "PACKAGE_NAME": "com.example.mytest"
         },
         "com.verso.cordova.clipboard": {
+            "PACKAGE_NAME": "com.ninki.wallet"
+        },
+        "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.ninki.wallet"
         }
     },

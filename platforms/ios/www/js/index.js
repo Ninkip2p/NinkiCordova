@@ -44,6 +44,7 @@ var app = {
 
         this.isScanning = false;
 
+
     },
 
     // Bind Event Listeners
@@ -60,7 +61,7 @@ var app = {
 
         document.addEventListener("pause", this.onPause, false);
 
-
+        document.addEventListener("resume", this.onResume, false);
 
         document.getElementById('qr').addEventListener('touchstart', this.scan, false);
 
@@ -85,10 +86,36 @@ var app = {
 
     // function, we must explicitly call 'app.receivedEvent(...);'
 
+    onResume: function () {
+
+
+        if (app.isScanning) {
+
+            if (localStorage.getItem("guid")) {
+
+                //check for a session
+
+                window.isSessionLive(function (ok) {
+                    if (!ok) {
+                        app.isScanning = false;
+                        window.showLoginPIN();
+                    }
+                });
+
+            }
+
+        }
+
+    },
+
+
     onDeviceReady: function () {
 
 
         //app.receivedEvent('deviceready');
+
+
+        document.addEventListener('backbutton', function () { return false; }, false);
 
     },
 
@@ -109,57 +136,7 @@ var app = {
             if (localStorage.getItem("guid")) {
 
 
-
-                if ($("#isactive").val() == 1) {
-
-                    if ($(".footer").is(":visible")) {
-
-                        $("#footermode").val(1);
-
-                    } else {
-
-                        $("#footermode").val(0);
-
-                    }
-
-                }
-
-
-
-                $("#isactive").val(0);
-
-
-
-                window.resetPin();
-
-
-
-                $("#paddel").hide();
-
-                $('.numdone').attr("style", "background-color:white");
-
-                $("#loginpinno").val('');
-
-                $("#pinloginmessage").text("Enter your PIN number");
-
-
-
-                $("#pinimage").show();
-
-                $("#pinpair").hide();
-
-                $("#pinrepeat").hide();
-
-
-
-                $("#loginpin").show();
-
-                $("#nonlogin").hide();
-
-
-
-                $(".footer").hide();
-
+                window.showLoginPIN();
 
 
             }

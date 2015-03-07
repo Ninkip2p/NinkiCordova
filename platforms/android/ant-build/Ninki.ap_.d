@@ -531,9 +531,12 @@
 /Users/ninki/Ninki/platforms/android/assets/www/js/wysiwyg/bootstrap-wysiwyg.js \
 /Users/ninki/Ninki/platforms/android/assets/www/js/wysiwyg/demo.js \
 /Users/ninki/Ninki/platforms/android/assets/www/js/wysiwyg/jquery.hotkeys.js \
+/Users/ninki/Ninki/platforms/android/assets/www/plugins/com.ionic.keyboard \
 /Users/ninki/Ninki/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner \
 /Users/ninki/Ninki/platforms/android/assets/www/plugins/com.verso.cordova.clipboard \
 /Users/ninki/Ninki/platforms/android/assets/www/plugins/org.apache.cordova.device \
+/Users/ninki/Ninki/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
+/Users/ninki/Ninki/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
 /Users/ninki/Ninki/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner/www \
 /Users/ninki/Ninki/platforms/android/assets/www/plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js \
 /Users/ninki/Ninki/platforms/android/assets/www/plugins/com.verso.cordova.clipboard/www \
