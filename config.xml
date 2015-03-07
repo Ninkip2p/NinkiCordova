@@ -10,7 +10,6 @@
     </author>
   <content src="index.html"/>
   <access origin="https://api.ninkip2p.com"/>
-    <access origin="https://testnet.ninkip2p.com"/>
   <access origin="https://ninkip2p.imgix.net"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="KeyboardShrinksView" value="false"/>
