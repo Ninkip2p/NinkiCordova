@@ -1,0 +1,1 @@
+C:\GitLabs\ninki\ninkicordova\platforms\wp8\Ninki.csproj;neutral
