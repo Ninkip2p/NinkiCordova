@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="description" content="Ninki Wallet is a Bitcoin wallet that allows you to send money to anyone in the world- for free." />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.01" />
     <link rel="stylesheet" href="css/bootstrap-mobile.css?v=4" type="text/css" />
     <link rel="stylesheet" href="css/pinscreen.css?v=2" type="text/css" />
     <link rel="stylesheet" href="css/calcscreen.css?v=2" type="text/css" />
@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="css/icon.css" type="text/css" />
     <link rel="stylesheet" href="css/font.css" type="text/css" />
     <link rel="stylesheet" href="css/app-mobile.css?v=4" type="text/css" />
-    <link rel="stylesheet" href="css/device_ios.css" type="text/css" />
+    <link rel="stylesheet" href="css/device_and.css" type="text/css" />
     <title>Ninki Wallet Network</title>
     <style>
         
-         .pinsquare
+                .pinsquare
         {
             min-width: 70px;
             padding: 0px;
@@ -54,7 +54,6 @@
             text-align: left; /* inline-block space fix */
             width: 280px;
         }
-        
         
            .parsley-errors-list    
              {
@@ -177,6 +176,7 @@
          .closetap {
          display: inline-block;
          margin-bottom: 0;
+         font-size: 24px;
          font-weight: normal;
          line-height: 1.42857143;
          text-align: center;
@@ -268,7 +268,8 @@
     <input type="hidden" id="API-Token" />
     <input type="hidden" id="footermode" />
     <input type="hidden" id="isactive" />
-    <div id="loginpin" class="iosheader" style="display: none; z-index: 10000000;">
+    <div id="loginpin" class="iosheader animated fadeInRightBig" style="display: none;
+        z-index: 10000000;">
         <div id="pinspinner">
         </div>
         <div class="col-xs-12">
@@ -491,12 +492,16 @@
                 </div>
             </div>
         </div>
+        <div class="m-t-xs">
+            <button class="btn btn-default btn-xs" type="button" id="btnUnpair">
+                Unpair Device</button>
+        </div>
     </div>
     <div id="nonlogin" style="display: inline; height: 100%">
         <section id="contactrequest" class="panel panel-default iosheader" style="display: none">
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="btnContactRequestClose">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -538,10 +543,11 @@
             </div>
             <div id="friendrequestp2" class="no-radius alt" style="display: none">
                 <div class="panel-body text-center">
-                    <a href="#" class="block padder-v"><span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-success-lt">
-                    </i><i class="i i-clock i-sm text-white"></i></span><span class="clear"><span id="acceptcontactprognum"
-                        class="h3 block m-t-xs text-success">75%</span> <small id="acceptcontactprogmess"
-                            class="text-muted text-u-c"></small></span></a>
+                    <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left m-r-sm"><i
+                        class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i><i class="i i-clock i-sm text-white">
+                        </i></span><span class="clear"><span id="acceptcontactprognum" class="h3 block m-t-xs text-success">
+                            75%</span> <small id="acceptcontactprogmess" class="text-muted text-u-c"></small>
+                        </span></a>
                     <div id="acceptcontactprog" class="progress-bar bg-info" data-toggle="tooltip" data-original-title="0%"
                         style="width: 0%">
                     </div>
@@ -564,10 +570,11 @@
             </header>
             <div id="contaddprog" class="list-group no-radius alt">
                 <div class="panel-body text-center">
-                    <a href="#" class="block padder-v"><span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-success-lt">
-                    </i><i class="i i-clock i-sm text-white"></i></span><span class="clear"><span id="addcontactprognum"
-                        class="h3 block m-t-xs text-success">75%</span> <small id="textAddContact" class="text-muted text-u-c">
-                        </small></span></a>
+                    <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left m-r-sm"><i
+                        class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i><i class="i i-clock i-sm text-white">
+                        </i></span><span class="clear"><span id="addcontactprognum" class="h3 block m-t-xs text-success">
+                            75%</span> <small id="textAddContact" class="text-muted text-u-c"></small></span>
+                    </a>
                     <div id="addcontactprog" class="progress progress-xs m-t-sm">
                         <div id="addcontactprogstatus" class="progress-bar bg-info" data-toggle="tooltip"
                             data-original-title="0%" style="width: 0%">
@@ -621,27 +628,23 @@
             background-color: white; display: none">
             <div class="padder-v text-center clearfix">
                 <div id="homebalancearea" class="col-xs-6 b-r" style="padding-right: 0px;">
-                    <div class="block padder-v">
-                        <span id="hometimer" style="width: 26px" class="i-s i-s-2x pull-left"><i class="i i-hexagon2 i-xs-base text-success-lt">
+                    <a href="#" class="block padder-v hover"><span id="hometimer" style="width: 26px"
+                        class="i-s i-s-2x pull-left"><i class="i i-hexagon2 i-xs-base text-success-lt hover-rotate">
                         </i><i class="i i-checkmark i-sm text-white"></i></span><span id="homebalance" class="h4 block m-t-xs text-primary">
                             ...</span><small id="homecoinunit" class="text-muted text-u-c"></small>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-xs-6" style="padding-left: 0;">
-                    <div class="block padder-v">
-                        <span class="i-s i-s-2x pull-left"><i class="i i-hexagon2 i-xs-base text-info-lt"></i>
-                            <i class="i i-graph i-sm text-white"></i></span><span id="homeprice" class="h4 block m-t-xs text-primary">
-                                ...</span> <small class="text-muted text-u-c">XBTC</small>
-                    </div>
+                    <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left"><i class="i i-hexagon2 i-xs-base text-info-lt hover-rotate">
+                    </i><i class="i i-graph i-sm text-white"></i></span><span id="homeprice" class="h4 block m-t-xs text-primary">
+                        ...</span> <small class="text-muted text-u-c">XBTC</small> </a>
                 </div>
             </div>
             <div class="m-b-sm">
                 <div class="btn-group btn-group-justified" style="padding-left: 15px; padding-right: 15px;
                     margin-top: 5px;">
-                    <div id="tapsend" class="btn btn-success">
-                        Send</div>
-                    <div id="tapreceive" class="btn btn-info">
-                        Receive</div>
+                    <a id="tapsend" href="#" class="btn btn-success">Send</a> <a id="tapreceive" href="#"
+                        class="btn btn-info">Receive</a>
                 </div>
             </div>
         </div>
@@ -649,7 +652,7 @@
             z-index: 100000; background-color: white; width: 100%; display: none;">
             <div class="padder-v text-center clearfix">
                 <div class="col-xs-6 b-r padder-v">
-                    <span class="h4 text-primary">Your Contacts</span>
+                    <span class="h4 text-primary">Your Network</span>
                 </div>
                 <div class="col-xs-6" style="padding-left: 0;">
                     <a id="taprequest" class="btn btn-sm btn-success pull-right btn-rounded">Add Contact</a>
@@ -697,23 +700,25 @@
         </div>
         <div id="settingsheader" class="iosheader b-b" style="position: fixed !important;
             z-index: 100000; background-color: white; width: 100%; display: none">
-            <div class="padder-v text-center clearfix">
+            <div class="padder-v text-center clearfix b-b">
                 <div class="col-xs-6 b-r padder-v">
                     <span class="h4 text-primary">Settings</span>
                 </div>
                 <div class="col-xs-6 padder-v" style="padding-left: 0;">
+                    <div id="mynickname" class="text-primary">
+                    </div>
                 </div>
             </div>
         </div>
-        <section id="dashsendamt" class="panel panel-default iosheader mobmod" style="display: none">
+        <section id="dashsendamt" class="panel panel-default iosheader invis mobmod" style="display: none">
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="btnCloseStdSndAmt">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div id="calcbalancearea" class="pull-left">
-                        <a href="#" class="block padder-v"><span id="calctimer" class="i-s i-s-2x pull-left"
-                            style="width: 1.5em; height: 1.5em; font-size: 1.95em; line-height: 1.45em;"><i class="i i-hexagon2 i-s-base text-success-lt">
+                        <a href="#" class="block padder-v hover"><span id="calctimer" class="i-s i-s-2x pull-left"
+                            style="width: 1.5em; height: 1.5em; font-size: 1.95em; line-height: 1.45em;"><i class="i i-hexagon2 i-s-base text-success-lt hover-rotate">
                             </i><i class="i i-checkmark i-sm text-white"></i></span><span class="clear" style="padding-top: 5px;
                                 padding-left: 3px;"><span id="calcbalance" class="h3 m-t-xs text-primary">...</span>&nbsp;<span
                                     class="small text-muted" id="scalcbalance"></span> <small id="calccoinunit" class="block text-muted text-u-c">
@@ -853,7 +858,7 @@
             <!-- style="display:none">-->
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="btnCloseStdSndPIN">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -1090,10 +1095,11 @@
             </header>
             <div class="list-group no-radius alt">
                 <div class="panel-body text-center">
-                    <a href="#" class="block padder-v"><span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-success-lt">
-                    </i><i class="i i-clock i-sm text-white"></i></span><span class="clear"><span id="sendstdprognum"
-                        class="h3 block m-t-xs text-success">75%</span> <small id="textMessageSendStd" class="text-muted">
-                        </small></span></a>
+                    <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left m-r-sm"><i
+                        class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i><i class="i i-clock i-sm text-white">
+                        </i></span><span class="clear"><span id="sendstdprognum" class="h3 block m-t-xs text-success">
+                            75%</span> <small id="textMessageSendStd" class="text-muted text-u-c"></small>
+                        </span></a>
                     <div id="sendstdprog" class="progress progress-xs m-t-sm">
                         <div id="sendstdprogstatus" class="progress-bar bg-info" data-toggle="tooltip" data-original-title="0%"
                             style="width: 0%">
@@ -1106,87 +1112,84 @@
                 </div>
             </div>
         </section>
-        <div id="createWalletStart" class="iosheader" style="display: none">
-            <div class="col-sm-12 m-t-xs text-center">
-                <div style="background-color: White; margin-top: 0px;">
-                    <img src="images/ninki.png" width="200" height="150">
+        <div id="createWalletStart" class="iosheader animated fadeInUp" style="display: none">
+            <div id="createheader" class="text-center" style="background-color: White; margin-top: 0px;">
+                <img src="images/ninki.png" width="200" height="150">
+            </div>
+            <div id="createheadermini" class="text-center" style="display: none">
+                Enter your details to sign up!
+            </div>
+            <div id="createwalletalert" style="display: none" class="alert alert-danger">
+                <i class="fa fa-ban-circle"></i><strong>Error</strong> <span id="createwalletalertmessage">
+                </span>
+            </div>
+            <form id="frmcreate" data-validate="parsley" class="form-horizontal">
+            <div class="list-group">
+                <div class="list-group-item" style="display: none">
+                    <input id="guid" class="form-control" autocomplete="off" data-parsley-required="true"
+                        name="guid" readonly="readonly" />
                 </div>
-                <form id="frmcreate" data-validate="parsley" class="form-horizontal">
-                <div class="list-group">
-                    <div class="list-group-item" style="display: none">
-                        <input id="guid" class="form-control" autocomplete="off" data-parsley-required="true"
-                            name="guid" readonly="readonly" />
+                <div class="padder padder-v m-t-xs">
+                    <input id="emailaddress" class="form-control" type="email" autocomplete="off" data-parsley-type="email"
+                        data-parsley-required="true" name="emailaddress" placeholder="Email" data-show-errors="true" />
+                </div>
+                <div class="padder padder-v">
+                    <input id="nickname" autocorrect="off" autocapitalize="off" class="form-control"
+                        autocomplete="off" data-parsley-length="[3,20]" data-parsley-type="alphanum"
+                        data-parsley-required="true" name="nickname" placeholder="Username" type="text"
+                        data-parsley-show-errors="true" />
+                </div>
+                <div id="pwd-container">
+                    <div class="padder padder-v">
+                        <div id="pwdmeter" class="pwstrength_viewport_progress" style="display: none">
+                        </div>
+                        <input id="cpassword" class="form-control" data-parsley-required="true" data-parsley-length="[10,50]"
+                            name="password" type="password" placeholder="Enter a strong password" value=""
+                            data-parsley-show-errors="false" />
                     </div>
                     <div class="padder padder-v">
-                        <input id="nickname" autocorrect="off" autocapitalize="off" class="form-control font-thin text-center"
-                            style="font-size: 18px" autocomplete="off" data-parsley-length="[3,20]" data-parsley-type="alphanum"
-                            data-parsley-required="true" name="nickname" placeholder="Choose your username"
-                            type="text" data-parsley-show-errors="true" />
-                    </div>
-                    <div class="btn btn-lg btn-default m-t-sm font-thin h4" style="line-height: 1.1"
-                        id="btnCreate">
-                        Create Account
+                        <input id="password1" class="form-control" data-parsley-equalto-message="Passwords do not match"
+                            data-parsley-required="true" data-parsley-equalto="#cpassword" data-parsley-length="[10,50]"
+                            name="password1" value="" type="password" placeholder="Confirm your password" />
                     </div>
                 </div>
-                </form>
-                <div id="termslink" class="m-t-xl" style="padding: 2px;">
+                <div id="termslink" class="m-t-xs text-center" style="padding: 2px;">
                     <small>By creating an account you agree to our terms of service.</small>
                 </div>
-                <div class="line b-b m-t-xs">
+                <div class="padder padder-v m-t-xs">
+                    <button type="button" class="btn btn-primary btn-block" id="btnCreate">
+                        Sign Up</button>
                 </div>
-                <div id="pairsection" class="text-center">
-                    <div class="h4 m-b font-thin " style="line-height: 1.5em;">
-                        Already have the desktop app?</div>
-                    <div class="btn btn-default btn-lg h4" id="qrpair">
-                        <span class="text font-thin h4"><i class="fa fa-qrcode text-success"></i>&nbsp;Pair
-                            this Device</span>
-                    </div>
+            </div>
+            </form>
+            <div class="m-t-sm padder">
+                <div id="createback" class="btn btn-sm btn-icon btn-default pull-left">
+                    <i class="fa fa-2x fa-arrow-circle-left"></i>
                 </div>
-                <input id="pairdeviceblob" value="" type="hidden" />
             </div>
         </div>
         <div id="createWalletProgress" class="iosheader animated fadeInRightBig" style="display: none">
             <div class="panel">
                 <div class="panel-body">
                     <div class="col-md-6">
-                        <a href="#" class="block padder-v"><span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-primary">
-                        </i><i class="i i-alarm i-sm text-white"></i></span><span class="clear"><span class="h3 block m-t-xs text-primary">
-                        </span><small class="text-muted text-u-c">Creating your Account</small> </span></a>
+                        <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left m-r-sm"><i
+                            class="i i-hexagon2 i-s-base text-primary hover-rotate"></i><i class="i i-alarm i-sm text-white">
+                            </i></span><span class="clear"><span class="h3 block m-t-xs text-primary"></span><small
+                                class="text-muted text-u-c">Creating your Account</small> </span></a>
                         <div id="createprog" class="progress progress-xs m-t-sm">
-                            <div class="progress progress-sm progress-striped  active">
-                                <div class="progress-bar bg-info lter" data-toggle="tooltip" data-original-title="100%"
-                                    style="width: 100%">
-                                </div>
+                            <div id="createprogstatus" class="progress-bar bg-info" data-toggle="tooltip" data-original-title="0%"
+                                style="width: 0%">
                             </div>
                         </div>
-                        <div id="progresstext" class="padder padder-v" style="display: none">
+                        <div id="progresstext" class="padder padder-v">
                             Creating...
                         </div>
                     </div>
                 </div>
-                <div id="crprog1" class="panel-body">
-                    <div class="col-sm-6 h4 font-thin pull-left text-primary text-center" style="line-height: 1.5">
-                        Ninki makes bitcoin as easy as sending an email!
-                    </div>
-                </div>
-                <div id="crprog3" class="panel-body" style="display: none">
-                    <div class="col-sm-6 h4 font-thin pull-left text-success-dk text-center" style="line-height: 1.5">
-                        You will be asked to choose a 4 digit PIN number, make sure it's hard to guess and
-                        easy for you to remember
-                    </div>
-                </div>
-                <div id="crprog2" class="panel-body" style="display: none">
-                    <div class="col-sm-6 h4 font-thin pull-left text-danger text-center" style="line-height: 1.5">
-                        Make sure to backup your keys from the security settings menu to secure your bitcoins.
-                    </div>
-                </div>
             </div>
         </div>
-        <div id="coldkeystep" class="iosheader blind" style="display: none">
+        <div id="coldkeystep" class="iosheader animated fadeInRightBig" style="display: none">
             <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapofflineclose">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
                 <div class="clearfix">
                     <div class="clear">
                         <div class="h3 m-t-xs m-b-xs">
@@ -1198,7 +1201,7 @@
             </header>
             <div class="panel padder padder-v m-t-sm">
                 <div class="h4 bg-info text-white padder-v padder panel text-center text-center"
-                    style="line-height: 25px;">
+                    style="line-height: 25px; height: 90px;">
                     <div id="coldWalletPhrase">
                     </div>
                 </div>
@@ -1208,23 +1211,19 @@
                     </label>
                 </div>
                 <div class="text-center">
-                    <div id="coldcheck" class="m-t-xs" style="border-width: 0px;">
+                    <div id="coldcheck" class="btn" style="border-width: 0px;">
                         <i id="coldcheckicon" class="fa fa-3x fa-square-o"></i>
                     </div>
                 </div>
             </div>
-            <div class="m-t-sm padder text-center">
-                <div id="coldfinalwarning" class="padder-v text-center m-b-xs text-danger">
-                    This is your last chance to write this key down. After clicking confirm the key
-                    will no longer be available.</div>
-                <a href="#" class="next btn btn-lg btn-default">Confirm</a>
+            <div class="m-t-sm padder">
+                <a href="#" class="previous btn btn-sm btn-icon btn-default pull-left"><i class="fa fa-2x fa-arrow-circle-left">
+                </i></a><a href="#" class="next btn btn-lg btn-icon btn-default pull-right"><i class="fa fa-2x fa-arrow-circle-right">
+                </i></a>
             </div>
         </div>
-        <div id="hotkeystep" class="iosheader blind" style="display: none">
+        <div id="hotkeystep" class="iosheader animated fadeInRightBig" style="display: none">
             <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="taponlineclose">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
                 <div class="clearfix">
                     <div class="clear">
                         <div class="h3 m-t-xs m-b-xs">
@@ -1236,63 +1235,35 @@
             </header>
             <div class="panel padder padder-v m-t-sm">
                 <div class="h4 bg-warning panel text-center padder-v padder panel text-center text-center"
-                    style="line-height: 25px;">
+                    style="line-height: 25px; height: 90px;">
                     <div id="hotWalletPhrase">
                     </div>
                 </div>
                 <div class="m-t-md text-center">
                     <label>
-                        <span>This phrase is written down and stored in a secure place separately from your
-                            recovery key. Check the box to confirm.</span>
+                        <span>This phrase is written down and stored in a secure place separately from your recovery key. Check the box to confirm.</span>
                     </label>
                 </div>
                 <div class="text-center">
-                    <div id="hotcheck" class="m-t-xs" style="border-width: 0px;">
+                    <div id="hotcheck" class="btn" style="border-width: 0px;">
                         <i id="hotcheckicon" class="fa fa-3x fa-square-o"></i>
                     </div>
                 </div>
             </div>
-            <div class="m-t-sm padder text-center">
-                <a class="next btn btn-lg btn-default">Confirm</a>
+            <div class="m-t-sm padder">
+                <a href="#" class="previous btn btn-sm btn-icon btn-default pull-left"><i class="fa fa-2x fa-arrow-circle-left">
+                </i></a><a href="#" class="next btn btn-lg btn-icon btn-default pull-right"><i class="fa fa-2x fa-arrow-circle-right">
+                </i></a>
             </div>
         </div>
-        <div id="emailvalstep" class="iosheader" style="display: none">
+        <div id="emailstep" class="iosheader animated fadeInRightBig" style="display: none">
             <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapemailvalclose">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Email Validation
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <form id="frmEmail" data-validate="parsley" class="form-horizontal">
-            <div class="panel padder padder-v text-center m-t-xs" style="margin-bottom: 0px">
-                <input type="email" id="txtEmailAddress" class="form-control" autocomplete="off"
-                    data-parsley-rangelength="[3,100]" data-parsley-type="email" data-parsley-required="true"
-                    name="txtEmailAddress" autocorrect="off" autocapitalize="off" placeholder="Enter email address" />
-            </div>
-            <div class="panel padder padder-v text-center m-t-xs" style="margin-bottom: 0px">
-                <button class="btn btn-primary btn-block" type="button" id="btnRegEmail">
-                    Validate Email</button>
-            </div>
-            </form>
-        </div>
-        <div id="emailstep" class="iosheader" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapemailstepclose">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
                 <div class="clearfix">
                     <div class="clear">
                         <div class="h3 m-t-xs m-b-xs">
                             Validate your Email
                         </div>
-                        <small class="text-muted">Check your email</small>
+                        <small class="text-muted">Check your email and copy your validation token.</small>
                     </div>
                 </div>
             </header>
@@ -1307,8 +1278,8 @@
                             Paste from clipboard
                         </p>
                     </div>
-                    <div class="btn btn-lg btn-default" id="btnEmailValidate">
-                        <i class="fa fa-paste fa-2x text-success"></i>
+                    <div tabindex="1" class="btn btn-lg btn-default" id="btnEmailValidate">
+                        <span class="text"><i class="fa fa-paste fa-2x text-success"></i></span>
                     </div>
                     <div class="panel-heading m-t-xs" style="height: 20px">
                         <span id="valemailerror"></span>
@@ -1341,10 +1312,10 @@
                 </div>
             </div>
         </div>
-        <div id="tfastep" class="iosheader" style="display: none">
+        <div id="tfastep" class="iosheader animated fadeInRightBig" style="display: none">
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="tfaoptclose">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -1358,7 +1329,7 @@
             <div id="tfaoption" class="panel padder padder-v text-center m-t-xs">
                 <div class="m-t-sm">
                     It is highly recommended that you setup two factor authentication. If you choose
-                    not to, you can set this up by downloading our Desktop App at a later time.
+                    not to, you can set this up by downloading our Chrome App at a later time.
                 </div>
                 <div class="m-t-md">
                     <button id="tfaoptsetup" type="button" class="btn btn-md btn-primary">
@@ -1421,120 +1392,7 @@
                 </div>
             </div>
         </div>
-        <section id="desktopintro" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapclosedeskintro">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Desktop Setup
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="row padder m-t-lg">
-                <div class="col-sm-6">
-                    <div class="panel-body">
-                        <div class="padder-v text-center">
-                            <div class="h3 m-b font-thin" style="line-height: 1.5em;">
-                                Go to https://ninkip2p.com and download the Desktop application</div>
-                        </div>
-                        <div class="padder-v text-center">
-                            <button id="tapdesktopnext" class="btn btn-default pull-right">
-                                Next</button></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="desktopphrase" class="panel panel-default iosheader mobmod blind" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapclosedeskphrase">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            <i class="fa fa-warning text-warning"></i>&nbsp;Desktop Setup
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <section class="panel-body">
-                <div class="padder-v text-center">
-                    <div class="h4 m-b font-thin" style="line-height: 1.5em;">
-                        Open the desktop app and select 'Sign In'. Enter the below phrase in the textbox.</div>
-                </div>
-                <div class="padder-v text-center">
-                    <div id="Div3" class="h4 bg-warning panel text-center padder-v padder panel text-center text-center m-t-md"
-                        style="line-height: 25px; min-height: 100px;">
-                        <div id="hotWalletDesktopPhrase">
-                        </div>
-                    </div>
-                </div>
-                <div class="padder-v text-center">
-                    <button id="tapdesktopnext2" class="btn btn-default pull-right" style="display: none">
-                        Next</button></div>
-            </section>
-        </section>
-        <section id="deviceauth" class="panel panel-default iosheader mobmod blind" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="btnCloseAuthDevice">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Desktop Setup
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="row padder m-t-md">
-                <div class="col-sm-6">
-                    <div class="padder-v text-center">
-                        <div class="h4 m-b font-thin" style="line-height: 1.5em;">
-                            Touch 'Authorize' below to authorize access to the Desktop Application</div>
-                    </div>
-                    <section class="panel panel-default" id="authrequestitem" style="display: none">
-                        <div class="panel-body">
-                            <div class="padder-v text-center">
-                                Authorize Desktop App?
-                            </div>
-                            <div class="padder-v text-center">
-                                <button id="btnAuthDevice" class="btn btn-primary">
-                                    Authorize</button>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </section>
-        <section id="desktopauthed" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="Div6">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Desktop Setup
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="row padder m-t-lg">
-                <div class="col-sm-6">
-                    Desktop App is authenticated
-                </div>
-            </div>
-        </section>
-        <div id="pairDevice" class="iosheader iosheader" style="display: none">
+        <div id="pairDevice" class="iosheader iosheader animated fadeInUp" style="display: none">
             <div class="container m-n no-padder phone">
                 <div class="row no-padder" style="max-width: 400px; min-width: 290px; margin-left: auto;
                     margin-right: auto; width: 80%">
@@ -1542,28 +1400,44 @@
                         <div class="row1 m-n no-padder">
                             <div class="col-sm-12 m-t-xs">
                                 <div id="pairstep1">
-                                </div>
-                                <div id="pairstep2" class="m-t-md" style="display: none">
-                                    <div class="text-center m-b-sm" style="background-color: White; margin-top: 20px;">
-                                        <img src="images/geo-single-logo.png" style="max-height: 60px" />
+                                    <div class="text-center">
+                                        <img src="images/ninki.png" width="200" height="150" />
+                                        <div class="btn btn-lg btn-default m-t-md" id="qrpair">
+                                            <span class="text"><i class="fa fa-qrcode text-success"></i>&nbsp;Pair this Device</span>
+                                        </div>
+                                        <input id="pairdeviceblob" value="" type="hidden" />
+                                        <div class="m-lg">
+                                            <p class="h4">
+                                                Or
+                                            </p>
+                                        </div>
+                                        <div class="btn btn-lg btn-default" id="createaccount">
+                                            <span class="text"><i class="fa fa-pencil-square-o text-success"></i>&nbsp;Sign Up</span>
+                                        </div>
                                     </div>
-                                    <header class="panel-heading bg-light no-border text-center">
-                                        <div class="clearfix">
-                                            <div class="clear">
-                                                <div class="h4 m-t-xs m-b-xs font-thin">
-                                                    Enter your password</div>
+                                </div>
+                            </div>
+                            <div id="pairstep2" class="m-t-md" style="display: none">
+                                <div class="text-center m-b-sm" style="background-color: White; margin-top: 20px;">
+                                    <img src="images/geo-single-logo.png" style="max-height: 60px" />
+                                </div>
+                                <header class="panel-heading bg-light no-border text-center">
+                                    <div class="clearfix">
+                                        <div class="clear">
+                                            <div class="h4 m-t-xs m-b-xs">
+                                                Enter your password
                                             </div>
                                         </div>
-                                    </header>
-                                    <div class="list-group-item padder-v m-t-md">
-                                        <input id="pairpwd" class="form-control" style="border: 0px" value="" data-required="true"
-                                            type="password" placeholder="" title="" />
                                     </div>
-                                    <span id="pairstatus"></span>
-                                    <div class="text-center m-t-sm">
-                                        <button class="btn btn-primary btn-block" type="button" id="btnPairDevice">
-                                            Pair Device</button>
-                                    </div>
+                                </header>
+                                <div class="list-group-item padder-v m-t-md">
+                                    <input id="pairpwd" class="form-control" style="border: 0px" value="" data-required="true"
+                                        type="password" placeholder="" title="" />
+                                </div>
+                                <span id="pairstatus"></span>
+                                <div class="text-center m-t-sm">
+                                    <button class="btn btn-primary btn-block" type="button" id="btnPairDevice">
+                                        Pair Device</button>
                                 </div>
                             </div>
                         </div>
@@ -1575,7 +1449,7 @@
             <!-- style="display:none">-->
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="btnCloseValidate">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -1588,8 +1462,8 @@
             </header>
             <div id="netvalidp2" class="no-radius alt" style="display: none">
                 <div class="panel-body text-center">
-                    <a href="#" class="block padder-v"><span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-success-lt">
-                    </i><i class="i i-clock
+                    <a href="#" class="block padder-v hover"><span class="i-s i-s-2x pull-left m-r-sm"><i
+                        class="i i-hexagon2 i-s-base text-success-lt hover-rotate"></i><i class="i i-clock
                   i-sm text-white"></i></span><span class="clear"><span id="netvalidprognum" class="h3
                   block m-t-xs text-success">0%</span> <small id="netvalidprogmess" class="text-muted
                   text-u-c"></small></span></a>
@@ -1617,23 +1491,31 @@
                         </button>
                         <input id="hdvalcontact" type="hidden">
                     </div>
+                    <div id="validatesuccess" class="alert alert-success" style="display: none">
+                        <i class="fa fa-ok-sign"></i><strong>Validation Successful</strong> You successfully
+                        validated <span id="validateusername4"></span>
+                    </div>
+                    <div id="validatefail" class="alert alert-warning" style="display: none">
+                        <i class="fa fa-info-sign"></i><strong>Validation Failed</strong> Make sure <span
+                            id="validateusername5"></span>provided you with the correct code
+                    </div>
                     <div id="phrasefade">
-                        <div class="m-t-sm">
+                        <div class="m-t-lg">
                             <p>
-                                Or paste from clipboard
+                                Or enter the phrase manually
                             </p>
                         </div>
-                        <div>
-                            <div tabindex="1" class="btn btn-default" id="pastevalidate" type="button">
-                                <span class="text"><i class="fa fa-paste fa-2x text-success"></i></span>
-                            </div>
-                        </div>
                         <div id="validateform" class="list-group no-radius alt m-n">
-                            <input type="hidden" id="txtCode" class="form-control nopost" />
+                            <div class="form-group">
+                                <textarea id="txtCode" autocapitalize="off" autocomplete="off" class="form-control nopost"
+                                    rows="6" data-minwords="6" data-required="true" placeholder="Enter Validation Phrase"></textarea>
+                            </div>
                             <div id="validateformmess">
                             </div>
-                            <button id="btnVerify" type="button" class="btn btn-sm btn-default" style="display:none">
-                                Validate</button>
+                            <div class="form-group">
+                                <button id="btnVerify" type="button" class="btn btn-sm btn-default">
+                                    Validate</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1643,7 +1525,7 @@
             <div id="invoicedisplay" style="height: 100%">
                 <header class="panel-heading bg-light m-b-sm">
                     <div class="closetap pull-right" id="payinvoicecancel">
-                        <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                        ×
                     </div>
                     <div class="clearfix">
                         <div class="clear">
@@ -1755,35 +1637,16 @@
             <div id="dashboard" style="display: none">
                 <div class="col-md-4" style="padding-left: 0px; padding-right: 0px">
                     <section class="panel-default">
-                        <div class="" id="nowelcome" style="display: none">
-                            <div class="panel-heading b-b" style="background-color: #ffffff">
-                                <a href="#" class="h4 text-primary">Timeline</a>
-                            </div>
-                            <ul id="transfeed" class="list-group list-group-lg no-bg auto">
-                            </ul>
+                        <div class="panel-heading b-b">
+                            <a href="#" class="font-bold">Timeline</a>
                         </div>
-                        <div class="" id="welcometran" style="display: none">
-                            <div class="panel-body">
-                                <div class="h3  font-thin">
-                                    Welcome to Ninki</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-4 h4 m-b font-thin" style="line-height: 1.5;">
-                                    You can now send and receive bitcoin.</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="h3 font-thin text-danger">
-                                    Ready to use Ninki?</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-4 h4 m-b font-thin text-danger" style="line-height: 1.5;">
-                                    Complete the security checklist in your settings.</div>
-                            </div>
-                            <div class="panel-body" style="display: none">
-                                <div class="col-sm-4 h5 m-b font-thin text-danger" style="line-height: 1.5;">
-                                    Faliure to fully back up your private keys and account information can result in
-                                    the loss of your bitcoins</div>
-                            </div>
+                        <ul id="transfeed" class="list-group list-group-lg no-bg auto">
+                        </ul>
+                        <div class="alert alert-info m-sm" id="welcometran" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert">
+                                ×</button>
+                            <i class="fa fa-info-sign"></i><strong>Welcome to Ninki!</strong> Your timeline
+                            will display your transaction history here.
                         </div>
                     </section>
                 </div>
@@ -1797,7 +1660,7 @@
                             <div class="col-md-4" style="padding-left: 0px; padding-right: 0px">
                                 <section class="panel-default b-a">
                                     <div class="panel-heading b-b">
-                                        <a href="#" class="">Payments</a>
+                                        <a href="#" class="font-bold">Payments</a>
                                     </div>
                                     <ul id="netpayfeed" class="list-group list-group-lg no-bg auto">
                                     </ul>
@@ -1810,7 +1673,7 @@
                                     <section class="panel panel-default">
                                         <header class="panel-heading" style="">
                                             <ul class="nav nav-tabs">
-                                                <li style=""><a href="#" class="">Invoices</a> </li>
+                                                <li style=""><a href="#" class="font-bold">Invoices</a> </li>
                                                 <li id="liby" class="pull-right"><a id="invbymelink"><i class="fa fa-list text-muted">
                                                 </i>&nbsp;by me</a> </li>
                                                 <li id="lifor" class="pull-right active"><a id="invformelink"><i class="fa fa-list text-muted">
@@ -1836,34 +1699,21 @@
                             </div>
                         </div>
                     </div>
-                    <div id="networklist" class="networklist-t" style="bottom: 60px; position: absolute;
-                        width: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-top: 0px;
-                        display: none">
-                        <div class="" id="welcomenet" style="">
-                            <div class="panel-body">
-                                <div class="h3 font-thin">
-                                    Pay your</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-6 h4 font-thin pull-left" style="line-height: 1.5">
-                                    Friends, Contacts and Associates with a single touch
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-6 h4 font-thin pull-left text-warning-dker" style="line-height: 1.5">
-                                    Create a secure channel with other Ninki users</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-6 h4 font-thin pull-left" style="line-height: 1.5">
-                                    Generate and pay invoices</div>
-                            </div>
+                    <div id="networklist" class="col-sm-3 wrapper-xxs networklist-t" style="bottom: 60px;
+                        position: absolute; width: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch;
+                        padding-top: 0px">
+                        <div class="alert alert-info m-sm" id="welcomenet" style="display: none">
+                            <button type="button" class="close" data-dismiss="alert">
+                                ×</button>
+                            <i class="fa fa-info-sign"></i><strong>Welcome to Ninki!</strong> Here you can add
+                            friends and contacts to your network.
                         </div>
                         <div id="dashrequests" style="display: none">
-                            <div class="panel panel-default" style="border-radius: 0px; border-bottom: 0px;">
-                                <div class="panel-heading font-bold" style="border-radius: 0px; border-bottom: 0px;">
+                            <div class="panel panel-default">
+                                <div class="panel-heading font-bold">
                                     Contact Requests
                                 </div>
-                                <div class="panel-body" style="border-radius: 0px; border-bottom: 0px;">
+                                <div class="panel-body">
                                     <div id="friendreq">
                                     </div>
                                 </div>
@@ -1879,75 +1729,92 @@
             <div id="settings" class="iosheader" style="top: 40px; bottom: 60px; position: absolute;
                 background-color: white; width: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch;
                 display: none;">
-                <div class="padder-v text-center clearfix">
+                <div class="padder-v text-center clearfix m-b-sm">
                     <div class="col-xs-6
                   padder-v">
                         <div class="thumb-md">
                             <img id="imgProfile" src="" class="img-circle" />
                         </div>
                     </div>
-                    <div class="col-xs-6 m-t-xs" style="padding-left: 0;">
+                    <div class="col-xs-6" style="padding-left: 0;">
                         <section class="m-t-xs">
-                            <div id="mynickname" class="text-primary h4 font-thin">
-                            </div>
-                            <div class="m-t-xs">
+                            <div class="">
                                 <div id="mystatus">
+                                </div>
+                            </div>
+                        </section>
+                        <section class="m-t-sm">
+                            <div class="">
+                                <div id="tapunlock" class="btn btn-icon btn-default">
+                                    <i class="fa fa-lock"></i>
                                 </div>
                             </div>
                         </section>
                     </div>
                 </div>
-                <input type="hidden" id="hdcodeForFriend" />
-                <div id="valcodepanel" class="col-md-6 b-t">
-                    <a href="#" class="block padder-v" style="padding-top: 10px; padding-bottom: 10px;">
-                        <div class="">
-                            <div id="copyvalphrase" class="btn btn-default btn-sm pull-right" style="">
-                                <i class="fa fa-copy"></i>
+                <div class="col-sm-6">
+                    <section class="panel panel-default">
+                        <div id="copyvalphrase" class="btn btn-default pull-right" style="margin-top: 6px;
+                            margin-right: 6px;">
+                            <i class="fa fa-copy"></i>
+                        </div>
+                        <header class="panel-heading">Your Validation Phrase
+                  </header>
+                        <div id="valcodepanel" class="panel-body">
+                            <div class="padder-v">
+                                <span id="codeForFriend"></span>
                             </div>
                         </div>
-                        <div class="h4 block" style="margin-bottom: 10px; padding-top: 2px;">
-                            Your ID</div>
-                        <span style="word-break: break-line;" id="codeForFriend"></span></a>
+                    </section>
                 </div>
-                <div id="tapunlock" class="col-md-6 b-t">
-                    <a href="#" class="block padder-v" style="padding-top: 10px; padding-bottom: 10px;">
-                        <div id="Div4" class="pull-right" style="border-width: 0px;">
-                            <i class="fa fa-chevron-right fa-2x text-muted" style="margin-top: 1px;"></i>
+                <div class="col-sm-6">
+                    <section class="panel panel-default">
+                        <header class="panel-heading">Coin Unit</header>
+                        <div class="scoinunit panel-body padder-v">
+                            BTC
+                            <label class="active pull-right m-t-xxs">
+                            </label>
                         </div>
-                        <span class="clear"><span class="h4 block" style="line-height: 26px">Security Checklist</span>
-                        </span></a>
+                        <div class="scoinunit panel-body padder-v">
+                            Bits
+                            <label class="active pull-right
+                        m-t-xxs">
+                            </label>
+                        </div>
+                    </section>
                 </div>
-                <div id="tapacclimits" class="col-md-6 b-t">
-                    <a href="#" class="block padder-v" style="padding-top: 10px; padding-bottom: 10px;">
-                        <div id="Div5" class="pull-right" style="border-width: 0px;">
-                            <i class="fa fa-chevron-right fa-2x text-muted" style="margin-top: 1px;"></i>
+                <div class="col-sm-6">
+                    <section class="panel panel-default">
+                        <header class="panel-heading">Currency</header>
+                        <div class="sccy panel-body padder-v">
+                            USD
+                            <label class="active pull-right m-t-xxs">
+                            </label>
                         </div>
-                        <span class="clear"><span class="h4 block" style="line-height: 26px">Spending Limits</span>
-                        </span></a>
-                </div>
-                <div id="tapcoinunit" class="col-md-6 b-t">
-                    <a href="#" class="block padder-v" style="padding-top: 10px; padding-bottom: 10px;">
-                        <div id="Div7" class="pull-right" style="border-width: 0px;">
-                            <i class="fa fa-chevron-right fa-2x text-muted" style="margin-top: 1px;"></i>
+                        <div class="sccy panel-body padder-v">
+                            JPY
+                            <label class="active pull-right m-t-xxs">
+                            </label>
                         </div>
-                        <span class="clear"><span class="h4 block" style="line-height: 26px">Coin Unit</span>
-                        </span></a>
-                </div>
-                <div id="tapcurrency" class="col-md-6 b">
-                    <a href="#" class="block padder-v" style="padding-top: 10px; padding-bottom: 10px;">
-                        <div id="Div9" class="pull-right" style="border-width: 0px;">
-                            <i class="fa fa-chevron-right fa-2x text-muted" style="margin-top: 1px;"></i>
+                        <div class="sccy panel-body padder-v">
+                            EUR
+                            <label class="active pull-right m-t-xxs">
+                            </label>
                         </div>
-                        <span class="clear"><span class="h4 block" style="line-height: 26px">Currency</span>
-                        </span></a>
+                        <div class="sccy panel-body padder-v">
+                            CNY
+                            <label class="active pull-right m-t-xxs">
+                            </label>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
-        <section id="dashsend" class="panel panel-default iosheader mobmod" style="display: none">
+        <section id="dashsend" class="panel panel-default iosheader invis mobmod" style="display: none">
             <!-- style="display:none">-->
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="btnCloseStdSnd">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -1990,10 +1857,10 @@
                 </div>
             </div>
         </section>
-        <section id="dashreceive" class="panel panel-default iosheader mobmod" style="display: none">
+        <section id="dashreceive" class="panel panel-default iosheader invis mobmod" style="display: none">
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="btnCloseRec">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -2026,11 +1893,11 @@
                 </div>
             </div>
         </section>
-        <div id="dashcontact" class="iosheader col-sm-3 wrapper-xxs mobmod" style="display: none">
+        <div id="dashcontact" class="iosheader col-sm-3 wrapper-xxs invis mobmod" style="display: none">
             <section class="panel panel-default">
                 <header class="panel-heading bg-light no-border">
                     <div class="closetap pull-right" id="btnCloseContact">
-                        <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                        ×
                     </div>
                     <div class="clearfix">
                         <div class="clear">
@@ -2095,10 +1962,11 @@
                 </div>
             </section>
         </div>
-        <section id="transview" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
+        <section id="transview" class="panel panel-default iosheader invis mobmod" style="display: none">
+            <header class="panel-heading
+            bg-light no-border">
                 <div class="closetap pull-right" id="btnCloseTran">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -2159,7 +2027,7 @@
                 </table>
             </div>
         </section>
-        <section id="welcome" class="panel panel-default iosheader mobmod" style="display: none">
+        <section id="welcome" class="panel panel-default iosheader mobmod invis" style="display: none">
             <header class="panel-heading bg-light no-border">
                 <div class="clearfix">
                     <div class="clear">
@@ -2180,13 +2048,13 @@
                             <li>1 BTC / daily limit</li>
                             <li>0.5 BTC / single transaction limit</li>
                             <li>10 transactions / day</li>
-                            <li>4 transactions / hour</li>
+                            <li>4 transactions / hour</li>         
                         </ul>
                         <p>
-                            To change these limits please download our Desktop App which will allow you to:
+                            To change these limits please download our Chrome App which will allow you to:
                         </p>
                         <ul>
-                            <li>Change your spending limits</li>
+                            <li>Change your account limits</li>
                             <li>Manage your devices</li>
                             <li>Setup two factor authentication</li>
                             <li>Create two factor backup codes</li>
@@ -2199,7 +2067,7 @@
                 </article>
             </section>
         </section>
-        <section id="secwarning" class="panel panel-default iosheader mobmod blind" style="display: none">
+        <section id="secwarning" class="panel panel-default iosheader mobmod invis" style="display: none">
             <header class="panel-heading bg-light no-border">
                 <div class="clearfix">
                     <div class="clear">
@@ -2242,217 +2110,10 @@
                 </div>
             </section>
         </section>
-        <section id="seccheck" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="btnCloseSecList">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Security Checklist
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="text-center">
-                        <div id="securityscore" class="easypiechart inline m-b m-t" data-percent="0" data-line-width="10"
-                            data-bar-color="#afc5de" data-track-color="#f2f4f8" data-scale-color="false"
-                            data-size="100" data-line-cap='butt' data-animate="2000">
-                            <div>
-                                <span class="h2 m-l-sm step font-thin"></span>%
-                                <div class="text text-xs text-muted">
-                                    completed</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel b-t">
-                        <div class="row m-n">
-                            <div id="tapkeybackup" class="col-md-6 b-b">
-                                <a href="#" class="block padder-v">
-                                    <div id="secheckkeys" class="m-t-sm pull-right" style="border-width: 0px; display: none;">
-                                        <i class="fa fa-2x fa-check-square text-success"></i>
-                                    </div>
-                                    <div id="secchevkeys" class="m-t-sm pull-right" style="border-width: 0px;">
-                                        <i class="fa fa-2x fa-chevron-right text-primary"></i>
-                                    </div>
-                                    <!--<span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-success-lt">
-                                </i><i class="fa fa-puzzle-piece i-sm text-white"></i></span>-->
-                                    <span class="clear"><span class="h4 block m-t-xs">Backup your Keys</span> <small
-                                        class="text-muted">Secure your funds</small> </span></a>
-                            </div>
-                            <div id="tapemailsec" class="col-md-6 b-b">
-                                <a href="#" class="block padder-v">
-                                    <div id="secheckemail" class="m-t-sm pull-right" style="border-width: 0px; display: none;">
-                                        <i class="fa fa-2x fa-check-square text-success"></i>
-                                    </div>
-                                    <div id="sechevemail" class="m-t-sm pull-right" style="border-width: 0px;">
-                                        <i class="fa fa-2x fa-chevron-right text-muted"></i>
-                                    </div>
-                                    <!--<span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-primary">
-                                </i><i class="fa fa-envelope i-sm text-white"></i></span>-->
-                                    <span class="clear"><span class="h4 block m-t-xs">Validate your Email</span> <small
-                                        class="text-muted">Receive critical account info</small> </span></a>
-                            </div>
-                            <div id="tapchrome" class="col-md-6 b-b">
-                                <a href="#" class="block padder-v">
-                                    <div id="secheck2fa" class="m-t-sm pull-right" style="border-width: 0px; display: none;">
-                                        <i class="fa fa-2x fa-check-square text-success"></i>
-                                    </div>
-                                    <div id="sechev2fa" class="m-t-sm pull-right" style="border-width: 0px;">
-                                        <i class="fa fa-2x fa-chevron-right text-muted"></i>
-                                    </div>
-                                    <!--<span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-info">
-                                </i><i class="fa fa-qrcode i-sm text-white"></i></span>-->
-                                    <span class="clear"><span class="h4 block m-t-xs">Setup the Desktop App</span> <small
-                                        class="text-muted">Complete your account setup</small> </span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tapsecwarning" class="col-md-6 b">
-                        <a href="#" class="block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                            <div id="Div2" class="pull-right" style="border-width: 0px;">
-                                <i class="fa fa-chevron-right fa-2x text-muted"></i>
-                            </div>
-                            <!--<span class="i-s i-s-2x pull-left m-r-sm"><i class="i i-hexagon2 i-s-base text-info">
-                                </i><i class="fa fa-qrcode i-sm text-white"></i></span>-->
-                            <span class="clear"><span class="h4 block">View your Online Key</span> </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="settingsacclimits" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapcloseacclimits">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Spending Limits
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="col-md-6 b-t">
-                <div class="h5 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    Daily Transaction Limit
-                    <label id="limitdaily" class="active pull-right m-t-xxs">
-                        ...
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t b-t">
-                <div class="h5 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    Single Transaction Limit
-                    <label id="limitsingle" class="active pull-right m-t-xxs">
-                        ...
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t b-t">
-                <div class="h5 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    No Of Transactions Per Day
-                    <label id="limittranday" class="active pull-right m-t-xxs">
-                        ...
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t b-b">
-                <div class="h5 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    No Of Transactions Per Hour
-                    <label id="limittranhour" class="active pull-right m-t-xxs">
-                        ...
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t b-b m-t-lg">
-                <div class="h5 block padder-v text-success-dker" style="padding-top: 15px; padding-bottom: 15px;
-                    line-height: 1.5;">
-                    To adjust your spending limits download the desktop app and setup two factor authentication.</div>
-            </div>
-        </section>
-        <section id="settingscoinunit" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapclosecoinunit">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Coin Unit
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="col-md-6 b-t">
-                <div class="scoinunit h4 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    BTC
-                    <label class="active pull-right m-t-xxs">
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t b-b">
-                <div class="scoinunit h4 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    Bits<label class="active pull-right m-t-xxs">
-                    </label>
-                </div>
-            </div>
-        </section>
-        <section id="settingscurrency" class="panel panel-default iosheader mobmod" style="display: none">
-            <header class="panel-heading bg-light no-border">
-                <div class="closetap pull-right" id="tapclosecurrency">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
-                </div>
-                <div class="clearfix">
-                    <div class="clear">
-                        <div class="h3 m-t-xs m-b-xs">
-                            Currency
-                        </div>
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </header>
-            <div class="col-md-6 b-t">
-                <div class="sccy h4 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    USD
-                    <label class="active pull-right m-t-xxs">
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t">
-                <div class="sccy h4 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    JPY
-                    <label class="active pull-right m-t-xxs">
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t">
-                <div class="sccy h4  block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    EUR
-                    <label class="active pull-right m-t-xxs">
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 b-t b-b">
-                <div class="sccy h4 block padder-v" style="padding-top: 15px; padding-bottom: 15px;">
-                    CNY
-                    <label class="active pull-right m-t-xxs">
-                    </label>
-                </div>
-            </div>
-        </section>
-        <section id="tos" class="iosheader mobmod" style="display: none; padding-bottom: 10px;
-            background-color: #fff;">
+        <section id="tos" class="iosheader mobmod invis" style="display: none; padding-bottom: 10px; background-color: #fff;">
             <header class="panel-heading bg-light no-border">
                 <div class="closetap pull-right" id="closetos">
-                    <i class="i fa-2x i-cross2" style="margin-top: 6px;"></i>
+                    ×
                 </div>
                 <div class="clearfix">
                     <div class="clear">
@@ -2463,8 +2124,7 @@
                     </div>
                 </div>
             </header>
-            <section class="padder" style="overflow-y: auto; -webkit-overflow-scrolling: touch;
-                height: 100%; padding-bottom: 50px">
+            <section class="padder" style="overflow-y: auto; -webkit-overflow-scrolling: touch; height:100%; padding-bottom:50px">
                 <h4>
                     Terms and Conditions ("Terms")</h4>
                 <p>
@@ -2665,7 +2325,7 @@
                 <i class="fa
                   fa-lg fa-sitemap text-info"></i>
                 <br />
-                Contacts
+                Network
             </div>
             <div class="btn-menu" id="btnmenusettings" style="-webkit-touch-callout: none">
                 <i class="fa fa-lg fa-gear text-info"></i>
@@ -2677,7 +2337,6 @@
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/fastclick.js"></script>
-    <script src="js/countdown.min.js"></script>
     <script src="js/date.js "></script>
     <script src="js/accounting.min.js "></script>
     <script src="js/hammer.min.js"></script>

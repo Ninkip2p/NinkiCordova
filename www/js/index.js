@@ -147,10 +147,6 @@ var app = {
 
         } else {
 
-
-            window.hideSecScreens();
-
-
             if (device.platform == "Android") {
 
                 app.isScanning = false;

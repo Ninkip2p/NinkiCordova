@@ -33698,91 +33698,91 @@ function lpost(url, postData, callback) {
 
     } else {
 
-        $.ajax({
-            url: "https://testnet.ninkip2p.com:443" + url,
-            type: "POST",
-            timeout: 10000,
-            data: JSON.stringify(postData),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            headers: { 'api-token': apiToken },
-            success: function (data) {
+    $.ajax({
+        url: "https://api.ninkip2p.com" + url,
+        type: "POST",
+        timeout: 10000,
+        data: JSON.stringify(postData),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        headers: { 'api-token': apiToken },
+        success: function (data) {
 
-                data = sanitizer.sanitize(data);
+            data = sanitizer.sanitize(data);
 
-                var jdata = JSON.parse(data);
+            var jdata = JSON.parse(data);
 
-                if (jdata.error) {
-                    return callback(true, jdata.message);
-                }
-                if (!(typeof jdata.message === "undefined")) {
+            if (jdata.error) {
+                return callback(true, jdata.message);
+            }
+            if (!(typeof jdata.message === "undefined")) {
 
-                    return callback(false, jdata.message);
+                return callback(false, jdata.message);
 
-                }
+            }
 
-                return callback(false, JSON.stringify(jdata));
-            },
-            fail: function (data, textStatus) {
+            return callback(false, JSON.stringify(jdata));
+        },
+        fail: function (data, textStatus) {
 
-                data = sanitizer.sanitize(data);
-                textStatus = sanitizer.sanitize(textStatus);
+            data = sanitizer.sanitize(data);
+            textStatus = sanitizer.sanitize(textStatus);
 
-                return callback(true, {
-                    textStatus: textStatus,
-                    data: data
-                });
-            },
-            error: function (data) {
+            return callback(true, {
+                textStatus: textStatus,
+                data: data
+            });
+        },
+        error: function (data) {
 
-                if (data.statusText == "timeout") {
+            if (data.statusText == "timeout") {
 
-                    return callback(true, "Could not connect to the Ninki server. Please try again. If the problem persists email support@ninkip2p.com.");
+                return callback(true, "Could not connect to the Ninki server. Please try again. If the problem persists email support@ninkip2p.com.");
 
-                }
+            }
 
 
-                if (data.status == 0) {
+            if (data.status == 0) {
 
-                    return callback(true, "Could not connect to the network. Please check that you are connected to the internet.");
+                return callback(true, "Could not connect to the network. Please check that you are connected to the internet.");
 
-                }
+            }
 
-                if (data.status == 403) {
-                    //session has been lost
+            if (data.status == 403) {
+                //session has been lost
 
-                } else if (data.status == 401) {
+            } else if (data.status == 401) {
 
-                    if (!window.cordova) {
-                        if (chrome) {
-                            if (chrome.runtime) {
-                                if (chrome.runtime.reload) {
-                                    chrome.runtime.reload()
-                                } else {
-                                    location.reload();
-                                }
+                if (!window.cordova) {
+                    if (chrome) {
+                        if (chrome.runtime) {
+                            if (chrome.runtime.reload) {
+                                chrome.runtime.reload()
                             } else {
                                 location.reload();
                             }
-                            //return callback(true, data.statusText);
                         } else {
-                            //location.reload();
+                            location.reload();
                         }
+                        //return callback(true, data.statusText);
                     } else {
-                        return callback(true, sanitizer.sanitize(data.statusText));
+                        //location.reload();
                     }
-
-
                 } else {
-
-                    data.responseText = sanitizer.sanitize(data.responseText);
-
-                    return callback(true, data.responseText);
+                    return callback(true, sanitizer.sanitize(data.statusText));
                 }
 
 
+            } else {
+
+                data.responseText = sanitizer.sanitize(data.responseText);
+
+                return callback(true, data.responseText);
             }
-        });
+
+
+        }
+    });
 
     }
 }
@@ -33809,7 +33809,7 @@ API.getMasterPublicKeyFromUpstreamServer = function (guid, callback) {
 
 
     var postData = { guid: guid };
-    return lpost("/api/2/u/createaccount", postData, function (err, response) {
+    return lpost("/api/1/u/createaccount", postData, function (err, response) {
 
         if (err) {
             return callback(err, response);
@@ -33828,10 +33828,6 @@ API.getMasterPublicKeyFromUpstreamServer = function (guid, callback) {
         }
     });
 };
-
-
-
-
 
 //function doesUsernameExist
 //verifies that the requested username does not already exist on our database
@@ -34173,23 +34169,6 @@ API.getTransactionsForNetwork = function (guid, sharedid, username, callback) {
 };
 
 
-API.getTimeline = function (guid, sharedid, callback) {
-
-    var postData = { guid: guid, sharedid: sharedid };
-
-    lpost("/api/1/u/gettimeline", postData, function (err, transactions) {
-
-        if (!err) {
-            var jtran = JSON.parse(transactions);
-            return callback(err, jtran);
-        } else {
-            return callback(err, transactions);
-        }
-
-    });
-
-};
-
 API.getInvoiceList = function (guid, sharedid, callback) {
 
     var postData = { guid: guid, sharedid: sharedid };
@@ -34285,7 +34264,7 @@ API.registerDevice = function (guid, deviceName, deviceId, deviceModel, devicePI
 
 API.getDeviceKey = function (guid, devicePIN, regToken, callback) {
     var postData = { guid: guid, devicePIN: devicePIN, regToken: regToken };
-    return lpost("/api/2/u/getdevicekey", postData, function (err, dataStr) {
+    return lpost("/api/1/u/getdevicekey", postData, function (err, dataStr) {
         return callback(err, dataStr);
     });
 };
@@ -34334,7 +34313,7 @@ API.getDeviceToken = function (guid, sharedid, deviceName, twoFactorCode, callba
 };
 
 API.getDeviceTokenForApp = function (guid, sharedid, deviceName, callback) {
-    var postData = { guid: guid, sharedid: sharedid, deviceName: deviceName };
+    var postData = { guid: guid, sharedid: sharedid, deviceName: deviceName};
     return lpost("/api/1/u/getdevicetokenforapp", postData, function (err, dataStr) {
         return callback(err, dataStr);
     });
@@ -34363,84 +34342,6 @@ API.createBackupCodes = function (guid, sharedid, twoFactorCode, callback) {
         return callback(err, dataStr);
     });
 };
-
-
-API.updateEmailAddress = function (guid, sharedid, emailAddress, callback) {
-    var postData = { guid: guid, sharedid: sharedid, emailAddress: emailAddress };
-    return lpost("/api/1/u/updateemailaddress", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-
-API.createAccountSecPub = function (guid, sharedid, secretPub, callback) {
-    var postData = { guid: guid, sharedid: sharedid, secretPub: secretPub };
-    return lpost("/api/1/u/createaccountsecpub", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-API.getAccountSecPub = function (guid, sharedid, callback) {
-    var postData = { guid: guid, sharedid: sharedid};
-    return lpost("/api/1/u/getaccountsecpub", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-API.removeAccountSecPub = function (guid, sharedid, callback) {
-    var postData = { guid: guid, sharedid: sharedid };
-    return lpost("/api/1/u/removeaccountsecpub", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-API.getGUIDByMPKH = function (mpkh, callback) {
-    var postData = { mpkh: mpkh };
-    return lpost("/api/1/getguidbympkh", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-
-API.requestAuthMigration = function (guid, secret, authreqtoken, callback) {
-    var postData = { guid: guid, secret: secret, authreqtoken: authreqtoken };
-    return lpost("/api/1/u/requestauthmigration", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-API.getAuthMigrationRequest = function (guid, secret, callback) {
-    var postData = { guid: guid, secret: secret};
-    return lpost("/api/1/u/getauthmigrationrequest", postData, function (err, dataStr) {
-
-        if (!err) {
-            var jtran = JSON.parse(dataStr);
-            return callback(err, jtran);
-        } else {
-            return callback(err, dataStr);
-        }
-
-    });
-};
-
-API.authMigration = function (guid, sharedid, twoFactorToken, authreqtoken, callback) {
-    var postData = { guid: guid, sharedid: sharedid, twoFactorToken: twoFactorToken, authreqtoken: authreqtoken };
-    return lpost("/api/1/u/authmigration", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-///
-
-API.getAuthMigrationToken = function (guid, secret, authreqtoken, callback) {
-    var postData = { guid: guid, secret: secret, authreqtoken: authreqtoken };
-    return lpost("/api/1/u/getauthmigrationtoken", postData, function (err, dataStr) {
-        return callback(err, dataStr);
-    });
-};
-
-//
-
 
 
 module.exports = API;
@@ -34543,7 +34444,6 @@ function Device() {
 
             if (typeof window.cordova === 'undefined') {
 
-                //switch to false for mob
                 return true;
 
             } else {
@@ -34681,7 +34581,7 @@ function Device() {
 
 
     this.getSecureStorageObject = getSecureStorageObject;
-    function getSecureStorageObject(cname, key, decryptor, asbytes, callback) {
+    function getSecureStorageObject(cname, key, decryptor, callback) {
 
         if (isChromeApp()) {
 
@@ -34689,7 +34589,7 @@ function Device() {
 
                 result = result[cname];
 
-                if (!(typeof result === 'undefined')) {
+                if (result != "") {
                     var decryptok = true;
                     var datac = "";
                     try {
@@ -34700,31 +34600,20 @@ function Device() {
                             if (enc.expiry) {
                                 var currentdate = new Date();
                                 if (((new Date) - new Date(enc.date)) < enc.expiry) {
-                                    datac = decryptor(enc.ct, key, enc.iv, asbytes);
+                                    datac = decryptor(enc.ct, key, enc.iv);
                                 }
                             }
                         } else {
-                            datac = decryptor(enc.ct, key, enc.iv, asbytes);
-
+                            datac = decryptor(enc.ct, key, enc.iv);
                         }
 
                     } catch (error) {
                         decryptok = false;
                     }
 
-                    result = "";
-                    if (decryptok) {
-                        result = datac;
-                    }
-                    return callback(result);
-
-                } else {
-
-                    return callback("");
-
                 }
 
-
+                return callback(result);
 
             });
 
@@ -34744,18 +34633,17 @@ function Device() {
                             if (enc.expiry) {
                                 var currentdate = new Date();
                                 if (((new Date) - new Date(enc.date)) < enc.expiry) {
-                                    datac = decryptor(enc.ct, key, enc.iv, asbytes);
+                                    datac = decryptor(enc.ct, key, enc.iv);
                                 }
                             }
                         } else {
-                            datac = decryptor(enc.ct, key, enc.iv, asbytes);
+                            datac = decryptor(enc.ct, key, enc.iv);
                         }
-
+                      
                     } catch (error) {
                         decryptok = false;
                     }
 
-                    result = "";
                     if (decryptok) {
                         result = datac;
                     }
@@ -34809,21 +34697,14 @@ function Engine() {
     this.m_secret = '';
     this.m_migrateBeta12fa = false;
     this.m_invoiceTax = 0.1;
-    this.m_offlineKeyBackup = false;
-    //keys for PGP
     this.m_privKey = '';
     this.m_pubKey = '';
     this.m_privKeyRaw = '';
     this.m_pubKeyRaw = '';
-    //online EC key
-    this.m_onlineKey = [];
-    this.m_deviceKey = [];
-    this.m_deviceSecKey = [];
-    this.m_regToken = '';
-    this.m_deviceToken = [];
     this.m_APIToken = '';
     this.m_appInitialised = false;
     this.m_watchOnly = false;
+
 
     m_this = this;
 
@@ -34847,7 +34728,7 @@ function Engine() {
         var serTarget = {};
         serTarget.m_walletinfo = m_this.m_walletinfo;
         serTarget.m_sharedid = m_this.m_sharedid;
-        //serTarget.m_twoFactorOnLogin = m_this.m_twoFactorOnLogin;
+        serTarget.m_twoFactorOnLogin = m_this.m_twoFactorOnLogin;
         serTarget.m_nickname = m_this.m_nickname;
         //serTarget.m_profileImage = m_this.m_profileImage;
         //serTarget.m_statusText = m_this.m_statusText;
@@ -34869,7 +34750,7 @@ function Engine() {
 
         m_this.m_walletinfo = cache.m_walletinfo;
         m_this.m_sharedid = cache.m_sharedid;
-        //m_this.m_twoFactorOnLogin = cache.m_twoFactorOnLogin;
+        m_this.m_twoFactorOnLogin = cache.m_twoFactorOnLogin;
         m_this.m_nickname = cache.m_nickname;
         //m_this.m_profileImage = cache.m_profileImage;
         //m_this.m_statusText = cache.m_statusText;
@@ -34888,16 +34769,7 @@ function Engine() {
 
         m_this.m_pubKey = publicKeys.keys[0];
 
-
         cache = {};
-    }
-
-
-    this.setSecDeviceKey = setSecDeviceKey;
-    function setSecDeviceKey() {
-        //set a secondary encryption key that does not 
-        //require the PIN each time to retreive
-        m_this.m_deviceSecKey = SHA256(m_this.m_deviceKey);
     }
 
     this.appHasLoaded = appHasLoaded;
@@ -34936,112 +34808,40 @@ function Engine() {
     }
 
 
-
-    //use this in production
-
     function getRandomValues(b) {
+
         var rng = new Uint8Array(b);
-        window.crypto.getRandomValues(rng);
+        if (typeof window === 'undefined') {
+
+            //this is to support the test scripts
+            //which are executed using node.js
+            try {
+                var buf = crypto.randomBytes(256);
+
+                rng = new Uint8Array(buf);
+
+            } catch (ex) {
+                // handle error
+                // most likely, entropy sources are drained
+
+                console.log(ex);
+            }
+
+        } else {
+
+            window.crypto.getRandomValues(rng);
+        }
+
         return rng;
     }
 
-    this.generateToken = generateToken;
-    function generateToken() {
-
-        var rng = getRandomValues(32);
-
-        var bytes = [];
-        for (var i = 0; i < rng.length; ++i) {
-            bytes[i] = rng[i];
-        }
-
-        return Bitcoin.convert.bytesToHex(bytes);
-
-    }
-
-
-    //only use for testing
-
-    //    function getRandomValues(b) {
-
-    //        var rng = new Uint8Array(b);
-    //        if (typeof window === 'undefined') {
-    //            //this is to support the test scripts
-    //            //which are executed using node.js
-    //            var buf = crypto.randomBytes(256);
-    //            rng = new Uint8Array(buf);
-
-    //        } else {
-
-    //            window.crypto.getRandomValues(rng);
-    //        }
-
-    //        return rng;
-    //    }
-
-    sjcl.codec.bytes = {
-        /** Convert from a bitArray to an array of bytes. */
-        fromBits: function (arr) {
-            var out = [], bl = sjcl.bitArray.bitLength(arr), i, tmp;
-            for (i = 0; i < bl / 8; i++) {
-                if ((i & 3) === 0) {
-                    tmp = arr[i / 4];
-                }
-                out.push(tmp >>> 24);
-                tmp <<= 8;
-            }
-            return out;
-        },
-        /** Convert from an array of bytes to a bitArray. */
-        toBits: function (bytes) {
-            var out = [], i, tmp = 0;
-            for (i = 0; i < bytes.length; i++) {
-                tmp = tmp << 8 | bytes[i];
-                if ((i & 3) === 3) {
-                    out.push(tmp);
-                    tmp = 0;
-                }
-            }
-            if (i & 3) {
-                out.push(sjcl.bitArray.partial(8 * (i & 3), tmp));
-            }
-            return out;
-        }
-    };
-
-    this.zeroOnlineKey = zeroOnlineKey;
-    function zeroOnlineKey() {
-        for (var i = 0; i < this.m_onlineKey.length; ++i) {
-            this.m_onlineKey[i] = 0;
-        }
-    }
-
-    this.zeroDeviceKey = zeroDeviceKey;
-    function zeroDeviceKey() {
-        for (var i = 0; i < this.m_deviceKey.length; ++i) {
-            this.m_deviceKey[i] = 0;
-        }
-    }
-
-    function zeroWordArray(obj) {
-        for (var i = 0; i < obj.words.length; ++i) {
-            obj.words[i] = 0;
-        }
-    }
-
-    this.zeroByteArray = zeroByteArray;
-    function zeroByteArray(obj) {
-        for (var i = 0; i < obj.length; ++i) {
-            obj[i] = 0;
-        }
-    }
 
     this.encrypt = encrypt;
     function encrypt(valueToEncrypt, passphrase) {
 
         valueToEncrypt = JSON.stringify(valueToEncrypt);
 
-        var key = Bitcoin.convert.bytesToWordArray(passphrase);
+        var key = CryptoJS.enc.Hex.parse(passphrase);
 
         var iv = getRandomValues(32);
 
@@ -35054,8 +34854,6 @@ function Engine() {
 
         var encrypted = CryptoJS.AES.encrypt(valueToEncrypt, key, { iv: ivwords });
 
-        zeroWordArray(key);
-
         return encrypted;
     };
 
@@ -35063,11 +34861,12 @@ function Engine() {
     this.encryptNp = encryptNp;
     function encryptNp(valueToEncrypt, passphrase) {
 
-        valueToEncrypt = Bitcoin.convert.bytesToWordArray(valueToEncrypt);
+        valueToEncrypt = CryptoJS.enc.Hex.parse(valueToEncrypt);
 
-        var key = Bitcoin.convert.bytesToWordArray(passphrase);
+        var key = CryptoJS.enc.Hex.parse(passphrase);
 
         var iv = getRandomValues(32);
+
 
         var ivbytes = [];
         for (var i = 0; i < iv.length; ++i) {
@@ -35078,67 +34877,33 @@ function Engine() {
 
         var encrypted = CryptoJS.AES.encrypt(valueToEncrypt, key, { iv: ivwords, padding: CryptoJS.pad.NoPadding });
 
-        zeroWordArray(key);
-
         return encrypted;
     };
 
     this.decrypt = decrypt;
     function decrypt(encryptedObj, passphrase, iv) {
 
-        //word arrays
-        var key = Bitcoin.convert.bytesToWordArray(passphrase);
+        var key = CryptoJS.enc.Hex.parse(passphrase);
         var iv = CryptoJS.enc.Hex.parse(iv);
 
         var decryptedObject = CryptoJS.AES.decrypt(encryptedObj, key, { iv: iv });
 
-        zeroWordArray(key);
-
         var decryptutf = decryptedObject.toString(CryptoJS.enc.Utf8);
-
-        zeroWordArray(decryptedObject);
-
         var decryptjson = JSON.parse(decryptutf);
         return decryptjson;
     };
 
-
     this.decryptNp = decryptNp;
-    function decryptNp(encryptedObj, passphrase, iv, asbytes) {
+    function decryptNp(encryptedObj, passphrase, iv) {
 
-        //word arrays
-        var key = Bitcoin.convert.bytesToWordArray(passphrase);
+        var key = CryptoJS.enc.Hex.parse(passphrase);
         var iv = CryptoJS.enc.Hex.parse(iv);
 
         var decryptedObject = CryptoJS.AES.decrypt(encryptedObj, key, { iv: iv, padding: CryptoJS.pad.NoPadding });
 
-        zeroWordArray(key);
-
-        var ret = null;
-        if (asbytes) {
-            ret = Bitcoin.convert.wordArrayToBytes(decryptedObject);
-        } else {
-            ret = decryptedObject.toString(CryptoJS.enc.Hex);
-        }
-
-        zeroWordArray(decryptedObject);
-
-        return ret;
-
+        var decrypthex = decryptedObject.toString(CryptoJS.enc.Hex);
+        return decrypthex;
     };
-
-    function SHA256(bytes) {
-
-        var wa = Bitcoin.convert.bytesToWordArray(bytes);
-        var wa2 = Bitcoin.Crypto.SHA256(wa);
-        var ret = Bitcoin.convert.wordArrayToBytes(wa2);
-
-        zeroWordArray(wa);
-        zeroWordArray(wa2);
-
-        return ret;
-
-    }
 
     var hmac = function (key) {
         var hasher = new sjcl.misc.hmac(key, sjcl.hash.sha1);
@@ -35149,20 +34914,15 @@ function Engine() {
 
     this.pbkdf2 = pbkdf2;
     function pbkdf2(password, salt) {
-
         var passwordSalt = sjcl.codec.utf8String.toBits(salt);
         var derivedKey = sjcl.misc.pbkdf2(password, passwordSalt, 1000, 256, hmac);
-
-        var bkey = sjcl.codec.bytes.fromBits(derivedKey);
-
-        return bkey;
+        var hexKey = sjcl.codec.hex.fromBits(derivedKey);
+        return hexKey;
     }
 
     this.setPass = setPass;
     function setPass(pass, salt) {
         m_this.m_password = pbkdf2(pass, salt);
-        m_this.m_deviceSecKey = m_this.m_password;
-
     }
 
     this.setStretchPass = setStretchPass;
@@ -35201,6 +34961,7 @@ function Engine() {
 
         });
 
+
     }
 
 
@@ -35222,8 +34983,7 @@ function Engine() {
 
         if (validseed) {
 
-
-            saveHotHash(Bitcoin.convert.hexToBytes(hothash), function (err, result) {
+            saveHotHash(hothash, function (err, result) {
 
                 if (!err) {
                     return callback(false, hothash);
@@ -35243,28 +35003,13 @@ function Engine() {
     }
 
 
-    this.getTwoFactorToken = getTwoFactorToken;
-    function getTwoFactorToken(key, callback) {
-
-        m_this.Device.getStorageItem("ninki_rem", function (tft) {
-
-            var jtft = JSON.parse(tft);
-
-            var fatoken = decryptNp(jtft.ct, key, jtft.iv);
-
-            return callback(false, fatoken);
-
-        });
-
-    }
-
     this.getHotHash = getHotHash;
     function getHotHash(key, callback) {
 
         //to do: validate key against stored public key
         //needs to be done incase user changed their password on a different machine
 
-        if (m_this.Device.isChromeApp() || m_this.Device.isNode() || m_this.Device.isBrowser()) {
+        if (m_this.Device.isChromeApp() || m_this.Device.isBrowser() || m_this.Device.isNode()) {
 
             m_this.Device.getStorageItem("hk" + m_this.m_guid, function (result) {
 
@@ -35278,8 +35023,7 @@ function Engine() {
 
                     var iserror = false;
                     try {
-                        //get hothash as bytes
-                        m_this.m_onlineKey = decryptNp(hk, m_this.m_password, hkiv, true);
+                        hothash = decryptNp(hk, m_this.m_password, hkiv);
                     } catch (error) {
                         iserror = true;
                     }
@@ -35289,7 +35033,7 @@ function Engine() {
                         //validate against loaded hot public key
                         var validseed = true;
                         try {
-                            var bipHot = new Bitcoin.HDWallet(m_this.m_onlineKey, m_this.m_network);
+                            var bipHot = Bitcoin.HDWallet.fromSeedHex(hothash, m_this.m_network);
                             if (m_this.m_walletinfo.hotPub != bipHot.toString()) {
                                 validseed = false;
                             }
@@ -35300,30 +35044,7 @@ function Engine() {
 
                         if (validseed) {
 
-                            if (m_this.m_deviceKey.length > 0) {
-                                //incase we are simulating mobile devices on chrome
-                                m_this.Device.getStorageItem("ninki_rem", function (tft) {
-
-                                    if (tft != "") {
-
-                                        var jtft = JSON.parse(tft);
-
-                                        var fatoken = decryptNp(jtft.ct, m_this.m_deviceKey, jtft.iv);
-
-                                        return callback(false, "", fatoken);
-                                    } else {
-
-                                        return callback(false, "", "");
-
-                                    }
-
-                                });
-                            } else {
-
-                                return callback(false, "", "");
-
-                            }
-
+                            return callback(false, hothash);
 
                         } else {
 
@@ -35356,8 +35077,7 @@ function Engine() {
                     try {
 
                         var enc = JSON.parse(hk);
-                        //get hothash as bytes
-                        m_this.m_onlineKey = decryptNp(enc.ct, m_this.m_deviceKey, enc.iv, true);
+                        hothash = decryptNp(enc.ct, key, enc.iv);
 
                     } catch (error) {
                         iserror = true;
@@ -35367,7 +35087,7 @@ function Engine() {
                         //validate against loaded hot public key
                         var validseed = true;
                         try {
-                            var bipHot = new Bitcoin.HDWallet(m_this.m_onlineKey, m_this.m_network);
+                            var bipHot = Bitcoin.HDWallet.fromSeedHex(hothash, m_this.m_network);
                             if (m_this.m_walletinfo.hotPub != bipHot.toString()) {
                                 validseed = false;
                             }
@@ -35385,12 +35105,12 @@ function Engine() {
                                 if (tft != "") {
                                     var jtft = JSON.parse(tft);
 
-                                    var fatoken = decryptNp(jtft.ct, m_this.m_deviceKey, jtft.iv);
+                                    var fatoken = decryptNp(jtft.ct, key, jtft.iv);
 
-                                    return callback(false, "", fatoken);
+                                    return callback(false, hothash, fatoken);
                                 } else {
 
-                                    return callback(false, "", "");
+                                    return callback(false, hothash, "");
 
                                 }
 
@@ -35426,7 +35146,7 @@ function Engine() {
         //before we encrypt validate the hash matches the logged in public key
         var validseed = true;
         try {
-            var bipHot = new Bitcoin.HDWallet(hotHash, m_this.m_network);
+            var bipHot = Bitcoin.HDWallet.fromSeedHex(hotHash, m_this.m_network);
             if (m_this.m_walletinfo.hotPub != bipHot.toString()) {
                 validseed = false;
             }
@@ -35438,7 +35158,7 @@ function Engine() {
 
             var encHotHash = encryptNp(hotHash, m_this.m_password);
 
-            if (m_this.Device.isChromeApp() || m_this.Device.isNode() || m_this.Device.isBrowser()) {
+            if (m_this.Device.isChromeApp() || m_this.Device.isBrowser() || m_this.Device.isNode()) {
 
                 m_this.Device.setStorageItem('hk' + m_this.m_guid, encHotHash.toString());
                 m_this.Device.setStorageItem('hkiv' + m_this.m_guid, encHotHash.iv.toString());
@@ -35461,6 +35181,18 @@ function Engine() {
             callback(true, "invalid");
 
         }
+
+
+    }
+
+
+    function validateHotKey(callback) {
+
+        //load the hotkey
+        //if not there return error
+
+        //validate the hotkey
+        //if not there return error
 
 
     }
@@ -35508,7 +35240,7 @@ function Engine() {
                     password = '';
 
                     //create a new wallet
-                    makeNewWallet(username, emailAddress, getKeys, function (err, walletInformation, userToken) {
+                    makeNewWallet(username, emailAddress, function (err, walletInformation, userToken) {
 
                         if (err) {
 
@@ -35565,82 +35297,10 @@ function Engine() {
     }
 
 
-
-    //create wallet
-    //create a new wallet and save to the server
-    this.createWalletApp = createWalletApp;
-    function createWalletApp(guid, username, callback, progress) {
-
-        m_this.m_oguid = guid;
-
-        var bytes = [];
-        for (var i = 0; i < guid.length; ++i) {
-            bytes.push(guid.charCodeAt(i));
-        }
-
-        m_this.m_guid = Bitcoin.Crypto.SHA256(Bitcoin.convert.bytesToWordArray(bytes)).toString();
-
-
-        //create a new wallet
-
-        makeNewWallet(username, '', getKeysForMobile, function (err, walletInformation, userToken) {
-
-            if (err) {
-
-                return callback(true, "ErrCreateAccount");
-
-            } else {
-
-                m_this.m_sharedid = userToken;
-
-                //wallet creation is successful
-                //set variables
-                //add the usertoken to the wallet
-                walletInformation.wallet.googleAuthSecret = "";
-                walletInformation.wallet.sharedid = userToken;
-
-                //
-                var recpacket = encryptNp(m_this.m_password, m_this.m_walletinfo.hckey);
-
-                walletInformation.wallet.recPacket = recpacket.toString();
-                walletInformation.wallet.recPacketIV = recpacket.iv.toString();
-
-                //save the wallet to the server
-                progress('saving data...');
-
-                setTimeout(function () {
-
-                    API.post("/api/1/u/createaccount2", walletInformation.wallet, function (err, response) {
-
-                        if (err) {
-
-                            return callback(err, "ErrSavePacket");
-
-                        } else {
-
-                            //set the session
-                            API.registerToken(response);
-                            m_this.m_APIToken = response;
-
-                            //pass back the wallet and info to the calling function
-                            return callback(false, walletInformation);
-                        }
-                    });
-
-                }, 50);
-
-            }
-
-        }, progress);
-
-    }
-
-
-
     //function makeNewWallet
     //this function calls the server which generates the Ninki key pair to be used for the wallet
     //the server returns the public key to the client so that it can be saved in the user's encrypted packet
-    function makeNewWallet(nickname, email, getkeys, callback, progress) {
+    function makeNewWallet(nickname, email, callback, progress) {
 
 
         //TODO add some more param checking
@@ -35654,7 +35314,7 @@ function Engine() {
                 if (err) {
                     return callback(err, "ErrCreateAccount");
                 } else {
-                    makeNewWalletPacket(nickname, email, ninkiPubKey, userToken, secret, getkeys, function (err, walletInformation) {
+                    makeNewWalletPacket(nickname, email, ninkiPubKey, userToken, secret, function (err, walletInformation) {
                         if (err) {
                             return callback(err, walletInformation);
                         } else {
@@ -35667,395 +35327,173 @@ function Engine() {
     }
 
 
-    function getKeys(dummy, callback) {
-
-        var rnghot = getRandomValues(16);
-
-        var hotKeyBytes = [];
-        for (var i = 0; i < rnghot.length; ++i) {
-            hotKeyBytes[i] = rnghot[i];
-        }
-
-
-        var rngcold = getRandomValues(16);
-
-        var coldKeyBytes = [];
-        for (var i = 0; i < rngcold.length; ++i) {
-            coldKeyBytes[i] = rngcold[i];
-        }
-
-        callback(false, coldKeyBytes, hotKeyBytes);
-
-    }
-
-
-    //
-    //method to derive hot and cold keys
-    //with the ability to deterministically
-    //recover the cold key using:
-
-    //hotkey
-    //secret public key
-    //random data on device
-
-    //this means that the user does not have to write down the cold key immediately
-
-    //an attacker needs: 
-    //access to the device
-    //access to hot key
-    //access to Ninki server
-    //access to Ninki decryption keys
-
-    //one time derivation secured by:
-    //PIN number
-    //access to device
-
-    function getKeysForMobile(userToken, callback) {
-
-        //get 128 bits of entropy for the hot key
-        var rnghot = getRandomValues(16);
-
-        var hotKeyBytes = [];
-        for (var i = 0; i < rnghot.length; ++i) {
-            hotKeyBytes[i] = rnghot[i];
-        }
-
-        zeroByteArray(rnghot);
-
-        //get 128 bits of entropy for the secret key
-        //used to derive the cold key
-        var secretEntropy = getRandomValues(16);
-
-        var secretEntropyBytes = [];
-        for (var i = 0; i < secretEntropy.length; ++i) {
-            secretEntropyBytes[i] = secretEntropy[i];
-        }
-
-        zeroByteArray(secretEntropy);
-
-        var deviceEntropy = getRandomValues(16);
-        //get 128 bits of entropy for the device key
-        var deviceEntropyBytes = [];
-        for (var i = 0; i < 16; ++i) {
-            deviceEntropyBytes[i] = deviceEntropy[i];
-        }
-
-        zeroByteArray(deviceEntropy);
-
-        //get ECKey for secretEntropy
-        var secretKey = new Bitcoin.ECKey(secretEntropyBytes, false);
-
-        //derive the public EC key
-        var secretPubKey = secretKey.getPub();
-
-        secretPubKey.priv = 0;
-
-        zeroByteArray(secretEntropyBytes);
-
-        //verify the public key has been stored on the server
-        //before continuing
-
-        API.createAccountSecPub(m_this.m_oguid, userToken, secretPubKey.toString(), function (err, result) {
-
-            if (!err) {
-
-                //m_this.m_oguid
-
-                //get the device key
-                var deviceKey = new Bitcoin.ECKey(deviceEntropyBytes, false);
-
-                //EC multiply to get the cold key entropy
-                var coldKey = secretPubKey.multiply(deviceKey);
-
-                deviceKey.priv = 0;
-
-                var bcoldkey = coldKey.toBytes();
-
-                //create the final cold key
-                var rngcold = SHA256(bcoldkey);
-
-                //get the first 128 bits
-                var coldKeyBytes = [];
-                for (var i = 0; i < 16; ++i) {
-                    coldKeyBytes[i] = rngcold[i];
-                }
-
-                zeroByteArray(rngcold);
-                zeroByteArray(bcoldkey);
-
-                //set password to sha256 of the hotkey seed
-                m_this.m_password = SHA256(hotKeyBytes);
-
-                //save the device entropy encrypted with the password
-                //we don't have the device enc key yet at this stage
-                m_this.Device.setSecureStorageObject("dpk", deviceEntropyBytes, m_this.m_password, m_this.encryptNp);
-
-                //clear buffer
-                zeroByteArray(deviceEntropyBytes);
-
-                return callback(err, coldKeyBytes, hotKeyBytes, secretPubKey.toString());
-
-            } else {
-
-                return callback(err);
-            }
-
-        });
-
-    }
-
-    //recover cold key for mobile
-    this.recoverColdKeyForMobile = recoverColdKeyForMobile;
-    function recoverColdKeyForMobile(callback) {
-
-        API.getAccountSecPub(m_this.m_guid, m_this.m_sharedid, function (err, secretpub) {
-
-            m_this.m_password = SHA256(m_this.m_onlineKey);
-
-            m_this.Device.getSecureStorageObject("dpk", m_this.m_password, m_this.decryptNp, false, function (deviceent) {
-
-                zeroByteArray(m_this.m_password);
-
-                var secretKey = new Bitcoin.ECPubKey(secretpub, false);
-
-                var deviceKey = new Bitcoin.ECKey(Bitcoin.convert.hexToBytes(deviceent), false);
-
-                deviceent = [];
-
-                var coldKey = secretKey.multiply(deviceKey);
-
-                deviceKey.priv = 0
-
-                var bcoldkey = coldKey.toBytes();
-
-                coldKey = 0;
-
-                var rngcold = SHA256(bcoldkey);
-
-                zeroByteArray(bcoldkey);
-
-                var coldKeyBytes = [];
-                for (var i = 0; i < 16; ++i) {
-                    coldKeyBytes[i] = rngcold[i];
-                }
-
-                zeroByteArray(rngcold);
-
-                return callback(coldKeyBytes);
-
-            });
-
-        });
-
-    }
-
-
-    this.destroySecretPub = destroySecretPub;
-    function destroySecretPub(callback) {
-
-        API.removeAccountSecPub(m_this.m_guid, m_this.m_sharedid, function (err, res) {
-
-            if (!err) {
-
-                m_this.Device.deleteStorageItem("dpk");
-
-                m_this.m_offlineKeyBackup = true;
-
-                return callback(err, res);
-
-            } else {
-
-
-                //make the user click again and retry
-                //we might as well delete the secret anyway
-                //as long as either are destroyed the key is
-                //unrecoverable
-                m_this.Device.deleteStorageItem("dpk");
-
-                return callback(err, res);
-            }
-
-        });
-
-
-    }
-
-
-    function makeNewWalletPacket(nickname, emailAddress, ninkiPubKey, userToken, secret, getkeys, callback, progress) {
+    function makeNewWalletPacket(nickname, emailAddress, ninkiPubKey, userToken, secret, callback, progress) {
 
 
         progress('getting entropy...');
 
         setTimeout(function () {
 
-            //getKeysForMobile();
 
-            getkeys(userToken, function (err, coldKeyBytes, hotKeyBytes) {
+            //what to do if running in node
+            // crypto provider module
+            var rngcold = getRandomValues(16);
+
+            var coldKeyBytes = [];
+            for (var i = 0; i < rngcold.length; ++i) {
+                coldKeyBytes[i] = rngcold[i];
+            }
+
+            //get some random data for the hot key
+            var rnghot = getRandomValues(16);
+
+            var hotKeyBytes = [];
+            for (var i = 0; i < rnghot.length; ++i) {
+                hotKeyBytes[i] = rnghot[i];
+            }
+
+            progress('creating cold keys...');
+
+            setTimeout(function () {
 
 
-                if (!err) {
+                var coldHash = Bitcoin.convert.bytesToHex(coldKeyBytes);
 
-                    progress('creating cold keys...');
+                var coldWallet = Bitcoin.HDWallet.fromSeedHex(coldHash, m_this.m_network);
+                //get the keys as strings
+                var coldPriv = coldWallet.toString(" ");
+                var coldPub = coldWallet.toString();
+
+                progress('creating hot keys...');
+
+                setTimeout(function () {
+
+
+                    var hotHash = Bitcoin.convert.bytesToHex(hotKeyBytes);
+
+                    var hotWallet = Bitcoin.HDWallet.fromSeedHex(hotHash, m_this.m_network);
+                    //get the keys as strings
+                    var hotPriv = hotWallet.toString(" ");
+                    var hotPub = hotWallet.toString();
+
+
+                    //create a key based on a hash of the hot + cold key
+                    //this is used to encrypt the pbkdf password and so enables
+                    //password reset if the user has access to the hot and cold key phrases
+
+                    var hckey = hotHash + coldHash;
+                    var hcbkey = Bitcoin.convert.hexToBytes(hckey);
+                    var hchkey = Bitcoin.Crypto.SHA256(Bitcoin.convert.bytesToWordArray(hcbkey)).toString();
+
+                    progress('creating pgp keys...');
+
 
                     setTimeout(function () {
 
-                        //var coldHash = Bitcoin.convert.bytesToHex(coldKeyBytes);
+                        //generate a pgp keypair
+                        //this key pair will be used to allow the user's to communicate with their contacts
+                        //the private key will be aes256 encrypted so use the userToken as the passphrase as the library
+                        //doesn't support blank passphrases yet (and there is no way to change them)
+                        var options = { numBits: 1024, userId: nickname, passphrase: userToken };
+                        var keypair = openpgp.generateKeyPair(options);
 
-                        var coldWallet = new Bitcoin.HDWallet(coldKeyBytes, m_this.m_network);
-
-                        var coldPub = coldWallet.toString();
-
-                        coldWallet.priv.priv = 0;
-                        coldWallet.priv = 0;
-                        zeroByteArray(coldWallet.chaincode);
-
-                        progress('creating hot keys...');
+                        var privKeys = openpgp.key.readArmored(keypair.privateKeyArmored);
+                        var publicKeys = openpgp.key.readArmored(keypair.publicKeyArmored);
 
                         setTimeout(function () {
 
-                            var hotWallet = new Bitcoin.HDWallet(hotKeyBytes, m_this.m_network);
-                            //get the keys as strings
+                            //$('#textMessageCreate').text('encrypting data...');
+                            //save the wallet keys and user token in an encrypted packet
+                            //AES256 using PBKDF2 on the password and a unique salt
 
-                            var hotPub = hotWallet.toString();
+                            var wal = {
+                                coldPub: coldPub,
+                                hotPub: hotPub,
+                                ninkiPubKey: ninkiPubKey,
+                                hotPriv: '',
+                                hotHash: '',
+                                userToken: userToken,
+                                hckey: hchkey
+                            };
 
-                            hotWallet.priv.priv = 0;
-                            hotWallet.priv = 0;
-                            zeroByteArray(hotWallet.chaincode);
+                            m_this.m_walletinfo = wal;
 
-                            //create a key based on a hash of the hot + cold key
-                            //this is used to encrypt the pbkdf password and so enables
+                            var encryptedPayload = encrypt(wal, m_this.m_password);
 
-                            //password reset if the user has access to the hot and cold key phrases
-                            var hcbkey = [];
-                            hcbkey = hcbkey.concat(hotKeyBytes);
-                            hcbkey = hcbkey.concat(coldKeyBytes);
+                            //save the PGP keys in an encrypted packet
+                            //AES256 using PBKDF2 on the password and a unique salt
 
-                            var hchkey = Bitcoin.Crypto.SHA256(Bitcoin.convert.bytesToWordArray(hcbkey)).toString();
+                            var encryptedUserPayload = encrypt({
+                                RSAPriv: keypair.privateKeyArmored,
+                                RSAPub: keypair.publicKeyArmored
+                            }, m_this.m_password, m_this.m_oguid);
 
-                            zeroByteArray(hcbkey);
+                            //encrypt a shared secret
+                            //this allows Ninki to validate that the user
+                            //knows their password without having to hold any
+                            //info about the password
 
-                            progress('creating pgp keys...');
+                            var encryptedSecret = encryptNp(secret, m_this.m_password);
 
+                            m_this.m_secret = secret;
 
-                            setTimeout(function () {
+                            //create a packet to post to the server
+                            //note:
+                            //  hot private key is encrypted in the payload
+                            //  PGP private key is encrypted in the payload
+                            //  all 3 wallet public keys are encrypted in the payload
+                            //  hot and cold wallet public keys are passed to the server
+                            //  public PGP key is passed to the server
 
-                                //generate a pgp keypair
-                                //this key pair will be used to allow the user's to communicate with their contacts
-                                //the private key will be aes256 encrypted so use the userToken as the passphrase as the library
-                                //doesn't support blank passphrases yet (and there is no way to change them)
+                            //TODO: move ninkiPhrase to server side
 
-                                var options = { numBits: 1024, userId: nickname, passphrase: userToken };
-                                var keypair = openpgp.generateKeyPair(options);
+                            var wallet = {
+                                guid: m_this.m_oguid,
+                                payload: encryptedPayload.toString(),
+                                userPublicKey: keypair.publicKeyArmored,
+                                userPayload: encryptedUserPayload.toString(),
+                                hotPublicKey: hotPub,
+                                coldPublicKey: coldPub,
+                                nickName: nickname,
+                                emailAddress: emailAddress,
+                                secret: encryptedSecret.toString(),
+                                ninkiPhrase: ninkiPubKey,
+                                IVA: encryptedPayload.iv.toString(),
+                                IVU: encryptedUserPayload.iv.toString(),
+                                IVR: encryptedSecret.iv.toString()
+                            };
 
-                                var privKeys = openpgp.key.readArmored(keypair.privateKeyArmored);
-                                var publicKeys = openpgp.key.readArmored(keypair.publicKeyArmored);
-
-                                setTimeout(function () {
-
-                                    //save the wallet public keys and user token in an encrypted packet
-                                    //AES256 using PBKDF2 on the password and a unique salt
-
-                                    var wal = {
-                                        coldPub: coldPub,
-                                        hotPub: hotPub,
-                                        ninkiPubKey: ninkiPubKey,
-                                        hotPriv: '',
-                                        hotHash: '',
-                                        userToken: userToken,
-                                        hckey: hchkey
-                                    };
-
-                                    m_this.m_walletinfo = wal;
-
-                                    var encryptedPayload = encrypt(wal, m_this.m_password);
-
-                                    //save the PGP keys in an encrypted packet
-                                    //AES256 using PBKDF2 on the password and a unique salt
-
-                                    var encryptedUserPayload = encrypt({
-                                        RSAPriv: keypair.privateKeyArmored,
-                                        RSAPub: keypair.publicKeyArmored
-                                    }, m_this.m_password, m_this.m_oguid);
-
-                                    //encrypt a shared secret
-                                    //this allows Ninki to validate that the user
-                                    //knows their password without having to hold any
-                                    //info about the password
-
-                                    var encryptedSecret = encryptNp(Bitcoin.convert.hexToBytes(secret), m_this.m_password);
-
-                                    m_this.m_secret = secret;
-
-                                    //create a packet to post to the server
-                                    //note:
-                                    //  PGP private key is encrypted in the payload
-                                    //  all 3 wallet public keys are encrypted in the payload
-                                    //  hot and cold wallet public keys are passed to the server
-                                    //  public PGP key is passed to the server
-
-                                    var wallet = {
-                                        guid: m_this.m_oguid,
-                                        payload: encryptedPayload.toString(),
-                                        userPublicKey: keypair.publicKeyArmored,
-                                        userPayload: encryptedUserPayload.toString(),
-                                        hotPublicKey: hotPub,
-                                        coldPublicKey: coldPub,
-                                        nickName: nickname,
-                                        emailAddress: emailAddress,
-                                        secret: encryptedSecret.toString(),
-                                        ninkiPhrase: ninkiPubKey,
-                                        IVA: encryptedPayload.iv.toString(),
-                                        IVU: encryptedUserPayload.iv.toString(),
-                                        IVR: encryptedSecret.iv.toString()
-                                    };
-
-                                    //the cold private key is discarded and is only displayed to the user
-                                    //as a mnemomic representation so that the user can write it down
-                                    //if this phrase is lost by the user it is unrecoverable
+                            //the cold private key is discarded and is only displayed to the user
+                            //as a mnemomic representation so that the user can write it down
+                            //if this phrase is lost by the user it is unrecoverable
 
 
-                                    //the hot private key is encrypted and saved locally
-                                    //encrypted with the user's password
+                            //the hot private key is encrypted and saved locally
+                            //encrypted with the user's password
 
-                                    var bip39 = new BIP39();
-                                    var walletInformation = {
-                                        wallet: wallet,
-                                        coldWalletPhrase: bip39.entropyToMnemonic(Bitcoin.convert.bytesToHex(coldKeyBytes)),
-                                        hotWalletPhrase: bip39.entropyToMnemonic(Bitcoin.convert.bytesToHex(hotKeyBytes)),
-                                        sharedid: userToken,
-                                        hckey: hchkey
-                                    };
+                            saveHotHash(hotHash, function (err, res) {
 
-                                    //set the online key
-                                    m_this.m_onlineKey = hotKeyBytes;
+                                var bip39 = new BIP39();
+                                var walletInformation = {
+                                    wallet: wallet,
+                                    coldWalletPhrase: bip39.entropyToMnemonic(coldHash),
+                                    hotWalletPhrase: bip39.entropyToMnemonic(hotHash),
+                                    sharedid: userToken,
+                                    hckey: hchkey
+                                };
 
-                                    zeroByteArray(coldKeyBytes);
 
-                                    //*if mobile, don't save this locally until PIN is chosen
-                                    if (m_this.Device.isCordova()) {
+                                return callback(err, walletInformation);
 
-                                        return callback(err, walletInformation);
-
-                                    } else {
-
-                                        saveHotHash(hotKeyBytes, function (err, res) {
-
-                                            return callback(err, walletInformation);
-
-                                        });
-
-                                    }
-
-                                }, 50);
-
-                            }, 50);
+                            });
 
                         }, 50);
 
                     }, 50);
 
-                }
-            });
+                }, 50);
+
+            }, 50);
 
         }, 50);
     }
@@ -36066,7 +35504,6 @@ function Engine() {
 
         //check two factor code
         if (twoFactorCodeChk != '') {
-
             SetupTwoFactor(twoFactorCodeChk, function (err, wallet) {
 
                 if (err) {
@@ -36137,8 +35574,6 @@ function Engine() {
 
                         //double check it has been saved correctly
                         getHotHash("", function (err, result) {
-
-                            m_this.zeroOnlineKey();
 
                             if (!err) {
 
@@ -36219,7 +35654,7 @@ function Engine() {
                         //if there is a cookie token then encrypt it
 
                         if (wallet.CookieToken) {
-                            var enc = encryptNp(Bitcoin.convert.hexToBytes(wallet.CookieToken), m_this.m_password);
+                            var enc = encryptNp(wallet.CookieToken, m_this.m_password);
                             var ctok = {};
                             ctok.ct = enc.toString();
                             ctok.iv = enc.iv.toString();
@@ -36259,7 +35694,7 @@ function Engine() {
                 //if there is a cookie token then encrypt it
 
                 if (wallet.CookieToken) {
-                    var enc = encryptNp(Bitcoin.convert.hexToBytes(wallet.CookieToken), m_this.m_password);
+                    var enc = encryptNp(wallet.CookieToken, m_this.m_password);
                     var ctok = {};
                     ctok.ct = enc.toString();
                     ctok.iv = enc.iv.toString();
@@ -36762,12 +36197,6 @@ function Engine() {
     this.isAddressValid = isAddressValid;
     function isAddressValid(address) {
         var addrValid = true;
-
-        if (m_this.m_network == "mainnet") {
-            if (address[0] != "1" && address[0] != "3") {
-                return false;
-            }
-        }
         try {
             var addressCheck = new Bitcoin.Address(address);
             addressCheck.toString();
@@ -36788,6 +36217,8 @@ function Engine() {
 
             corNodesToProcess = nodes.length;
             cordovaDeriveKey(mpk, nodes, mkpder, function (result) {
+
+
 
                 return cdcallback(mkpder);
 
@@ -36862,6 +36293,8 @@ function Engine() {
         //in the case of mobile the twoFactorCode is actually the device key
         //and will return a twofactor override code
 
+
+
         getHotHash(twoFactorCode, function (err, hothash, twoFactorOverride) {
 
             if (twoFactorOverride) {
@@ -36869,11 +36302,10 @@ function Engine() {
             }
 
 
-            //initialise the hot private key space
-            var bipHot = new Bitcoin.HDWallet(m_this.m_onlineKey, m_this.m_network);
 
-            //zero out buffers
-            m_this.zeroOnlineKey();
+
+            //initialise the hot private key space
+            var bipHot = Bitcoin.HDWallet.fromSeedHex(hothash, m_this.m_network);
 
             //
 
@@ -37017,7 +36449,10 @@ function Engine() {
                     //we need to derive addresses on their behalf
 
 
+
+
                     deriveKeys(bipHot, nodeLevels, function (ret) {
+
 
                         if (m_this.Device.isiOS()) {
 
@@ -37035,8 +36470,7 @@ function Engine() {
                         }
 
 
-                        //zero out bipHot buffers
-                        bipHot.priv = 0;
+
 
 
                         if (sendType == 'friend' || sendType == 'invoice') {
@@ -37062,7 +36496,7 @@ function Engine() {
                                     addressToSend.push(address);
 
                                     //create the change address, this must be done on the client
-                                    statuscallback('Creating change address...', '60%');
+                                    statuscallback('Creating change address...', '40%');
 
 
                                     createAddress('m/0/1', changeAmount, function (err, changeaddress) {
@@ -37074,7 +36508,7 @@ function Engine() {
                                             }
 
                                             //now get the  transaction data
-                                            statuscallback('Building transaction...', '80%');
+                                            statuscallback('Building transaction...', '60%');
                                             setTimeout(function () {
                                                 aGetTransactionData(packet, function (err, hashesForSigning, rawTransaction) {
 
@@ -37106,9 +36540,8 @@ function Engine() {
 
                                                         API.post("/api/1/u/sendtransaction", jsonp1, function (err, result) {
 
-                                                            bipHot.priv = 0;
-
                                                             if (!err) {
+
 
                                                                 statuscallback('Transaction broadcast...', '100%');
 
@@ -37213,7 +36646,7 @@ function Engine() {
                             });
                         } else {
 
-                            statuscallback('Creating change address...', '40%');
+                            statuscallback('Creating change address...', '20%');
 
                             addressToSend.push(addressTo);
 
@@ -37236,14 +36669,14 @@ function Engine() {
 
                                     //now get the  transaction
 
-                                    statuscallback('Creating transaction...', '60%');
+                                    statuscallback('Creating transaction...', '40%');
                                     setTimeout(function () {
 
                                         aGetTransactionData(packet, function (err, hashesForSigning, rawTransaction) {
 
                                             if (!err) {
 
-                                                statuscallback('Counter-signing transaction...', '80%');
+                                                statuscallback('Counter-signing transaction...', '60%');
 
                                                 var jsonSend = {
                                                     guid: m_this.m_guid,
@@ -37262,9 +36695,7 @@ function Engine() {
 
                                                 API.post("/api/1/u/sendtransaction", jsonp1, function (err, result) {
 
-                                                    bipHot.priv = 0;
-
-                                                    //statuscallback(null, '80%');
+                                                    statuscallback(null, '80%');
 
                                                     if (!err) {
 
@@ -37375,6 +36806,8 @@ function Engine() {
 
         });
 
+
+
     }
 
     //function createAddress
@@ -37397,6 +36830,7 @@ function Engine() {
 
                     var path = nodePath + '/' + leaf;
 
+
                     if (m_this.Device.isiOS()) {
 
                         var tnode = snode[2] * 1;
@@ -37410,28 +36844,30 @@ function Engine() {
                         var hninkiKey = '';
 
                         cordova.exec(
-
                             function callback(data) {
 
                                 hhotKey = data;
 
                                 hotKey = Bitcoin.convert.hexToBytes(data);
 
-                                cordova.exec(
 
+                                cordova.exec(
                                     function callback(data) {
 
                                         hcoldKey = data;
 
+
                                         coldKey = Bitcoin.convert.hexToBytes(data);
 
                                         cordova.exec(
-
                                             function callback(data) {
 
                                                 hninkiKey = data;
 
+
+
                                                 ninkiKey = Bitcoin.convert.hexToBytes(data);
+
 
                                                 var script = [0x52];
 
@@ -37500,97 +36936,52 @@ function Engine() {
                         //derive the 3 public keys for the new address
                         //TODO: possible to use an encrypted cache for performance improvements
 
-
-                        //so, do we still do this on first addreess generate or on account create?
-                        //would add 6-7 seconds to account creation process
-
-                        var cachepath = nodePath.replace('/', '');
-                        cachepath = cachepath.replace('/', '');
-
-                        m_this.Device.getSecureStorageObject("pubcache" + cachepath, m_this.m_deviceSecKey, m_this.decrypt, false, function (pubcache) {
-
-                            //if this is
-
-                            //logic ot reset if any issue with cache/decryption
+                        var bipHot = Bitcoin.HDWallet.fromBase58(m_this.m_walletinfo.hotPub);
+                        var bipCold = Bitcoin.HDWallet.fromBase58(m_this.m_walletinfo.coldPub);
+                        var bipNinki = Bitcoin.HDWallet.fromBase58(m_this.m_walletinfo.ninkiPubKey);
 
 
-                            //only cache on android
-                            if (pubcache == '' || !m_this.Device.isCordova()) {
+                        var hotKey = deriveChild(path, bipHot);
 
-                                //derive the root node path and cache
+                        var coldKey = deriveChild(path, bipCold);
 
-                                var obipHot = Bitcoin.HDWallet.fromBase58(m_this.m_walletinfo.hotPub);
-                                var obipCold = Bitcoin.HDWallet.fromBase58(m_this.m_walletinfo.coldPub);
-                                var obipNinki = Bitcoin.HDWallet.fromBase58(m_this.m_walletinfo.ninkiPubKey);
+                        var ninkiKey = deriveChild(path, bipNinki);
 
+                        //now create the multisig address
+                        var script = [0x52];
 
-                                var hotKey = deriveChild(nodePath, obipHot);
-                                var coldKey = deriveChild(nodePath, obipCold);
-                                var ninkiKey = deriveChild(nodePath, obipNinki);
+                        script.push(33);
+                        script = script.concat(hotKey.pub.toBytes());
+                        script.push(33);
+                        script = script.concat(coldKey.pub.toBytes());
+                        script.push(33);
+                        script = script.concat(ninkiKey.pub.toBytes());
+                        script.push(0x53);
+                        script.push(0xae);
 
-                                var opubcache = {};
-                                opubcache.hotKey = hotKey.toBase58();
-                                opubcache.coldKey = coldKey.toBase58();
-                                opubcache.ninkiKey = ninkiKey.toBase58();
+                        var address = multiSig(script);
 
-                                pubcache = opubcache;
+                        //post the address back to the server
+                        //this allows the server to monitor for balances etc.
+                        var postData = {
+                            guid: m_this.m_guid,
+                            sharedid: m_this.m_sharedid,
+                            path: path,
+                            address: address,
+                            pk1: hotKey.pub.toString(),
+                            pk2: coldKey.pub.toString(),
+                            pk3: ninkiKey.pub.toString()
+                        };
+                        API.post("/api/1/u/createaddress", postData, function (err, result) {
 
-                                //only set this on mobile
-                                if (m_this.Device.isCordova()) {
-                                    m_this.Device.setSecureStorageObject("pubcache" + cachepath, opubcache, m_this.m_deviceSecKey, m_this.encrypt);
-                                }
-
+                            if (!err) {
+                                return cacallback(err, address);
+                            } else {
+                                return cacallback(err, result);
                             }
 
-
-                            var bipHot = Bitcoin.HDWallet.fromBase58(pubcache.hotKey);
-                            var bipCold = Bitcoin.HDWallet.fromBase58(pubcache.coldKey);
-                            var bipNinki = Bitcoin.HDWallet.fromBase58(pubcache.ninkiKey);
-
-
-                            var hotKey = bipHot.derive(leaf);
-
-                            var coldKey = bipCold.derive(leaf);
-
-                            var ninkiKey = bipNinki.derive(leaf);
-
-                            //now create the multisig address
-                            var script = [0x52];
-
-                            script.push(33);
-                            script = script.concat(hotKey.pub.toBytes());
-                            script.push(33);
-                            script = script.concat(coldKey.pub.toBytes());
-                            script.push(33);
-                            script = script.concat(ninkiKey.pub.toBytes());
-                            script.push(0x53);
-                            script.push(0xae);
-
-                            var address = multiSig(script);
-
-                            //post the address back to the server
-                            //this allows the server to monitor for balances etc.
-                            var postData = {
-                                guid: m_this.m_guid,
-                                sharedid: m_this.m_sharedid,
-                                path: path,
-                                address: address,
-                                pk1: hotKey.pub.toString(),
-                                pk2: coldKey.pub.toString(),
-                                pk3: ninkiKey.pub.toString()
-                            };
-
-
-                            API.post("/api/1/u/createaddress", postData, function (err, result) {
-
-                                if (!err) {
-                                    return cacallback(err, address);
-                                } else {
-                                    return cacallback(err, result);
-                                }
-
-                            });
                         });
+
                     }
 
                 } else {
@@ -37860,7 +37251,7 @@ function Engine() {
     function decodeKey(key) {
         var bip39 = new BIP39();
         var mkey = bip39.mnemonicToHex(key);
-        return Bitcoin.convert.hexToBytes(mkey);
+        return mkey;
     }
 
     this.encodeKey = encodeKey;
@@ -37920,10 +37311,6 @@ function Engine() {
         });
 
     }
-
-    //add error handling here
-    //very impoirtant for mobile
-    //
 
 
     this.createFriend = createFriend;
@@ -38531,9 +37918,7 @@ function Engine() {
 
                         //if password reset do not pbkdf the password
 
-                        if (oldpassword != m_this.m_password) {
-                            oldpassword = pbkdf2(oldpassword, m_this.m_oguid);
-                        }
+                        oldpassword = pbkdf2(oldpassword, m_this.m_oguid);
 
                         //get the two packets
 
@@ -38543,7 +37928,7 @@ function Engine() {
                         var decryptedWithOld = true;
                         var decryptedPayload = '';
                         try {
-                            decryptedPayload = decrypt(wallet.Payload, oldpassword, wallet.IV);
+                            decryptedPayload = decrypt(wallet.Payload, m_this.m_password, wallet.IV);
                         } catch (err) {
                             decryptedWithOld = false;
                         }
@@ -38581,7 +37966,7 @@ function Engine() {
                                             var jpacket = JSON.parse(response);
                                             var veripacket = '';
                                             try {
-                                                veripacket = decryptNp(jpacket.packet, m_this.m_password, jpacket.IV, true);
+                                                veripacket = decryptNp(jpacket.packet, m_this.m_password, jpacket.IV);
                                             }
                                             catch (verror) {
                                                 decryptedVerWithOld = false;
@@ -38615,7 +38000,7 @@ function Engine() {
                                                         newveripacket = encryptNp(veripacket, newpassword);
 
                                                         if (decryptedPayload.hckey) {
-                                                            newpasspacket = encryptNp(newpassword, Bitcoin.convert.hexToBytes(decryptedPayload.hckey));
+                                                            newpasspacket = encryptNp(newpassword, decryptedPayload.hckey);
                                                         }
 
                                                         newAIV = newpayload.iv.toString();
@@ -38645,7 +38030,7 @@ function Engine() {
 
                                                             testpayload = decrypt(newpayload.toString(), newpassword, newAIV);
                                                             testnewusrpayload = decrypt(newusrpayload.toString(), newpassword, newUIV);
-                                                            testveripacket = decryptNp(newveripacket.toString(), newpassword, newRIV, true);
+                                                            testveripacket = decryptNp(newveripacket.toString(), newpassword, newRIV);
 
                                                             if (decryptedPayload.hckey) {
                                                                 testpasspacket = decryptNp(newpasspacket.toString(), decryptedPayload.hckey, newPIV)
@@ -38699,7 +38084,7 @@ function Engine() {
 
                                                                             if (tfso != "") {
                                                                                 var enc = JSON.parse(tfso);
-                                                                                var token = decryptNp(enc.ct, m_this.m_password, enc.iv, true);
+                                                                                var token = decryptNp(enc.ct, m_this.m_password, enc.iv);
                                                                                 tfso = encryptNp(token, newpassword);
 
                                                                                 var ctok = {};
@@ -38715,15 +38100,21 @@ function Engine() {
                                                                             //the worst case scenario is the
                                                                             //user has to reenter their hot key
 
-                                                                            saveHotHash(m_this.m_onlineKey, function (err, result) {
-
-                                                                                m_this.zeroOnlineKey();
+                                                                            saveHotHash(hothash, function (err, result) {
 
                                                                                 callback(false, '');
 
                                                                             });
 
                                                                         });
+
+
+
+
+
+
+
+
 
 
                                                                     } else {
@@ -38767,7 +38158,7 @@ function Engine() {
 
 
                         } else {
-                            callback(true, "Current password incorrect");
+
                         }
 
 
@@ -39124,7 +38515,7 @@ function Engine() {
 
                         if (ret.Token) {
 
-                            var enc = encryptNp(Bitcoin.convert.hexToBytes(ret.Token), m_this.m_password);
+                            var enc = encryptNp(ret.Token, m_this.m_password);
                             var ctok = {};
                             ctok.ct = enc.toString();
                             ctok.iv = enc.iv.toString();
@@ -39212,8 +38603,6 @@ function Engine() {
 
                 getHotHash("", function (err, hotHash) {
 
-                    //m_this.zeroOnlineKey();
-
                     if (!err) {
 
                         result.hotHash = hotHash;
@@ -39250,64 +38639,6 @@ function Engine() {
     this.emailGUID = emailGUID;
     function emailGUID(userName, callback) {
         API.emailGUID(userName, callback);
-    }
-
-    this.getGUIDByMPKH = getGUIDByMPKH;
-    function getGUIDByMPKH(phrase, callback) {
-
-
-
-        //get seed from mnemonic
-        //derive master public key
-        //hash master public key
-
-        var bip39 = new BIP39();
-
-        //convert to master key
-        var mkey = bip39.mnemonicToHex(phrase);
-
-        if (mkey) {
-
-            var hd = Bitcoin.HDWallet.fromSeedHex(mkey, m_this.m_network);
-            //get master public key
-            var mpk = hd.toString();
-
-            //hash the master public key
-            var bytes = [];
-            for (var i = 0; i < mpk.length; ++i) {
-                bytes.push(mpk.charCodeAt(i));
-            }
-
-            var mpkh = Bitcoin.Crypto.SHA256(Bitcoin.convert.bytesToWordArray(bytes)).toString();
-
-            //lookup account guid
-            return API.getGUIDByMPKH(mpkh, callback);
-
-
-        } else {
-
-            return callback(true, "InvalidPhrase");
-
-        }
-
-
-    }
-
-
-    this.setPasswordApp = setPasswordApp;
-    function setPasswordApp(phrase, callback) {
-
-        var bip39 = new BIP39();
-
-        //convert to master key
-        var mkey = bip39.mnemonicToHex(phrase);
-
-        var bytes = Bitcoin.convert.hexToBytes(mkey);
-
-        var mpkh = SHA256(bytes);
-
-        m_this.m_password = mpkh;
-
     }
 
     this.getMasterPublicKeyFromUpstreamServer = getMasterPublicKeyFromUpstreamServer;
@@ -39471,10 +38802,7 @@ function Engine() {
         API.getTransactionsForNetwork(m_this.m_guid, m_this.m_sharedid, username, callback);
     }
 
-    this.getTimeline = getTimeline;
-    function getTimeline(callback) {
-        API.getTimeline(m_this.m_guid, m_this.m_sharedid, callback);
-    }
+
 
     this.getInvoiceList = getInvoiceList;
     function getInvoiceList(callback) {
@@ -39510,21 +38838,7 @@ function Engine() {
 
     this.registerDevice = registerDevice;
     function registerDevice(guid, deviceName, deviceId, deviceModel, devicePIN, regToken, secret, callback) {
-
-        API.registerDevice(guid, deviceName, deviceId, deviceModel, devicePIN, regToken, secret, function (err, res) {
-
-            var jekey = JSON.parse(res);
-
-            m_this.m_deviceKey = Bitcoin.convert.hexToBytes(jekey.DeviceKey);
-
-            if (jekey.DeviceKey.length > 0) {
-                jekey.DeviceKey = 'valid';
-            }
-
-            callback(err, res);
-
-
-        });
+        API.registerDevice(guid, deviceName, deviceId, deviceModel, devicePIN, regToken, secret, callback);
     }
 
     this.getDeviceKey = getDeviceKey;
@@ -39549,24 +38863,22 @@ function Engine() {
             API.getDeviceKey(m_this.m_guid, pinhash, regToken, function (err, ekey) {
 
                 if (!err) {
-
                     var jekey = JSON.parse(ekey);
 
                     if (jekey.DeviceKey.length > 0) {
 
-                        m_this.m_deviceKey = Bitcoin.convert.hexToBytes(jekey.DeviceKey);
 
                         if (jekey.SessionToken) {
                             API.registerToken(jekey.SessionToken);
                             m_this.m_APIToken = jekey.SessionToken;
-                            callback(err, "");
+                            callback(err, jekey);
                         }
 
-                        jekey.DeviceKey = [];
+
 
                     } else {
 
-                        callback(err, "");
+                        callback(err, jekey);
                     }
                 } else {
                     callback(true, ekey);
@@ -39658,15 +38970,7 @@ function Engine() {
         });
     }
 
-    this.updateEmailAddress = updateEmailAddress;
-    function updateEmailAddress(emailAddress, callback) {
-        API.updateEmailAddress(m_this.m_oguid, m_this.m_sharedid, emailAddress, function (err, res) {
 
-            return callback(err, res);
-
-
-        });
-    }
 
 
     this.get2faOverride = get2faOverride;
@@ -39729,56 +39033,6 @@ function Engine() {
 
 
     }
-
-
-    //
-    this.requestAuthMigration = requestAuthMigration;
-    function requestAuthMigration(token, callback) {
-
-        API.requestAuthMigration(m_this.m_guid, m_this.m_secret, token, function (err, res) {
-
-            return callback(err, res);
-
-        });
-
-    }
-
-    this.getAuthMigrationRequest = getAuthMigrationRequest;
-    function getAuthMigrationRequest(callback) {
-
-        API.getAuthMigrationRequest(m_this.m_guid, m_this.m_sharedid, function (err, res) {
-
-            return callback(err, res);
-
-        });
-    }
-
-
-    this.authMigration = authMigration;
-    function authMigration(enckey, token, callback) {
-
-        getTwoFactorToken(enckey, function (err, twoFactorToken) {
-
-            API.authMigration(m_this.m_guid, m_this.m_sharedid, twoFactorToken, token, function (err, res) {
-
-                return callback(err, res);
-
-            });
-
-        });
-    }
-
-
-    this.getAuthMigrationToken = getAuthMigrationToken;
-    function getAuthMigrationToken(token, callback) {
-
-        API.getAuthMigrationToken(m_this.m_guid, m_this.m_secret, token, function (err, res) {
-
-            return callback(err, res);
-
-        });
-    }
-
 
 }
 
@@ -39849,9 +39103,6 @@ function UI() {
 
     var ONE_HOUR = 60 * 60 * 1000;
 
-
-    var tmpAuthIdentifier = '';
-
     window.isSessionLive = function (callback) {
 
         Ninki.API.getPrice(Engine.m_guid, Engine.m_settings.LocalCurrency, function (err, result) {
@@ -39866,34 +39117,6 @@ function UI() {
 
     }
 
-
-    window.setKeyboardScroll = function () {
-
-        if (window.cordova) {
-            cordova.plugins.Keyboard.disableScroll(true);
-        }
-
-    }
-
-
-
-    window.hideSecScreens = function () {
-
-        if ($(".blind").is(":visible")) {
-
-            $(".blind").hide();
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-        }
-
-        window.resetPin();
-
-        $('#sendstdpin').val('');
-        $("#paddelconf").hide();
-        $('.numdone').attr("style", "background-color:white");
-
-    }
 
 
     window.showLoginPIN = function () {
@@ -39914,6 +39137,7 @@ function UI() {
 
         }
 
+
         if (window.cordova) {
             cordova.plugins.Keyboard.close();
         }
@@ -39921,25 +39145,12 @@ function UI() {
         $("#isactive").val(0);
 
 
-        if ($(".blind").is(":visible")) {
-
-            window.clearAuthInterval();
-            $(".blind").hide();
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-        }
-
 
         window.resetPin();
 
-        $('#sendstdpin').val('');
-        $("#paddelconf").hide();
 
 
         $("#paddel").hide();
-
-
 
         $('.numdone').attr("style", "background-color:white");
 
@@ -39965,21 +39176,18 @@ function UI() {
 
         $(".footer").hide();
 
-        $(".bootbox").hide();
-
-
     }
 
 
 
-    //if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-    //    document.write("Internet Explorer is not supported. Please use the latest Chrome, Safari or Firefox.");
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+        document.write("Internet Explorer is not supported. Please use the latest Chrome, Safari or Firefox.");
 
-    //}
+    }
 
-    //if (typeof window.crypto.getRandomValues == 'undefined') {
-    //    document.write("This browser does not support window.crypto. Please use the latest chrome, safari or firefox.");
-   // }
+    if (typeof window.crypto.getRandomValues == 'undefined') {
+        document.write("This browser does not support window.crypto. Please use the latest chrome, safari or firefox.");
+    }
 
     var spinneropts = {
         lines: 13, // The number of lines to draw
@@ -40098,19 +39306,6 @@ function UI() {
         });
 
 
-        setTimeout(function () {
-
-            if (window.cordova) {
-                if (cordova.plugins) {
-                    if (cordova.plugins.Keyboard) {
-                        cordova.plugins.Keyboard.disableScroll(true);
-                    }
-                }
-            }
-
-        }, 1000);
-
-
         bootbox.setDefaults({ 'backdrop': false, 'animate': true });
 
         //guid
@@ -40122,49 +39317,67 @@ function UI() {
         Engine.Device.getStorageItem("ninki_reg", function (reg) {
 
             if (reg) {
-
                 isPairing = false;
                 $("#loginpin").show();
                 $("#pinimage").show();
 
             } else {
-
-                Engine.fillElementWithGuid($("#createWalletStart input#guid"));
-
-                isCreate = true;
-                $("#createWalletStart").show();
+                isPairing = true;
+                $("#pairDevice").show();
                 $("#pinpair").show();
             }
 
         });
 
 
-
         //create wallet area
 
 
-        $('#createaccount').bind("click", function () {
+        Engine.fillElementWithGuid($("#createWalletStart input#guid"));
 
+        //$('#nickname').val($('#guid').val().substring(0, 7));
+        //$('#emailaddress').val($('#guid').val().substring(0, 7) + '@ninkip2p.com');
+
+        $('#createaccount').bind("touchstart", function () {
+
+            Engine.Device.deleteStorageItem("dataCache");
             //Engine.Device.deleteStorageItem("balance");
+
+            if (window.cordova) {
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+
+            isCreate = true;
             $("#pairDevice").hide();
-            $("#createWalletStart").show();
+
 
         });
 
 
+
+
+
+        $('#createaccount').bind("touchend", function () {
+
+            setTimeout(function () {
+
+                $("#createWalletStart").show();
+
+            }, 100);
+
+        });
+
         $('#closetos').bind("touchstart", function () {
-            //$("#tos").removeClass("slideUp");
-            //$("#tos").addClass("invis");
+            $("#tos").removeClass("slideUp");
+            $("#tos").addClass("invis");
             $("#tos").hide();
-            $('#createWalletStart').show();
+
         });
 
 
         $('#termslink').bind("click", function () {
-            //$("#tos").removeClass("invis");
-            //$("#tos").addClass("slideUp");
-
-            $('#createWalletStart').hide();
+            $("#tos").removeClass("invis");
+            $("#tos").addClass("slideUp");
             $('#tos').show();
         });
 
@@ -40193,13 +39406,13 @@ function UI() {
 
         $("#cpassword").blur(function () {
             $(".popover.fade.bottom.in").hide();
-            //$("#pwdmeter").fadeOut(500);
+            $("#pwdmeter").fadeOut(500);
         });
 
         $("#cpassword").focus(function (e) {
 
             $(".popover.fade.bottom.in").show();
-            //$("#pwdmeter").fadeIn(500);
+            $("#pwdmeter").fadeIn(500);
 
         });
 
@@ -40222,31 +39435,11 @@ function UI() {
 
             if (step == 2) {
 
-                Engine.Device.deleteStorageItem("ok_disp");
-
-                $("#secheckkeys").show();
-                $("#secchevkeys").hide();
-
-                $("#sechevemail i").removeClass("text-muted");
-                $("#sechevemail i").addClass("text-primary");
-
-                $("#hotWalletPhrase").text('');
-
                 $("#btnPairDevice").removeClass("disabled");
 
+                $('#btnUnpair').hide();
+                $('#loginpin').show();
                 $("#hotkeystep").hide();
-
-                $("#imgphrasewaiting").hide();
-
-                $("#seccheck").removeClass("invis");
-                $("#seccheck").show();
-
-                displaySecurityScore();
-
-                //$("#tfastep").show();
-                //$('#btnUnpair').hide();
-                //$('#loginpin').show();
-
 
                 setTimeout(function () {
                     $("#hotkeystep").removeClass("fadeInRightBig");
@@ -40262,33 +39455,20 @@ function UI() {
 
             if (step == 1) {
 
+                $("#hotkeystep").show();
+                $("#coldkeystep").hide();
 
-                Engine.destroySecretPub(function (err, res) {
-
-                    if (!err) {
-
-                        $("#coldWalletPhrase").text('');
-
-                        $("#hotkeystep").show();
-                        $("#coldkeystep").hide();
-
-                        setTimeout(function () {
-                            $("#coldkeystep").removeClass("fadeInRightBig");
-                            $("#coldkeystep").addClass("fadeInLeftBig");
-                        }, 1000);
+                setTimeout(function () {
+                    $("#coldkeystep").removeClass("fadeInRightBig");
+                    $("#coldkeystep").addClass("fadeInLeftBig");
+                }, 1000);
 
 
-                        Engine.Device.setStorageItem("ok_disp", "1");
+                $(".previous").show();
 
-                        $(".previous").show();
+                $(".next").hide();
 
-                        $(".next").hide();
-
-                        step++;
-
-                    }
-
-                });
+                step++;
             }
 
         });
@@ -40299,6 +39479,7 @@ function UI() {
 
                 $("#coldkeystep").show();
                 $("#hotkeystep").hide();
+
 
                 $("#hotkeystep").removeClass("fadeInLeftBig");
                 $("#hotkeystep").addClass("fadeInRightBig");
@@ -40334,13 +39515,13 @@ function UI() {
 
         });
 
+
+
         $("#coldcheck").bind("touchstart", function () {
 
             $("#coldcheckicon").removeClass("fa-square-o");
             $("#coldcheckicon").addClass("fa-check-square");
             $("#coldcheckicon").addClass("text-success");
-            $("#coldfinalwarning").show();
-
 
             $(".next").show();
 
@@ -40405,6 +39586,8 @@ function UI() {
                             var specificField = $('#emailaddress').parsley();
                             window.ParsleyUI.addError(specificField, "emailaddressError", "This email address is already taken");
 
+                            $("#btnCreate").prop('disabled', true);
+                            $("#btnCreate").addClass('disabled');
                             $("#emailaddress").css("border-color", "#ffaaaa");
                             isCreateEmailValid = false;
 
@@ -40415,7 +39598,7 @@ function UI() {
 
                         }
 
-                        //validateCreateForm();
+                        validateCreateForm();
 
                     });
                 } else {
@@ -40428,7 +39611,7 @@ function UI() {
 
                 $("#emailaddress").parsley('reset');
                 isCreateNicknameValid = false;
-                // validateCreateForm();
+                validateCreateForm();
             }
 
         });
@@ -40437,17 +39620,8 @@ function UI() {
 
         $("#nickname").focus(function () {
 
-            $("#pairsection").hide();
-
             var specificField = $('#nickname').parsley();
             window.ParsleyUI.removeError(specificField, "nicknameError");
-
-        });
-
-
-        $("#nickname").blur(function () {
-
-            $("#pairsection").show();
 
         });
 
@@ -40458,17 +39632,85 @@ function UI() {
 
         });
 
+        $("#nickname").blur(function () {
+
+            var nicknme = $("#nickname").val();
+
+            if (nicknme.length > 2) {
+
+                if ($("#nickname").parsley().isValid()) {
+
+
+                    //check email address valid
+                    Engine.doesUsernameExist(nicknme, function (err, res) {
+
+                        if (res) {
+
+                            $("#btnCreate").prop('disabled', true);
+                            $("#btnCreate").addClass('disabled');
+                            $("#nickname").css("border-color", "#ffaaaa");
+
+                            var specificField = $('#nickname').parsley();
+                            window.ParsleyUI.addError(specificField, "nicknameError", "This username is already taken");
+
+                            isCreateNicknameValid = false;
+
+                        } else {
+
+                            $("#nickname").css("border-color", "#ccc");
+                            isCreateNicknameValid = true;
+                        }
+
+                        validateCreateForm();
+
+                    });
+
+
+                } else {
+
+                    $("#nickname").parsley().validate();
+                }
+
+            } else {
+
+
+                $("#nickname").parsley('reset');
+                isCreateNicknameValid = false;
+                validateCreateForm();
+                $("#nickname").css("border-color", "#ffaaaa");
+            }
+
+        });
 
 
         $("#password1, #cpassword, #emailaddress").change(function () {
 
-            //validateCreateForm();
+            validateCreateForm();
 
         });
 
 
         var showlogo = true;
+        $("#password1, #cpassword, #nickname, #emailaddress").focus(function () {
+            showlogo = false;
+            $("#createheader").slideUp();
+            //$("#createheadermini").slideDown();
+            termslink
+            $("#termslink").fadeOut();
+            $("#createback").fadeOut();
+        });
 
+        $("#password1, #cpassword, #nickname, #emailaddress").blur(function () {
+            showlogo = true;
+            setTimeout(function () {
+                if (showlogo) {
+
+                    $("#termslink").fadeIn();
+                    $("#createback").fadeIn();
+
+                }
+            }, 50);
+        });
 
         $("#createback").bind("touchstart", function () {
 
@@ -40479,292 +39721,247 @@ function UI() {
         });
 
 
-        var slideShowDone = false;
-        function runSlideShow() {
+        function validateCreateForm() {
 
-            setTimeout(function () {
+            if (($(".password-verdict").html() == 'Strong' || $(".password-verdict").html() == 'Very Strong')) {
 
-                $("#crprog1").hide();
-                $("#crprog2").show();
+                if (isCreateNicknameValid && isCreateEmailValid) {
 
-                setTimeout(function () {
+                    $("#btnCreate").prop('disabled', false);
+                    $("#btnCreate").removeClass('disabled');
 
-                    $("#crprog2").hide();
-                    $("#crprog3").show();
+                } else {
 
-                    setTimeout(function () {
+                    $("#btnCreate").prop('disabled', true);
+                    $("#btnCreate").addClass('disabled');
 
-                        slideShowDone = true;
-
-                    }, 5000);
-
-                }, 5000);
-
-
-            }, 5000);
-
-        }
-
-        function showCreateAccPIN() {
-
-            if (slideShowDone) {
-
-                //set variables for the session
-                $("#createWalletStart").hide();
-                $("#createWalletProgress").hide();
-
-                $('#createWalletStart input#cpassword').val('');
-                $('#createWalletStart input#password1').val('');
-
-                //save the encrypted hot key in local storage
-
-                $("#walletGuid").text($('input#guid').val());
-
-
-
-                //$("#showPhrases").show();
-                //$("#securitywizard").show();
-
-                //$(".next").hide();
-
-                //$("#no2famessage").hide();
-
-                step = 1;
-                //$("#coldkeystep").show();
-                //$(".previous").hide();
-
-
-                $('#loginpin').show();
+                }
 
             } else {
 
-                setTimeout(function () {
-
-                    showCreateAccPIN();
-
-                }, 2000);
+                $("#btnCreate").prop('disabled', true);
+                $("#btnCreate").addClass('disabled');
 
             }
 
         }
-
 
 
         $("#btnCreate").bind("touchstart", function () {
 
 
-            $("#btnCreate").button('loading');
-
-            deleteDeviceStorage();
-
             showlogo = false;
 
-            window.setKeyboardScroll();
+            if (isCreateNicknameValid && isCreateEmailValid) {
 
-            if ($("#frmcreate").parsley().isValid()) {
+                if ($("#frmcreate").parsley().isValid()) {
 
-                //check password strength
-                //if (($(".password-verdict").html() == 'Strong' || $(".password-verdict").html() == 'Very Strong')) {
+                    //check password strength
+                    if (($(".password-verdict").html() == 'Strong' || $(".password-verdict").html() == 'Very Strong')) {
 
-                var nicknme = $("#nickname").val();
-                //check email address valid
-                Engine.doesUsernameExist(nicknme, function (err, res) {
-
-                    if (!res) {
-
-                        var emailaddr = $("#emailaddress").val();
+                        var nicknme = $("#nickname").val();
                         //check email address valid
-                        //Engine.doesEmailExist(emailaddr, function (err, res) {
+                        Engine.doesUsernameExist(nicknme, function (err, res) {
 
-                        //if (!res) {
+                            if (!res) {
 
+                                var emailaddr = $("#emailaddress").val();
+                                //check email address valid
+                                Engine.doesEmailExist(emailaddr, function (err, res) {
 
-                        $("#imgcreatewaiting").show();
-                        //$("#btnCreate").prop('disabled', true);
-                        //$("#btnCreate").addClass('disabled');
-                        $("#lnkOpenWallet").hide();
-
-                        //error handling here?
-
-                        var guid = $('#createWalletStart input#guid').val();
-                        var username = $("#createWalletStart input#nickname").val();
-                        //                        var password = $('#createWalletStart input#cpassword').val();
-                        //                        var emailAddress = $('#createWalletStart input#emailaddress').val();
+                                    if (!res) {
 
 
-                        Engine.m_nickname = username;
+                                        $("#imgcreatewaiting").show();
+                                        $("#btnCreate").prop('disabled', true);
+                                        $("#btnCreate").addClass('disabled');
+                                        $("#lnkOpenWallet").hide();
+
+                                        //error handling here?
+
+                                        var guid = $('#createWalletStart input#guid').val();
+                                        var username = $("#createWalletStart input#nickname").val();
+                                        var password = $('#createWalletStart input#cpassword').val();
+                                        var emailAddress = $('#createWalletStart input#emailaddress').val();
 
 
-                        $("#createWalletStart").hide();
-                        $("#createWalletProgress").show();
-
-                        runSlideShow();
-                        setTimeout(function () {
-
-                            Engine.createWalletApp(guid, username, function (err, result) {
-
-                                //move error handling and ui elements to here
-                                $("#createWalletStart input#nickname").css("border-color", "#ccc");
-                                if (err) {
+                                        Engine.m_nickname = username;
 
 
-                                    $("#btnCreate").button('reset');
-
-                                    if (result == "ErrUserExists") {
-
-                                        $("#createWalletStart input#nickname").css("border-color", "#ffaaaa");
-                                        $("#imgcreatewaiting").hide();
-
-                                        $("#createwalletalert").show();
-                                        $("#createwalletalertmessage").text("The username already exists");
-
-                                        $("#btnCreate").prop('disabled', false);
-                                        $("#btnCreate").removeClass('disabled');
-                                        $("#lnkOpenWallet").show();
-                                    }
-                                    if (result == "ErrEmailExists") {
-
-                                        $("#createWalletStart input#emailaddress").css("border-color", "#ffaaaa");
-                                        $("#imgcreatewaiting").hide();
-
-                                        $("#createwalletalert").show();
-                                        $("#createwalletalertmessage").text("The email address is already in use");
-
-                                        $("#btnCreate").prop('disabled', false);
-                                        $("#btnCreate").removeClass('disabled');
-                                        $("#lnkOpenWallet").show();
-                                    }
-
-                                    if (result == "ErrCreateAccount") {
-
-                                        $("#imgcreatewaiting").hide();
-                                        $("#btnCreate").prop('disabled', false);
-                                        $("#btnCreate").removeClass('disabled');
-                                        $("#lnkOpenWallet").show();
-
-                                        $("#createwalletalert").show();
-                                        $("#createwalletalertmessage").text("Error");
-
-                                    }
-
-                                    if (result == "ErrSavePacket") {
-
-                                        $("#imgcreatewaiting").hide();
-                                        $("#btnCreate").prop('disabled', false);
-                                        $("#btnCreate").removeClass('disabled');
-                                        $("#lnkOpenWallet").show();
-
-                                        $("#createwalletalert").show();
-                                        $("#createwalletalertmessage").text("Error");
-
-                                    }
+                                        $("#createWalletStart").hide();
+                                        $("#createWalletProgress").show();
 
 
+                                        setTimeout(function () {
 
-                                } else {
+                                            Engine.createWallet(guid, password, username, emailAddress, function (err, result) {
+
+                                                //move error handling and ui elements to here
+                                                $("#createWalletStart input#nickname").css("border-color", "#ccc");
+                                                if (err) {
+
+                                                    if (result == "ErrUserExists") {
+
+                                                        $("#createWalletStart input#nickname").css("border-color", "#ffaaaa");
+                                                        $("#imgcreatewaiting").hide();
+
+                                                        $("#createwalletalert").show();
+                                                        $("#createwalletalertmessage").text("The username already exists");
+
+                                                        $("#btnCreate").prop('disabled', false);
+                                                        $("#btnCreate").removeClass('disabled');
+                                                        $("#lnkOpenWallet").show();
+                                                    }
+                                                    if (result == "ErrEmailExists") {
+
+                                                        $("#createWalletStart input#emailaddress").css("border-color", "#ffaaaa");
+                                                        $("#imgcreatewaiting").hide();
+
+                                                        $("#createwalletalert").show();
+                                                        $("#createwalletalertmessage").text("The email address is already in use");
+
+                                                        $("#btnCreate").prop('disabled', false);
+                                                        $("#btnCreate").removeClass('disabled');
+                                                        $("#lnkOpenWallet").show();
+                                                    }
+
+                                                    if (result == "ErrCreateAccount") {
+
+                                                        $("#imgcreatewaiting").hide();
+                                                        $("#btnCreate").prop('disabled', false);
+                                                        $("#btnCreate").removeClass('disabled');
+                                                        $("#lnkOpenWallet").show();
+
+                                                        $("#createwalletalert").show();
+                                                        $("#createwalletalertmessage").text("Error");
+
+                                                    }
+
+                                                    if (result == "ErrSavePacket") {
+
+                                                        $("#imgcreatewaiting").hide();
+                                                        $("#btnCreate").prop('disabled', false);
+                                                        $("#btnCreate").removeClass('disabled');
+                                                        $("#lnkOpenWallet").show();
+
+                                                        $("#createwalletalert").show();
+                                                        $("#createwalletalertmessage").text("Error");
+
+                                                    }
 
 
-                                    $("#hotWalletPhrase").text(result.hotWalletPhrase);
-                                    $("#coldWalletPhrase").text(result.coldWalletPhrase);
-                                    $("#coldWalletPhrasePrintText").text(result.coldWalletPhrase);
 
-                                    if (Engine.Device.isiOS()) {
-                                        deviceName = "My iPhone";
+                                                } else {
+
+
+                                                    $("#hotWalletPhrase").text(result.hotWalletPhrase);
+                                                    $("#coldWalletPhrase").text(result.coldWalletPhrase);
+                                                    $("#coldWalletPhrasePrintText").text(result.coldWalletPhrase);
+
+                                                    if (Engine.Device.isiOS()) {
+                                                        deviceName = "My iPhone";
+                                                    } else {
+                                                        deviceName = "My Android";
+                                                    }
+
+                                                    //now we perform a pairing of the device with the account
+                                                    Engine.getDeviceTokenForApp(deviceName, function (err, response) {
+
+                                                        if (!err) {
+
+                                                            response = JSON.parse(response);
+
+                                                            //registration token for this pairing attempt
+                                                            regToken = response.RegToken;
+                                                            fatoken = response.DeviceToken;
+
+                                                            Engine.getHotHash(Engine.m_password, function (err, hothash) {
+
+                                                                if (!err) {
+
+                                                                    //encrypt the user's password with the encryption key
+
+                                                                    Engine.Device.setStorageItem("ninki_reg", response.RegToken);
+
+                                                                    Engine.Device.setSecureStorageObject("ninki_rem", response.DeviceToken, response.DeviceKey, Engine.encryptNp);
+                                                                    Engine.Device.setSecureStorageObject("ninki_p", Engine.m_password, response.DeviceKey, Engine.encryptNp);
+                                                                    Engine.Device.setSecureStorageObject("ninki_h", hothash, response.DeviceKey, Engine.encryptNp);
+
+                                                                    result = '';
+
+                                                                    //save all the tokens
+                                                                    //we should now be in the same state as if we have just
+                                                                    //scanned a qr code to pair the phone
+                                                                    //and entered a password
+
+                                                                    //initialiseUI();
+                                                                    //Engine.m_validate = false;
+
+                                                                    //set variables for the session
+                                                                    $("#createWalletStart").hide();
+                                                                    $("#createWalletProgress").hide();
+
+                                                                    $('#createWalletStart input#cpassword').val('');
+                                                                    $('#createWalletStart input#password1').val('');
+
+                                                                    //save the encrypted hot key in local storage
+
+                                                                    $("#walletGuid").text($('input#guid').val());
+                                                                    $("#showPhrases").show();
+                                                                    $("#securitywizard").show();
+
+                                                                    $(".next").hide();
+
+                                                                    $("#no2famessage").hide();
+
+                                                                    step = 1;
+                                                                    $("#coldkeystep").show();
+                                                                    $(".previous").hide();
+                                                                }
+
+                                                            });
+
+                                                        }
+
+                                                    });
+
+
+                                                    //showTwoFactorQr();
+
+                                                }
+                                            }, function (txtprogress) {
+
+                                                $("#progresstext").text(txtprogress);
+
+                                            });
+
+                                        }, 100);
                                     } else {
-                                        deviceName = "My Android";
+
+                                        isCreateEmailValid = false;
+                                        validateCreateForm();
                                     }
+                                });
 
-                                    //now we perform a pairing of the device with the account
-                                    Engine.getDeviceTokenForApp(deviceName, function (err, response) {
+                            } else {
 
-                                        if (!err) {
-
-                                            response = JSON.parse(response);
-
-                                            //registration token for this pairing attempt
-
-                                            Engine.m_deviceKey = Bitcoin.convert.hexToBytes(response.DeviceKey);
-                                            Engine.m_deviceToken = Bitcoin.convert.hexToBytes(response.DeviceToken)
-                                            Engine.m_regToken = response.RegToken;
-
-                                            response = [];
-
-
-                                            //Engine.getHotHash('', function (err, hothash) {
-
-                                            //if (!err) {
-
-                                            //encrypt the user's password with the encryption key
-
-                                            Engine.Device.setStorageItem("ninki_reg", Engine.m_regToken);
-
-                                            Engine.Device.setSecureStorageObject("ninki_rem", Engine.m_deviceToken, Engine.m_deviceKey, Engine.encryptNp);
-                                            //Engine.Device.setSecureStorageObject("ninki_p", Engine.m_password, Engine.m_deviceKey, Engine.encryptNp);
-                                            Engine.Device.setSecureStorageObject("ninki_h", Engine.m_onlineKey, Engine.m_deviceKey, Engine.encryptNp);
-
-                                            Engine.zeroOnlineKey();
-
-
-                                            result = '';
-
-                                            //save all the tokens
-                                            //we should now be in the same state as if we have just
-                                            //scanned a qr code to pair the phone
-                                            //and entered a password
-
-                                            //initialiseUI();
-                                            //Engine.m_validate = false;
-
-                                            showCreateAccPIN();
-
-
-                                            //}
-
-                                            //});
-
-                                        }
-
-                                    });
-
-
-                                    //showTwoFactorQr();
-
-                                }
-                            }, function (txtprogress) {
-
-                                $("#progresstext").text(txtprogress);
-
-                            });
-
-                        }, 100);
-                        //      } else {
-
-                        //          isCreateEmailValid = false;
-                        //validateCreateForm();
-                        //      }
-                        // });
+                                isCreateNicknameValid = false;
+                                validateCreateForm();
+                            }
+                        });
 
                     } else {
 
-                        $("#btnCreate").button('reset');
-
-                        isCreateNicknameValid = false;
-
-                        $("#nickname").css("border-color", "#ffaaaa");
-
-                        //validateCreateForm();
+                        //password not strong
+                        $("#createwalletalert").show();
+                        $("#createwalletalertmessage").text("Password must be Strong- ideally Very Strong");
                     }
-                });
 
+                } else {
 
-
-            } else {
-
-                $("#btnCreate").button('reset');
-
-                $("#frmcreate").parsley().validate();
+                    $("#frmcreate").parsley().validate();
+                }
             }
-
 
         });
 
@@ -40809,56 +40006,6 @@ function UI() {
         });
 
 
-        $("#tapemailvalclose").bind("touchstart", function () {
-
-            if (!(typeof window.app === 'undefined')) {
-                app.isScanning = false;
-            }
-
-            $("#emailvalstep").hide();
-
-            $("#imgphrasewaiting").hide();
-
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-        });
-
-        $("#tapofflineclose").bind("touchstart", function () {
-
-            $("#coldkeystep").hide();
-
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-        });
-
-        $("#taponlineclose").bind("touchstart", function () {
-
-            $("#hotkeystep").hide();
-
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-        });
-
-
-        $("#tapemailstepclose").bind("touchstart", function () {
-
-            if (!(typeof window.app === 'undefined')) {
-                app.isScanning = false;
-            }
-
-            $("#emailstep").hide();
-
-            $("#imgphrasewaiting").hide();
-
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-        });
-
-
         $("#tfaoptsetuplater, #tfaoptclose").bind("touchstart", function () {
 
 
@@ -40868,16 +40015,12 @@ function UI() {
 
             $("#tfastep").hide();
 
-
-
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
             $("#imgphrasewaiting").hide();
 
-            //            $("#welcome").removeClass("invis");
-            //            $("#welcome").addClass("slideUp");
-            //            $("#welcome").show();
+
+            $("#welcome").removeClass("invis");
+            $("#welcome").addClass("slideUp");
+            $("#welcome").show();
 
 
         });
@@ -41017,15 +40160,11 @@ function UI() {
                         app.isScanning = false;
                     }
 
-
-                    Engine.m_settings.TwoFactor = true;
-                    $("#secheck2fa").show();
-                    $("#sechev2fa").hide();
-
                     $("#tfastep").hide();
 
-                    $("#seccheck").removeClass("invis");
-                    $("#seccheck").show();
+                    $("#welcome").removeClass("invis");
+                    $("#welcome").addClass("slideUp");
+                    $("#welcome").show();
 
                 }
 
@@ -41036,7 +40175,7 @@ function UI() {
 
 
 
-        $("#btnEmailValidate").hammer(null).bind("tap", function () {
+        $("#btnEmailValidate").bind("touchstart", function () {
 
             //app.isScanning = false;
 
@@ -41046,7 +40185,7 @@ function UI() {
 
 
                     var ttext = text.trim().replace(" ", "");
-
+                    //$('#txtEmailToken').val('');
                     $('#txtEmailToken').val(ttext);
                     $("#txtEmailToken").trigger('change');
 
@@ -41088,33 +40227,31 @@ function UI() {
 
                     } else {
 
-                        Engine.m_settings.EmailVerified = true;
-
-
-                        displaySecurityScore();
 
 
                         Engine.m_validate = false;
 
+
                         $('#createWalletStart').hide();
                         $('#emailstep').hide();
 
+                        // $("#btnPairDevice").removeClass("disabled");
+
+
+                        $("#tfastep").show();
 
                         $("#pairspinner").hide();
 
-                        $("#secheckemail").show();
-                        $("#sechevemail").hide();
 
-                        $("#sechev2fa i").removeClass("text-muted");
-                        $("#sechev2fa i").addClass("text-primary");
+                        //$('#btnUnpair').hide();
+                        //$('#loginpin').show();
 
-
-                        $("#seccheck").removeClass("invis");
-                        $("#seccheck").show();
 
                         $("#validateemail").hide();
                         $("#valemailerror").hide();
                         $("#btnEmailValidate").prop('disabled', false);
+
+
 
                     }
                 }
@@ -41153,7 +40290,7 @@ function UI() {
 
             Engine.getTwoFactorImg(function (err, twoFASecret) {
 
-                var nickname = m_this.m_nickname;
+                var nickname = $("#createWalletStart input#nickname").val();
                 var data = "otpauth://totp/Ninki:" + nickname + "?secret=" + twoFASecret + "&issuer=Ninki";
                 var options = { text: data, width: 128, height: 128 };
 
@@ -41291,639 +40428,21 @@ function UI() {
 
 
 
+        $('#tapunlock').bind('touchstart', function () {
 
-
-
-
-        $('#taptfa').bind('touchstart', function () {
-
-
-            if (!Engine.m_settings.TwoFactor) {
-
-                $("#seccheck").addClass("invis");
-                $("#seccheck").removeClass("slideUp");
-                $("#seccheck").hide();
-
-                showTwoFactorQr();
-
-                $("#tfastep").show();
-                $("#tfaoption").hide();
-                $("#tfaoptionsetuppnl").show();
-
-            }
-
-
-        });
-
-
-        $('#tapemailsec').bind('touchstart', function () {
-
-
-            Engine.Device.getStorageItem("ok_disp", function (res) {
-
-
-                if (!Engine.m_settings.EmailVerified && Engine.m_offlineKeyBackup && res != "1") {
-
-                    $("#seccheck").addClass("invis");
-                    $("#seccheck").removeClass("slideUp");
-                    $("#seccheck").hide();
-                    $("#mainWallet").hide()
-
-                    $("#emailvalstep").show();
-
-                }
-
-            });
-
-
-        });
-
-        $('#btnRegEmail').bind('touchstart', function () {
-
-
-            $("#frmEmail").parsley().validate();
-
-            if ($("#frmEmail").parsley().isValid()) {
-
-                var emailAddress = $("#txtEmailAddress").val();
-
-                Engine.updateEmailAddress(emailAddress, function (err, result) {
-
-                    Engine.sendWelcomeDetails(function (err, result) {
-
-                        $("#emailvalstep").hide();
-                        $("#emailstep").show();
-
-                    });
-
-                });
-
-            }
-
-        });
-
-
-
-        window.clearAuthInterval = function () {
-
-            clearAuthInterval();
-
-        };
-
-
-        $('#btnCloseAuthDevice').bind('touchstart', function () {
-
-            $('#sendstdpin').val('');
-
-            clearAuthInterval();
-
-            $("#mainWallet").show();
-            $("#seccheck").show();
-            $("#authrequestitem").hide();
-            $("#deviceauth").hide();
-
-        });
-
-
-        var checkAuthInterval = null;
-        function clearCheckAuth() {
-
-            clearInterval(checkAuthInterval);
-
-        }
-
-        $('#btnAuthDevice').bind('touchstart', function () {
-
-            var pin = $('#sendstdpin').val();
-
-            if (pin.length == 4) {
-
-                Engine.getDeviceKey(pin, function (err, ekey) {
-
-                    $("#sendstdpin").val('');
-
-                    if (!err) {
-
-                        Engine.authMigration(Engine.m_deviceKey, tmpAuthIdentifier, function (err, result) {
-
-                            if (!err) {
-
-
-                                $("#mainWallet").show();
-                                $("#seccheck").show();
-                                $("#deviceauth").hide();
-                                $("#desktopintro").hide();
-                                $("#desktopphrase").hide();
-
-                                //now listen to update sec checklist
-
-                                checkAuthInterval = setInterval(function () {
-
-                                    Engine.getAccountSettings(function (err, res) {
-
-                                        if (!err) {
-
-                                            //only set the settings we need to refresh for the mobile apps
-                                            var settingsObject = JSON.parse(res);
-                                            Engine.m_settings.TwoFactor = settingsObject.TwoFactor;
-                                            Engine.m_settings.EmailVerified = settingsObject.EmailVerified;
-
-                                            if (Engine.m_settings.TwoFactor) {
-                                                displaySecurityScore();
-                                                clearCheckAuth();
-                                                $("#secheck2fa").show();
-                                                $("#sechev2fa").hide();
-                                            }
-
-                                        }
-
-                                    });
-
-
-
-                                }, 5000);
-
-                            } else {
-
-
-                                clearAuthInterval();
-                                bootbox.alert("Your auth token has expired. Please exit and try again.", function () {
-
-                                    $("#authrequestitem").hide();
-
-                                });
-
-
-                            }
-
-                        });
-
-                    } else {
-
-                        clearAuthInterval();
-                        bootbox.alert("PIN failed. Please exit and try again.", function () {
-
-                            $("#authrequestitem").hide();
-
-                        });
-
-                    }
-
-                });
-            } else {
-
-                clearAuthInterval();
-                bootbox.alert("Invalid PIN. Please exit and try again.", function () {
-
-                    $("#authrequestitem").hide();
-
-                });
-
-            }
-
-
-
-        });
-
-
-        function authDevice() {
-
-            //get the twofactor token
-            var pin = $('#sendstdpin').val();
-
-            Engine.getDeviceKey(pin, function (err, ekey) {
-
-                if (!err) {
-
-                    Engine.getHotHash('', function (err, hotHash) {
-
-                        Engine.zeroDeviceKey();
-
-                        if (!err) {
-
-                            var bip39 = new BIP39();  // 'en' is the default language
-                            var hotmnem = bip39.entropyToMnemonic(Bitcoin.convert.bytesToHex(Engine.m_onlineKey));
-
-                            Engine.zeroOnlineKey();
-
-                            $("#hotWalletDesktopPhrase").text(hotmnem);
-
-                            hotmnem = [];
-
-                            $('#pinconfirm').hide();
-                            $('#desktopphrase').show();
-                            $("#pinconfdets").show();
-                            $("#paddelconf").hide();
-
-                            $('#pinconfirm').hide();
-                            $('.numdone').attr("style", "background-color:white");
-
-                            //we will resuse in the next step
-                            //$("#sendstdpin").val('');
-
-                            sendmode = "";
-                            pintaps = 0;
-                            prevpin = '';
-
-                            window.resetPin();
-
-                            getAuthReq();
-
-                        }
-
-                    });
-
-                } else {
-
-                    $('.numdone').attr("style", "background-color:white");
-
-                    $("#sendstdpin").val('');
-                    pintaps = 0;
-                    prevpin = '';
-                    $("#paddelconf").hide();
-
-                    window.resetPin();
-
-                    if (ekey.substring(0, 6) == "ErrPIN") {
-
-                        var attempts = ekey.substring(7, 8);
-
-                        $("#pinconfcount").effect("shake");
-
-                    } else if (ekey.substring(0, 10) == "ErrBlocked") {
-
-                        //if the login attempt has been blocked
-                        //display a countdown to the user
-                        //indicating when they can next attempt to
-                        //login
-
-                        var seconds = ekey.substring(11, ekey.length) * 1.0;
-
-                        setCountdown(seconds);
-
-                        // later on this timer may be stopped
-
-                        $("#pincounter").effect("shake");
-
-                    } else {
-
-                        bootbox.alert(ekey);
-
-                    }
-                }
-
-            });
-
-        }
-
-
-        $('#tapclosedeskintro').bind('touchstart', function () {
-
-            $('#desktopintro').hide();
-            $("#mainWallet").show();
-            $("#seccheck").show();
-
-        });
-
-        $('#tapclosedeskphrase').bind('touchstart', function () {
-
-            //resetpin
-            $('#sendstdpin').val('');
-
-            $('#desktopphrase').hide();
-            $("#mainWallet").show();
-            $("#seccheck").show();
-
-        });
-
-
-
-
-        $('#tapchrome').bind('touchstart', function () {
-
-            Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                if (!Engine.m_settings.TwoFactor && Engine.m_settings.EmailVerified && Engine.m_offlineKeyBackup && res != "1") {
-
-                    $('#desktopintro').show();
-                    $("#mainWallet").hide();
-                    $("#seccheck").hide();
-
-                }
-
-            });
-
-        });
-
-
-        $('#tapdesktopnext').bind('touchstart', function () {
-
-            sendmode = "deviceauth"
-            $("#mainWallet").hide();
-            $("#desktopintro").hide();
-
-            $("#pinconfdets").hide();
-            $("#pinconfirm").addClass("blind");
-            $("#pinconfirm").show();
-
-
-        });
-
-        var authInterval = null;
-        var runAuthCheck = false;
-        function clearAuthInterval() {
-
-            runAuthCheck = false;
-            clearInterval(authInterval);
-
-        }
-
-
-        function checker() {
-
-            if (runAuthCheck) {
-
-                Engine.getAuthMigrationRequest(function (err, result) {
-
-                    if (!err) {
-
-                        if (result.length == 1) {
-
-                            if (result[0]) {
-
-                                console.log(result[0].authreqtoken);
-
-                                tmpAuthIdentifier = result[0].authreqtoken;
-
-                                $("#authrequestitem").show();
-
-                                clearAuthInterval();
-
-                                $("#mainWallet").hide();
-                                $("#seccheck").hide();
-
-                                $("#deviceauth").show();
-
-                                $("#desktopphrase").hide();
-
-                            }
-
-                        } else {
-
-                            $("#authrequestitem").hide();
-                        }
-
-
-                    }
-
-                });
-
-            }
-
-        }
-
-
-
-        function getAuthReq() {
-
-            $("#authrequestitem").hide();
-
-            if (!Engine.m_settings.TwoFactor) {
-
-                runAuthCheck = true;
-                checker();
-                authInterval = setInterval(checker, 5000);
-
-            }
-
-        }
-
-
-        $('#tapdesktopnext2').bind('touchstart', function () {
-
-
-            $("#authrequestitem").hide();
-            $("#mainWallet").hide();
-            $("#seccheck").hide();
-
-            $("#deviceauth").show();
-
-        });
-
-
-
-
-
-
-
-        $('#tapkeybackup').bind('touchstart', function () {
-
-            Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                if (!Engine.m_offlineKeyBackup || res == "1") {
-
-                    sendmode = "viewkey"
-                    $("#mainWallet").hide();
-                    $("#seccheck").hide();
-
-                    $("#pinconfirm").addClass("blind");
-                    $("#pinconfdets").hide();
-                    $("#pinconfirm").show();
-
-                }
-
-            });
-
-        });
-
-        $('#tapsecwarning').bind('touchstart', function () {
-
-
-            $("#seccheck").addClass("invis");
-            $("#seccheck").removeClass("slideUp");
-            $("#seccheck").hide();
-
+            $("#settingsheader").hide();
+            $(".footer").hide();
             $("#secwarning").removeClass("invis");
+            $("#secwarning").addClass("slideUp");
             $("#secwarning").show();
-
             $("#secphrasepnl").hide();
             $("#tapsecok").show();
             $("#tapseccancel").text("Cancel");
-
+            $("#mainWallet").hide();
             $("#secwarn").show();
             $("#sechold").hide();
 
         });
-
-        $('#tapunlock').bind('touchstart', function () {
-
-
-            Engine.Device.getStorageItem("pair", function (res) {
-
-                if (res == "") {
-
-                    if (Engine.m_offlineKeyBackup) {
-                        $("#tapsecwarning").show();
-                    } else {
-                        $("#tapsecwarning").hide();
-                    }
-
-                } else {
-
-                    Engine.m_offlineKeyBackup = true;
-                    Engine.m_settings.EmailVerified = true;
-                    Engine.m_settings.TwoFactor = true;
-
-                    $("#secheckemail").show();
-                    $("#sechevemail").hide();
-                    $("#secheck2fa").show();
-                    $("#sechev2fa").hide();
-                    $("#secheckkeys").show();
-                    $("#secchevkeys").hide();
-                    $("#tapsecwarning").show();
-
-                }
-
-                displaySecurityScore();
-
-                $("#seccheck").removeClass("invis");
-                //$("#seccheck").addClass("slideUp");
-                $("#seccheck").show();
-
-                $(".footer").hide();
-                $("#settingsheader").hide();
-                $("#mainWallet").hide();
-
-
-            });
-
-
-
-
-
-        });
-
-
-
-
-        $('#tapacclimits').bind('touchstart', function () {
-
-
-
-            $("#settingsacclimits").removeClass("invis");
-            //$("#seccheck").addClass("slideUp");
-            $("#settingsacclimits").show();
-
-            $(".footer").hide();
-            $("#settingsheader").hide();
-            $("#mainWallet").hide();
-
-            //get account limits from settings
-
-            Engine.getLimitStatus(function (err, limits) {
-
-                $("#limitdaily").text(formatCoinAmount(convertFromSatoshis(limits.DailyTransactionLimit, COINUNIT)) + ' ' + COINUNIT);
-                $("#limitsingle").text(formatCoinAmount(convertFromSatoshis(limits.SingleTransactionLimit, COINUNIT)) + ' ' + COINUNIT);
-                $("#limittranday").text(limits.NoOfTransactionsPerDay);
-                $("#limittranhour").text(limits.NoOfTransactionsPerHour);
-
-                //+ " (" + convertFromSatoshis(limits.DailyTransactionLimit - limits.TotalAmount24hr, COINUNIT) + ")"
-                //+ " (" + (limits.NoOfTransactionsPerDay - limits.No24hr) + ")"
-                //+ " (" + (limits.NoOfTransactionsPerHour - limits.No1hr) + ")"
-
-            });
-
-
-        });
-
-        $('#tapcloseacclimits').bind('touchstart', function () {
-
-            $("#settingsacclimits").hide();
-
-            $(".footer").show();
-            $("#settingsheader").show();
-            $("#mainWallet").show();
-
-        });
-
-        $('#tapcoinunit').bind('touchstart', function () {
-
-            $("#settingscoinunit").removeClass("invis");
-            //$("#seccheck").addClass("slideUp");
-            $("#settingscoinunit").show();
-
-            $(".footer").hide();
-            $("#settingsheader").hide();
-            $("#mainWallet").hide();
-
-
-        });
-
-        $('#tapclosecoinunit').bind('touchstart', function () {
-
-            $("#settingscoinunit").hide();
-
-            $(".footer").show();
-            $("#settingsheader").show();
-            $("#mainWallet").show();
-
-        });
-
-        $('#tapcurrency').bind('touchstart', function () {
-
-            $("#settingscurrency").removeClass("invis");
-            //$("#seccheck").addClass("slideUp");
-            $("#settingscurrency").show();
-
-            $(".footer").hide();
-            $("#settingsheader").hide();
-            $("#mainWallet").hide();
-
-        });
-
-        $('#tapclosecurrency').bind('touchstart', function () {
-
-            $("#settingscurrency").hide();
-
-            $(".footer").show();
-            $("#settingsheader").show();
-            $("#mainWallet").show();
-
-        });
-
-
-
-
-        function displaySecurityScore() {
-
-
-
-            Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                var score = 0;
-
-                if (Engine.m_offlineKeyBackup && res != "1") {
-                    score++;
-                }
-
-                if (Engine.m_settings.EmailVerified) {
-                    score++;
-                }
-
-                //replace with chrome app proof + 2fa backup codes
-                if (Engine.m_settings.TwoFactor) {
-                    score++;
-                }
-
-                var score = Math.round((score / 3) * 100);
-
-                $("#securityscore").easyPieChart();
-
-                $('#securityscore').data('easyPieChart').update(score);
-
-            });
-
-        }
 
         $('#tapseccancel').bind('touchstart', function () {
 
@@ -41931,29 +40450,6 @@ function UI() {
             $("#secwarning").addClass("invis");
             $("#secwarning").removeClass("slideUp");
             $("#secwarning").hide();
-
-            $("#seccheck").removeClass("invis");
-            $("#seccheck").show();
-
-
-
-            //            $("#mainWallet").show();
-            //            $("#settingsheader").show();
-            //            $(".footer").show();
-
-
-
-            $("#secphrasepnl").hide();
-            $("#secphrase").text('');
-
-        });
-
-        $('#btnCloseSecList').bind('touchstart', function () {
-
-
-            //$("#seccheck").addClass("invis");
-            $("#seccheck").removeClass("slideUp");
-            $("#seccheck").hide();
             $("#mainWallet").show();
             $("#settingsheader").show();
             $(".footer").show();
@@ -41964,7 +40460,6 @@ function UI() {
             $("#secphrase").text('');
 
         });
-
 
 
 
@@ -41978,7 +40473,6 @@ function UI() {
             $("#secwarning").hide();
 
             $("#pinconfdets").hide();
-            $("#pinconfirm").addClass("blind");
             $("#pinconfirm").show();
 
         });
@@ -41991,7 +40485,6 @@ function UI() {
         });
 
 
-
         function displayKey() {
 
             var pin = $('#sendstdpin').val();
@@ -42000,91 +40493,23 @@ function UI() {
 
                 if (!err) {
 
-                    Engine.getHotHash('', function (err, hotHash) {
+                    Engine.getHotHash(ekey.DeviceKey, function (err, hotHash) {
 
                         if (!err) {
-
                             var bip39 = new BIP39();  // 'en' is the default language
-                            var hotmnem = bip39.entropyToMnemonic(Bitcoin.convert.bytesToHex(Engine.m_onlineKey));
-
-                            Engine.zeroDeviceKey();
-
-                            Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                                if (!Engine.m_offlineKeyBackup || res == "1") {
-
-                                    $("#hotWalletPhrase").text(hotmnem);
-
-                                    hotmnem = [];
-
-                                    $("#seccheck").addClass("invis");
-                                    $("#seccheck").removeClass("slideUp");
-                                    $("#seccheck").hide();
-
-                                    $("#showPhrases").show();
-                                    $(".next").hide();
-
-                                    $("#no2famessage").hide();
-
-                                    if (!Engine.m_offlineKeyBackup) {
-
-                                        step = 1;
-                                        $("#coldkeystep").show();
-                                        $(".previous").hide();
-                                        $("#coldfinalwarning").hide();
-
-                                        $("#coldcheckicon").addClass("fa-square-o");
-                                        $("#coldcheckicon").removeClass("fa-check-square");
-                                        $("#coldcheckicon").removeClass("text-success");
-
-                                        Engine.recoverColdKeyForMobile(function (coldkey) {
-
-                                            var bip39 = new BIP39();  // 'en' is the default language
-                                            var coldmnem = bip39.entropyToMnemonic(Bitcoin.convert.bytesToHex(coldkey));
-
-                                            Engine.zeroByteArray(coldkey);
-                                            Engine.zeroOnlineKey();
-
-                                            $("#coldWalletPhrase").text(coldmnem);
-
-                                            coldmnem = [];
-
-                                        });
-
-
-
-                                    } else {
-
-                                        step = 2;
-                                        $("#hotkeystep").show();
-                                        $("#hotcheckicon").addClass("fa-square-o");
-                                        $("#hotcheckicon").removeClass("fa-check-square");
-                                        $("#hotcheckicon").removeClass("text-success");
-
-                                    }
-
-                                    //temporary storage for testing
-
-                                } else {
-
-                                    $("#tapsecok").hide();
-                                    $("#tapseccancel").text("Close");
-                                    $("#secphrase").text(hotmnem);
-                                    $("#secwarn").hide();
-                                    $("#sechold").show();
-                                    $("#secwarning").removeClass("slideUp");
-                                    $("#secwarning").show();
-                                    $("#secphrasepnl").show();
-                                    $("#secphrase").hide();
-
-                                }
-
-                            });
-
-
+                            var hotmnem = bip39.entropyToMnemonic(hotHash);
+                            $("#secphrase").text(hotmnem);
                             $("#pinconfirm").hide();
                             $("#pinconfdets").show();
 
+                            $("#secwarn").hide();
+                            $("#sechold").show();
+
+
+                            $("#secwarning").removeClass("slideUp");
+                            $("#secwarning").show();
+                            $("#secphrasepnl").show();
+                            $("#secphrase").hide();
                             window.resetPin();
 
                             $("#paddelconf").hide();
@@ -42092,22 +40517,22 @@ function UI() {
                             $('.numdone').attr("style", "background-color:white");
 
                             $("#sendstdpin").val('');
+
+                            $("#tapsecok").hide();
+                            $("#tapseccancel").text("Close");
+
                         }
 
                     });
 
-
-
                 } else {
 
-
-                    window.resetPin();
-
-                    $("#paddelconf").hide();
 
                     $('.numdone').attr("style", "background-color:white");
 
                     $("#sendstdpin").val('');
+                    pintaps = 0;
+                    prevpin = '';
 
 
                     if (ekey.substring(0, 6) == "ErrPIN") {
@@ -42115,21 +40540,6 @@ function UI() {
                         var attempts = ekey.substring(7, 8);
 
                         $("#pinconfcount").effect("shake");
-
-                    } else if (ekey.substring(0, 10) == "ErrBlocked") {
-
-                        //if the login attempt has been blocked
-                        //display a countdown to the user
-                        //indicating when they can next attempt to
-                        //login
-
-                        var seconds = ekey.substring(11, ekey.length) * 1.0;
-
-                        setCountdown(seconds);
-
-                        // later on this timer may be stopped
-
-                        $("#pincounter").effect("shake");
 
                     } else {
 
@@ -42149,12 +40559,10 @@ function UI() {
         $('#copyvalphrase').bind('touchstart', function () {
 
             if (window.cordova) {
-
-                cordova.plugins.clipboard.copy($('#hdcodeForFriend').val(), function () {
+                cordova.plugins.clipboard.copy($('#codeForFriend').text(), function () {
 
                     $('#valcodepanel').addClass("backgroundAnimated");
                     setTimeout(function () {
-
                         $('#valcodepanel').removeClass("backgroundAnimated");
                     }, 1000);
 
@@ -42164,12 +40572,6 @@ function UI() {
                     console.log("copy error");
 
                 });
-            } else {
-                $('#valcodepanel').addClass("backgroundAnimated");
-                setTimeout(function () {
-
-                    $('#valcodepanel').removeClass("backgroundAnimated");
-                }, 1000);
             }
 
         });
@@ -42249,7 +40651,7 @@ function UI() {
 
                 cordova.plugins.clipboard.paste(function (text) {
 
-                    $('#toAddress').val(text.trim());
+                    $('#toAddress').val(text);
                     $("#toAddress").trigger('change');
 
                 }, function () {
@@ -42351,8 +40753,6 @@ function UI() {
 
 
 
-
-
         window.resetPin = function () {
 
             pintaps = 0;
@@ -42445,7 +40845,6 @@ function UI() {
                             } else {
                                 loginPIN();
                             }
-
 
                             //only if fail
 
@@ -42563,14 +40962,7 @@ function UI() {
 
                         displayKey();
 
-                    } else if (sendmode == 'deviceauth') {
-
-                        authDevice();
-
                     }
-
-
-
 
 
 
@@ -42794,11 +41186,11 @@ function UI() {
 
             $("#dashprofile").show();
 
-            //$("#dashsend").addClass("invis");
-            //$("#dashsend").removeClass("slideUp");
+            $("#dashsend").addClass("invis");
+            $("#dashsend").removeClass("slideUp");
             $("#dashsend").hide();
 
-            // $("#dashreceive").addClass("invis");
+            $("#dashreceive").addClass("invis");
             $("#dashreceive").removeClass("slideUp");
             $("#dashreceive").hide();
 
@@ -42841,8 +41233,8 @@ function UI() {
             $('#paddelconf').hide();
             $("#pinconfirm").hide();
 
-            //$("#dashsend").addClass("invis");
-            //$("#dashsend").removeClass("slideUp");
+            $("#dashsend").addClass("invis");
+            $("#dashsend").removeClass("slideUp");
             $("#dashsend").hide();
 
             $("#dashsendamt").show();
@@ -42900,8 +41292,6 @@ function UI() {
                                     clearInterval(window.updateUIInterval);
                                 }
 
-                                $("#pinconfdets").show();
-                                $("#pinconfirm").removeClass("blind");
                                 $("#pinconfirm").show();
 
                                 if (paddr.label) {
@@ -42924,8 +41314,8 @@ function UI() {
                                 $("#sendstds2amt").text(formatCoinAmount($("#hdamount").val()) + ' ' + COINUNIT);
 
 
-                                //$("#dashsend").addClass("invis");
-                                //$("#dashsend").removeClass("slideUp");
+                                $("#dashsend").addClass("invis");
+                                $("#dashsend").removeClass("slideUp");
                                 $("#dashsend").hide();
 
 
@@ -42946,8 +41336,8 @@ function UI() {
 
                                 updateStdAmount();
 
-                                //$("#dashsend").addClass("invis");
-                                //$("#dashsend").removeClass("slideUp");
+                                $("#dashsend").addClass("invis");
+                                $("#dashsend").removeClass("slideUp");
                                 $("#dashsend").hide();
 
                                 $("#dashsendamt").show();
@@ -42959,8 +41349,8 @@ function UI() {
 
                         } else {
 
-                            //$("#dashsend").addClass("invis");
-                            //$("#dashsend").removeClass("slideUp");
+                            $("#dashsend").addClass("invis");
+                            $("#dashsend").removeClass("slideUp");
                             $("#dashsend").hide();
 
                             $("#dashsendamt").show();
@@ -43096,20 +41486,12 @@ function UI() {
             } else if (sendmode == "net") {
                 closeSendNet();
             } else if (sendmode == "viewkey") {
-
-
-                $("#seccheck").removeClass("invis");
-                $("#seccheck").show();
+                $("#settingsheader").show();
+                $(".footer").show();
                 $("#pinconfirm").hide();
-                //$("#mainWallet").show();
+                $("#mainWallet").show();
 
-            } else if (sendmode == "deviceauth") {
-
-                $("#pinconfirm").hide();
-                $("#desktopintro").show();
-
-            }
-            else {
+            } else {
                 $("#pinconfirm").hide();
                 $("#invoices").show();
             }
@@ -43174,8 +41556,6 @@ function UI() {
                 clearInterval(window.updateUIInterval);
             }
 
-            $("#pinconfdets").show();
-            $("#pinconfirm").removeClass("blind");
             $("#pinconfirm").show();
 
             if (sendmode == 'std') {
@@ -43191,8 +41571,8 @@ function UI() {
 
             $("#sendstds2amt").text(formatCoinAmount($("#hdamount").val()) + ' ' + COINUNIT);
 
-            //$("#dashsend").addClass("invis");
-            //$("#dashsend").removeClass("slideUp");
+            $("#dashsend").addClass("invis");
+            $("#dashsend").removeClass("slideUp");
             $("#dashsend").hide();
 
 
@@ -43236,8 +41616,8 @@ function UI() {
             $("#sendsubheading").text("send to " + SELECTEDFRIEND);
 
             $("#btnStdSndDone").hide();
-            //$("#dashsend").addClass("invis");
-            //$("#dashsend").removeClass("slideUp");
+            $("#dashsend").addClass("invis");
+            $("#dashsend").removeClass("slideUp");
             $("#dashsend").hide();
 
             $("#friendheader").hide();
@@ -43320,25 +41700,6 @@ function UI() {
 
 
 
-            Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                if (!Engine.m_offlineKeyBackup || res == "1") {
-
-                    bootbox.dialog({ title: '<div class="clear"><div class="h3 m-t-xs m-b-xs"><i class="fa fa-warning text-warning"></i>&nbsp;Security Warning</div><small class="text-muted"></small></div>', message: 'Backup your keys in Settings > Security Checklist.<br /><br />Currently, if you lose access to this application, you will lose access to any bitcoins you have stored in your wallet.', closeButton: false, buttons: {
-                        main: {
-                            label: "I Understand",
-                            className: "btn-warning",
-                            callback: function () {
-
-                            }
-                        }
-                    }
-                    });
-                }
-
-            });
-
-
             //dashreceive
             $("#dashheader").hide();
             $("#dashprofile").hide();
@@ -43347,7 +41708,7 @@ function UI() {
 
             $("#dashreceive").show();
             $("#dashreceive").removeClass("invis");
-            //$("#dashreceive").addClass("slideUp");
+            $("#dashreceive").addClass("slideUp");
 
             $(".footer").hide();
 
@@ -43373,7 +41734,6 @@ function UI() {
 
         $("#taprequest").bind('touchstart', function () {
 
-            window.setKeyboardScroll();
 
             $("#friend").css("border-color", "#ccc");
             $("#addcontactalert").hide();
@@ -43396,9 +41756,9 @@ function UI() {
 
         $("#pairdeviceblob").change(function () {
 
-            isPairing = true;
 
-            deleteDeviceStorage();
+            Engine.Device.deleteStorageItem("dataCache");
+            //Engine.Device.deleteStorageItem("balance");
 
             if ($("#pairdeviceblob").val().length > 10) {
 
@@ -43411,11 +41771,9 @@ function UI() {
                     $("#loginpin").hide();
                     $("#pairstep1").hide();
 
-                    $("#createWalletStart").hide();
-                    $("#pairDevice").show();
+
                     $("#pairstep2").show();
                     $("#pairpwd").focus();
-
 
                 } else {
 
@@ -43433,12 +41791,55 @@ function UI() {
         });
 
 
+        $("#btnUnpair").click(function () {
+
+            bootbox.confirm("Are you sure?", function (result) {
+
+                if (result) {
+
+                    Engine.Device.getStorageItem("guid", function (guid) {
+
+                        Engine.m_oguid = guid;
+
+                        var bytes = [];
+                        for (var i = 0; i < guid.length; ++i) {
+                            bytes.push(guid.charCodeAt(i));
+                        }
+
+                        Engine.m_guid = Bitcoin.Crypto.SHA256(Bitcoin.convert.bytesToWordArray(bytes)).toString();
+
+
+                        Engine.destroyDevice(function (err, res) {
+
+                            //call to server
+                            location.reload();
+
+                        });
+
+                        //always destroy locally
+                        Engine.Device.deleteStorageItem("dataCache");
+                        //Engine.Device.deleteStorageItem("balance");
+                        Engine.Device.deleteStorageItem("ninki_rem");
+                        Engine.Device.deleteStorageItem("ninki_p");
+                        Engine.Device.deleteStorageItem("ninki_reg");
+                        Engine.Device.deleteStorageItem("ninki_h");
+                        Engine.Device.deleteStorageItem("guid");
+                        Engine.Device.deleteStorageItem("coinunit");
+                        Engine.Device.deleteStorageItem("currency");
+
+                    });
+
+                }
+
+            });
+
+        });
+
         $("#btnPairDevice").bind('touchstart', function () {
 
             $("#pairpwd").blur();
 
-            isCreate = false;
-            isPairing = true;
+
 
             pairDevice();
 
@@ -43478,27 +41879,7 @@ function UI() {
         $("#sendfriendprog").hide();
 
 
-
-        $("#pastevalidate").bind('touchstart', function () {
-
-            if (window.cordova) {
-
-                cordova.plugins.clipboard.paste(function (text) {
-
-                    text = text.replace(/\r?\n|\r/g, '');
-                    $("#txtCode").val(text.trim());
-                    $("#txtCode").trigger('change');
-
-                }, function () {
-
-                    //console.log("paste error");
-
-                });
-            }
-
-        });
-
-        $("#txtCode").bind('change', function () {
+        $("#btnVerify").bind('touchstart', function () {
 
             var code = $("#txtCode").val();
 
@@ -43506,15 +41887,11 @@ function UI() {
             $("#validatefail").hide();
             $("#validatesuccess").hide();
 
-
-            if (code.length > 40) {
-                var bip39 = new BIP39();
-                code = bip39.mnemonicToHex(code);
-            }
+            var bip39 = new BIP39();
+            code = bip39.mnemonicToHex(code);
 
             if (code.length != 40) {
-
-                bootbox.alert("Invalid verification code");
+                $("#txtCode").css("border-color", "#ffaaaa");
                 return;
             }
 
@@ -43551,11 +41928,8 @@ function UI() {
 
 
                     } else {
-
-                        //$("#btnVerify").removeClass("disabled");
-                        //$("#validatefail").show();
-                        bootbox.alert("Invalid verification code");
-                        $("#validateformmess").text('');
+                        $("#btnVerify").removeClass("disabled");
+                        $("#validatefail").show();
                     }
 
                 }, function (message) {
@@ -43598,10 +41972,9 @@ function UI() {
 
                                 } else {
 
-
-                                    bootbox.alert("Invalid verification code");
+                                    $("#btnVerify").removeClass("disabled");
                                     $("#validateformmess").text('');
-
+                                    $("#validatefail").show();
                                 }
 
                             }
@@ -43659,10 +42032,7 @@ function UI() {
                 clearInterval(window.updateUIInterval);
             }
 
-            $("#pinconfdets").show();
-            $("#pinconfirm").removeClass("blind");
             $("#pinconfirm").show();
-
 
 
         });
@@ -43759,8 +42129,8 @@ function UI() {
                     statusbox = '<i class=\"fa fa-times text-danger text-active\"></i> <span class="label bg-danger">Rejected</span>';
                 }
 
-                s += "<div style=\"border-top-left-radius: 0px;border-top-right-radius: 0px\" id=\"viewinvoicenetfrom" + _.escape(invoices[i].InvoiceFrom) + _.escape(invoices[i].InvoiceId) + "\" class=\"media list-group-item\"><div class=\"pull-left\">" + _.escape(timeLabel) + "</div>" +
-                                 "<div class=\"pull-right m-t-xs\">" + statusbox + "</div></div>";
+                s += "<a style=\"border-top-left-radius: 0px;border-top-right-radius: 0px\" id=\"viewinvoicenetfrom" + _.escape(invoices[i].InvoiceFrom) + _.escape(invoices[i].InvoiceId) + "\" class=\"media list-group-item\"><div class=\"pull-left\">" + _.escape(timeLabel) + "</div>" +
+                                 "<div class=\"pull-right m-t-xs\">" + statusbox + "</div></a>";
             }
 
             cachedInvoices = invoices;
@@ -43840,8 +42210,8 @@ function UI() {
                         statusbox = '<i class=\"fa fa-times text-danger text-active\"></i> <span class="label bg-danger">Rejected</span>';
                     }
 
-                    s += "<div style=\"border-top-left-radius: 0px;border-top-right-radius: 0px\" id=\"viewinvoicenetby" + invoices[i].InvoiceFrom + invoices[i].InvoiceId + "\" class=\"media list-group-item\"><div class=\"pull-left\">" + _.escape(timeLabel) + "</div>" +
-                                 "<div class=\"pull-right m-t-xs\">" + statusbox + "</div></div>";
+                    s += "<a style=\"border-top-left-radius: 0px;border-top-right-radius: 0px\" id=\"viewinvoicenetby" + invoices[i].InvoiceFrom + invoices[i].InvoiceId + "\" class=\"media list-group-item\"><div class=\"pull-left\">" + _.escape(timeLabel) + "</div>" +
+                                 "<div class=\"pull-right m-t-xs\">" + statusbox + "</div></a>";
                 }
 
                 cachedInvoicesByUser = invoices;
@@ -44085,9 +42455,7 @@ function UI() {
 
                 setTimeout(function () {
 
-                    Engine.sendTransaction('invoice', friend, '', amount, "", function (err, transactionid) {
-
-                        Engine.zeroDeviceKey();
+                    Engine.sendTransaction('invoice', friend, '', amount, ekey.DeviceKey, function (err, transactionid) {
 
                         if (!err) {
 
@@ -44143,19 +42511,10 @@ function UI() {
                                 $('#textMessageSendStd').text('Transaction Failed: Insufficient funds');
                             }
 
-
-                            $('.numdone').attr("style", "background-color:white");
-
-                            $("#sendstdpin").val('');
-                            pintaps = 0;
-                            prevpin = '';
-
                             //return to send screen
                             setTimeout(function () {
                                 $("#btnStdSndDone").show();
                             }, 100);
-
-
 
                         }
 
@@ -44182,29 +42541,12 @@ function UI() {
                 pintaps = 0;
                 prevpin = '';
 
-                window.resetPin();
-
 
                 if (ekey.substring(0, 6) == "ErrPIN") {
 
                     var attempts = ekey.substring(7, 8);
 
                     $("#pinconfcount").effect("shake");
-
-                } else if (ekey.substring(0, 10) == "ErrBlocked") {
-
-                    //if the login attempt has been blocked
-                    //display a countdown to the user
-                    //indicating when they can next attempt to
-                    //login
-
-                    var seconds = ekey.substring(11, ekey.length) * 1.0;
-
-                    setCountdown(seconds);
-
-                    // later on this timer may be stopped
-
-                    $("#pincounter").effect("shake");
 
                 } else {
 
@@ -44303,11 +42645,11 @@ function UI() {
 
     function initialiseDashboardFromCache(callback) {
 
-        //$("#dashsend").addClass("invis");
-        //$("#dashsend").removeClass("slideUp");
+        $("#dashsend").addClass("invis");
+        $("#dashsend").removeClass("slideUp");
         $("#dashsend").hide();
 
-        // $("#dashreceive").addClass("invis");
+        $("#dashreceive").addClass("invis");
         $("#dashreceive").removeClass("slideUp");
         $("#dashreceive").hide();
 
@@ -44333,33 +42675,7 @@ function UI() {
             COINUNIT = Engine.m_settings.CoinUnit;
 
             $("#mynickname").text(Engine.m_nickname);
-
-            var fprint = Engine.m_pubKey.primaryKey.fingerprint;
-            $("#hdcodeForFriend").val(fprint);
-            $("#codeForFriend").text(fprint);
-
-            //            var ffprint = '';
-            //            for (var i = 0; i < fprint.length; i++) {
-            //                if (i % 4 == 0) {
-            //                    ffprint = ffprint + ' ' + fprint[i];
-            //                } else {
-            //                    ffprint = ffprint + fprint[i];
-            //                }
-
-            //                if (i == 19) {
-
-            //                    $("#codeForFriend").text(ffprint);
-            //                    ffprint = "";
-            //                }
-            //                if (i == 39) {
-            //                    $("#codeForFriend2").text(ffprint);
-            //                }
-            //            }
-
-
-
-
-
+            $("#codeForFriend").text(Engine.m_fingerprint);
 
             //prep the network tab
             $("#networklist").show();
@@ -44396,11 +42712,11 @@ function UI() {
 
     function initialiseDashboard(callback) {
 
-        //$("#dashsend").addClass("invis");
-        //$("#dashsend").removeClass("slideUp");
+        $("#dashsend").addClass("invis");
+        $("#dashsend").removeClass("slideUp");
         $("#dashsend").hide();
 
-        // $("#dashreceive").addClass("invis");
+        $("#dashreceive").addClass("invis");
         $("#dashreceive").removeClass("slideUp");
         $("#dashreceive").hide();
 
@@ -44439,29 +42755,7 @@ function UI() {
         $("#imgProfile").attr("src", imageSrc);
         $("#imgtoprightprofile").attr("src", imageSrcSmall);
 
-        var fprint = Engine.m_pubKey.primaryKey.fingerprint;
-
-        $("#codeForFriend").text(fprint);
-        $("#hdcodeForFriend").val(fprint);
-
-
-        //        var ffprint = '';
-        //        for (var i = 0; i < fprint.length; i++) {
-        //            if (i % 4 == 0) {
-        //                ffprint = ffprint + ' ' + fprint[i];
-        //            } else {
-        //                ffprint = ffprint + fprint[i];
-        //            }
-
-        //            if (i == 19) {
-
-        //                $("#codeForFriend").text(ffprint);
-        //                ffprint = "";
-        //            }
-        //            if (i == 39) {
-        //                $("#codeForFriend2").text(ffprint);
-        //            }
-        //        }
+        $("#codeForFriend").text(Engine.m_fingerprint);
 
 
         //prep the network tab
@@ -45012,178 +43306,179 @@ function UI() {
 
 
 
-                    if (friends.length == 0 && lastNoOfFriends == 0) {
-                        //$('#welcomenet').show();
+                    if (friends.length == 0) {
+                        $('#welcomenet').show();
                     } else {
                         $('#welcomenet').hide();
+                    }
 
 
-                        //$("#nfriends").text(friends.length);
 
-                        if (friends.length > lastNoOfFriends) {
+                    //$("#nfriends").text(friends.length);
 
-                            lastNoOfFriends = friends.length;
+                    if (friends.length > lastNoOfFriends) {
 
-                            FRIENDSLIST = {};
+                        lastNoOfFriends = friends.length;
 
-                            for (var i = 0; i < friends.length; i++) {
-                                FRIENDSLIST[friends[i].userName] = friends[i];
-                            }
+                        FRIENDSLIST = {};
 
-                            //if selected friend is not isend and isreceive
-                            //then find in list and update
+                        for (var i = 0; i < friends.length; i++) {
+                            FRIENDSLIST[friends[i].userName] = friends[i];
+                        }
 
-                            //                    if (selectedFriend != null) {
+                        //if selected friend is not isend and isreceive
+                        //then find in list and update
 
-                            //                        if (!selectedFriend.ICanSend || !selectedFriend.ICanReceive) {
-                            //                            selectedFriend = FRIENDSLIST[selectedFriend.userName];
-                            //                            updateSelectedFriend();
-                            //                        }
+                        //                    if (selectedFriend != null) {
 
-                            //                    }
+                        //                        if (!selectedFriend.ICanSend || !selectedFriend.ICanReceive) {
+                        //                            selectedFriend = FRIENDSLIST[selectedFriend.userName];
+                        //                            updateSelectedFriend();
+                        //                        }
 
-
-                            $("#nfriends").text(friends.length);
-                            $("#myfriends").text('');
+                        //                    }
 
 
-                            var grouptemplate = '';
-
-                            var friendsgroup = _.groupBy(friends, function (item) { return item.category; });
-
-                            grouptemplate += '<div class="panel-group" id="accordion2">';
-
-                            var k = 0;
-                            var g = 1;
-                            for (var key in friendsgroup) {
-
-                                friends = friendsgroup[key];
-
-                                grouptemplate += '<div class="panel panel-default" style="border-radius: 0px; border-bottom: 0px;">';
-                                grouptemplate += '<div class="panel-heading" style="border-radius: 0px; border-bottom: 0px; background-color:#ffffff;" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + g + '">';
-                                grouptemplate += '<a class="accordion-toggle h4 font-thin">';
-                                grouptemplate += _.escape(key);
-                                grouptemplate += '</a>';
-                                grouptemplate += '</div>';
-                                grouptemplate += '<div id="collapse' + g + '" class="panel-collapse in" style="border-radius: 0px; border-bottom: 0px;">';
+                        $("#nfriends").text(friends.length);
+                        $("#myfriends").text('');
 
 
-                                for (var i = 0; i < friendsgroup[key].length; i++) {
+                        var grouptemplate = '';
 
-                                    var frnd = FRIENDSLIST[friends[i].userName];
+                        var friendsgroup = _.groupBy(friends, function (item) { return item.category; });
 
-                                    var length = frnd.userName.length;
-                                    if (length > 20) {
-                                        length = 20;
-                                    }
+                        grouptemplate += '<div class="panel-group" id="accordion2">';
+
+                        var k = 0;
+                        var g = 1;
+                        for (var key in friendsgroup) {
+
+                            friends = friendsgroup[key];
+
+                            grouptemplate += '<div class="panel panel-default">';
+                            grouptemplate += '<div class="panel-heading" data-toggle="collapse" data-parent="#accordion2" href="#collapse' + g + '">';
+                            grouptemplate += '<a class="accordion-toggle font-bold">';
+                            grouptemplate += _.escape(key);
+                            grouptemplate += '</a>';
+                            grouptemplate += '</div>';
+                            grouptemplate += '<div id="collapse' + g + '" class="panel-collapse in">';
 
 
-                                    var imageSrc = "images/avatar/64px/Avatar-" + pad(length) + ".png";
+                            for (var i = 0; i < friendsgroup[key].length; i++) {
 
-                                    if (frnd.profileImage != '') {
-                                        imageSrc = "https://ninkip2p.imgix.net/" + _.escape(frnd.profileImage) + "?crop=faces&fit=crop&h=256&w=256&mask=ellipse&border=1,d0d0d0";
-                                        imageSrcSmall = "https://ninkip2p.imgix.net/" + _.escape(frnd.profileImage) + "?crop=faces&fit=crop&h=128&w=128&mask=ellipse&border=1,d0d0d0";
-                                    }
+                                var frnd = FRIENDSLIST[friends[i].userName];
+
+                                var length = frnd.userName.length;
+                                if (length > 20) {
+                                    length = 20;
+                                }
 
 
-                                    var template = '<a href="#" style="border-radius: 0px; border-bottom: 0px;" class="media list-group-item" id="friend' + k + '"><div class="media">' +
+                                var imageSrc = "images/avatar/64px/Avatar-" + pad(length) + ".png";
+
+                                if (frnd.profileImage != '') {
+                                    imageSrc = "https://ninkip2p.imgix.net/" + _.escape(frnd.profileImage) + "?crop=faces&fit=crop&h=256&w=256&mask=ellipse&border=1,d0d0d0";
+                                    imageSrcSmall = "https://ninkip2p.imgix.net/" + _.escape(frnd.profileImage) + "?crop=faces&fit=crop&h=128&w=128&mask=ellipse&border=1,d0d0d0";
+                                }
+
+
+                                var template = '<a href="#" class="media list-group-item" id="friend' + k + '"><div class="media">' +
                                 '<span class="pull-left thumb-sm"><img src="' + _.escape(imageSrc) + '" alt="" class="img-circle"></span><div id="seltarget' + _.escape(friends[i].userName) + '">';
 
-                                    if (frnd.validated) {
-                                        template += '<div class="pull-right text-success m-t-sm">' +
+                                if (frnd.validated) {
+                                    template += '<div class="pull-right text-success m-t-sm">' +
                                 '<i class="fa fa-check-square" style="font-size:1.5em"></i>' +
                                 '</div>';
-                                    }
+                                }
 
-                                    template += '</div><div class="media-body">' +
+                                template += '</div><div class="media-body">' +
                                 '<div>' + _.escape(friends[i].userName) + '</div>' +
                                 '<small class="text-muted">' + _.escape(frnd.status) + '</small>' +
                                 '</div>' +
                                 '</div></a>';
 
 
-                                    grouptemplate += template;
+                                grouptemplate += template;
 
 
 
-                                    k++;
-                                }
-
-
-                                grouptemplate += '</div>';
-                                grouptemplate += '</div>';
-                                g++;
+                                k++;
                             }
+
 
                             grouptemplate += '</div>';
+                            grouptemplate += '</div>';
+                            g++;
+                        }
 
-                            $("#myfriends").html(grouptemplate);
+                        grouptemplate += '</div>';
 
-
-
-                            $('#myfriends #accordion2').on('touchstart.collapse.data-api', '[data-toggle=collapse]', function (e) {
-                                var $this = $(this);
-
-                                $this.click();
-
-                                //href, target = $this.attr('data-target') || e.preventDefault() || (href = $this.attr('href')) //strip for ie7
-                                //,
-                                //option = $(target).data('collapse') ? 'show' : $this.data()
-                                //$(target).collapse(option)
-                            });
+                        $("#myfriends").html(grouptemplate);
 
 
 
-                            var k = 0;
-                            var g = 1;
-                            for (var key in friendsgroup) {
+                        $('#myfriends #accordion2').on('touchstart.collapse.data-api', '[data-toggle=collapse]', function (e) {
+                            var $this = $(this);
+
+                            $this.click();
+
+                            //href, target = $this.attr('data-target') || e.preventDefault() || (href = $this.attr('href')) //strip for ie7
+                            //,
+                            //option = $(target).data('collapse') ? 'show' : $this.data()
+                            //$(target).collapse(option)
+                        });
+
+
+
+                        var k = 0;
+                        var g = 1;
+                        for (var key in friendsgroup) {
+
+                            friends = friendsgroup[key];
+                            for (var i = 0; i < friendsgroup[key].length; i++) {
 
                                 friends = friendsgroup[key];
-                                for (var i = 0; i < friendsgroup[key].length; i++) {
-
-                                    friends = friendsgroup[key];
 
 
-                                    //var btnfriend = $("#myfriends #friend" + k).get();
-                                    //var hammertime = new Hammer(btnfriend[0]);
+                                //var btnfriend = $("#myfriends #friend" + k).get();
+                                //var hammertime = new Hammer(btnfriend[0]);
 
-                                    $("#myfriends #friend" + k).hammer(null).bind("tap", { userName: friends[i].userName }, function (ev) {
+                                $("#myfriends #friend" + k).hammer(null).bind("tap", { userName: friends[i].userName }, function (ev) {
 
 
-                                        if (!scrollingnetlist) {
+                                    if (!scrollingnetlist) {
 
-                                            SELECTEDFRIEND = ev.data.userName;
-                                            selectedFriend = FRIENDSLIST[ev.data.userName];
-                                            prevNetworkTransCount = 0;
+                                        SELECTEDFRIEND = ev.data.userName;
+                                        selectedFriend = FRIENDSLIST[ev.data.userName];
+                                        prevNetworkTransCount = 0;
 
-                                            networkpagestate = "friend";
-                                            friendpagestate = "send";
-                                            $("#networklistheader").hide();
-                                            $("#friendheader").show();
-                                            $("#pnlfriend").show();
+                                        networkpagestate = "friend";
+                                        friendpagestate = "send";
+                                        $("#networklistheader").hide();
+                                        $("#friendheader").show();
+                                        $("#pnlfriend").show();
 
-                                            $('#netpayfeed').html('');
-                                            $("#networkpayments").show();
-                                            $("#networklist").hide();
+                                        $('#netpayfeed').html('');
+                                        $("#networkpayments").show();
+                                        $("#networklist").hide();
 
-                                            $("#pnlfriendinv").hide();
+                                        $("#pnlfriendinv").hide();
 
-                                            //window.scrollTo(0, 0);
+                                        //window.scrollTo(0, 0);
 
-                                            updateSelectedFriend();
+                                        updateSelectedFriend();
 
-                                        }
+                                    }
 
-                                    });
+                                });
 
-                                    ////console.log("added click " + k + " for " + friends[i].userName);
+                                ////console.log("added click " + k + " for " + friends[i].userName);
 
-                                    k++;
-                                }
-                                g++;
+                                k++;
                             }
-
+                            g++;
                         }
+
                     }
 
                     if (callback) {
@@ -45385,7 +43680,7 @@ function UI() {
 
                 if (friends.length > 0) {
                     $("#dashrequests").show();
-                    $('#welcomenet').hide();
+
                 } else {
                     $("#dashrequests").hide();
                 }
@@ -45395,7 +43690,6 @@ function UI() {
                 if (lastNoOfFriendsReq != friends.length || friends.length == 0) {
 
                     lastNoOfFriendsReq = friends.length;
-
 
                     $("#friendreq").text('');
 
@@ -45476,7 +43770,7 @@ function UI() {
 
     $('#btnContactReject').bind('touchstart', function () {
 
-        rejectFriend(selectedFriendRequest, function (err, res) {
+        rejectFriend(event.data.userName, function (err, res) {
 
             if (!err) {
 
@@ -45497,163 +43791,6 @@ function UI() {
 
 
 
-    var prevtimeline = -1;
-    var timelineCache = [];
-    var allTimeline = [];
-
-    function showTransactionFeedNew(callback) {
-
-        Engine.getTimeline(function (err, timeline) {
-
-
-            if (!err) {
-
-                if (timeline.length == 0) {
-                    $('#welcometran').show();
-                    $('#nowelcome').hide();
-
-                } else {
-                    $('#welcometran').hide();
-                    $('#nowelcome').show();
-                }
-
-
-                allTimeline = timeline;
-                timelineCache = timeline;
-
-                if (timeline.length != prevtimeline) {
-
-                    for (var i = 0; i < allTimeline.length; i++) {
-                        var d1 = new Date(allTimeline[i].TransDateTime);
-                        allTimeline[i].JsDate = new Date(timeline[i].TimelineDate.match(/\d+/)[0] * 1);
-                    }
-
-                    prevtimeline = timeline.length;
-
-                    $('#transfeed').empty();
-
-                    var template = '';
-
-                    for (var i = 0; i < timeline.length && i < 51; i++) {
-
-                        var length = timeline[i].UserName.length;
-                        if (length > 20) {
-                            length = 20;
-                        }
-
-                        var imageSrcSmall = "images/avatar/64px/Avatar-" + pad(length) + ".png";
-
-                        if (timeline[i].UserName != 'External') {
-                            if (timeline[i].UserNameImage) {
-                                if (timeline[i].UserNameImage != '') {
-                                    imageSrcSmall = "https://ninkip2p.imgix.net/" + _.escape(timeline[i].UserNameImage) + "?crop=faces&fit=crop&h=128&w=128&mask=ellipse&border=1,d0d0d0";
-                                }
-                            }
-                        }
-
-                        var amountLabel = "";
-                        var friendLabel = "";
-
-                        if (timeline[i].TimelineType == 'TS') {
-                            amountLabel = "sent " + formatCoinAmount(convertFromSatoshis(timeline[i].Amount, COINUNIT)) + " " + _.escape(COINUNIT);
-                            //amountLabel = " sent 1 BTC";
-                            friendLabel = "to " + _.escape(timeline[i].UserName);
-                        }
-
-                        if (timeline[i].TimelineType == 'TR') {
-                            amountLabel = "received " + formatCoinAmount(convertFromSatoshis(timeline[i].Amount, COINUNIT)) + " " + _.escape(COINUNIT);
-                            //amountLabel = " received 1 BTC";
-                            friendLabel = "from " + _.escape(timeline[i].UserName);
-                        }
-
-
-                        if (timeline[i].TimelineType == "IS") {
-                            amountLabel = "invoice";
-                            friendLabel = "sent to " + _.escape(timeline[i].UserName);
-                        }
-
-                        if (timeline[i].TimelineType == "IR") {
-                            amountLabel = "invoice";
-                            friendLabel = "from " + _.escape(timeline[i].UserName);
-                        }
-
-                        if (timeline[i].TimelineType == "FRS") {
-                            amountLabel = "contact request";
-                            friendLabel = "sent to " + _.escape(timeline[i].UserName);
-                        }
-
-                        if (timeline[i].TimelineType == "FRR") {
-                            amountLabel = "contact request";
-                            friendLabel = "from " + _.escape(timeline[i].UserName);
-                        }
-
-                        var trdate = new Date(timeline[i].TimelineDate.match(/\d+/)[0] * 1);
-                        var timeLabel = prettydate.format(trdate);
-
-                        template += '<a href="#" class="list-group-item clearfix" id="dtran' + i + '">';
-                        template += '<span class="pull-left thumb-sm avatar m-r">';
-                        template += '<img src="';
-                        template += imageSrcSmall;
-                        template += '" alt="...">';
-
-                        template += '</span>';
-                        template += '<span class="clear">';
-                        template += '<span>';
-                        template += amountLabel;
-                        template += '</span>';
-
-                        template += '<span class="pull-right">';
-                        template += '<div class="trntime">';
-                        template += timeLabel;
-                        template += '</div>';
-                        template += '</span>';
-
-                        template += '<span class="clear">';
-                        template += '<span>';
-
-                        if (timeline[i].TimelineType == 'TS' || timeline[i].TimelineType == 'TR') {
-                            template += '<div class="conf">';
-                            if (timeline[i].Confirmations < 6) {
-                                template += '<span class="badge bg-warning pull-right">';
-                                template += _.escape(timeline[i].Confirmations);
-                                template += '</span>';
-                            }
-                            template += '</div>';
-                        }
-
-                        template += '<small class="text-muted clear text-ellipsis">';
-                        template += friendLabel;
-                        template += '</small>';
-                        template += '</span>';
-                        template += '</a>';
-
-                    }
-
-                    $('#transfeed').html(template);
-
-                }
-
-
-                //cache main screen items
-                //transaction list / price / balance
-
-                if (callback) {
-                    return callback(err, "ok");
-                }
-
-            } else {
-
-                if (callback) {
-                    return callback(err, transactions);
-                }
-            }
-
-        });
-
-    }
-
-
-
     var prevtransfeed = -1;
     var transactionCache = [];
 
@@ -45663,14 +43800,10 @@ function UI() {
 
 
             if (!err) {
-
                 if (transactions.length == 0) {
                     $('#welcometran').show();
-                    $('#nowelcome').hide();
-
                 } else {
                     $('#welcometran').hide();
-                    $('#nowelcome').show();
                 }
 
 
@@ -45701,7 +43834,7 @@ function UI() {
                             length = 20;
                         }
 
-                        var imageSrcSmall = "images/avatar/64px/Avatar-" + pad(length) + ".png";
+                        var imageSrcSmall = "images/avatar/32px/Avatar-" + pad(length) + ".png";
 
                         if (transactions[i].UserName != 'External') {
                             if (transactions[i].UserNameImage) {
@@ -45728,7 +43861,7 @@ function UI() {
                         var trdate = new Date(transactions[i].TransDateTime.match(/\d+/)[0] * 1);
                         var timeLabel = prettydate.format(trdate);
 
-                        template += '<a href="#" style="border-radius: 0px;" class="list-group-item clearfix" id="dtran' + i + '">';
+                        template += '<a href="#" class="list-group-item clearfix" id="dtran' + i + '">';
                         template += '<span class="pull-left thumb-sm avatar m-r">';
                         template += '<img src="';
                         template += imageSrcSmall;
@@ -46004,7 +44137,7 @@ function UI() {
 
             if (!err) {
 
-                var options = { text: 'bitcoin:' + newAddress, width: 172, height: 172 };
+                var options = { text: newAddress, width: 172, height: 172 };
 
                 $('#requestaddressqr').show();
                 $('#requestaddressqr').text('');
@@ -46070,11 +44203,12 @@ function UI() {
                     $('#sendstdprognum').text('10%');
                     $('#sendstdprog').show();
 
+
+
+
                     setTimeout(function () {
 
-                        Engine.sendTransaction('friend', friend, "", amount, "", function (err, transactionid) {
-
-                            Engine.zeroDeviceKey();
+                        Engine.sendTransaction('friend', friend, "", amount, ekey.DeviceKey, function (err, transactionid) {
 
                             if (!err) {
 
@@ -46141,7 +44275,6 @@ function UI() {
                     pintaps = 0;
                     prevpin = '';
 
-                    window.resetPin();
 
                     if (ekey.substring(0, 6) == "ErrPIN") {
 
@@ -46150,21 +44283,6 @@ function UI() {
                         //$("#pinconfmessage").text("Incorrect PIN " + attempts + "/3 attempts");
 
                         $("#pinconfcount").effect("shake");
-
-                    } else if (ekey.substring(0, 10) == "ErrBlocked") {
-
-                        //if the login attempt has been blocked
-                        //display a countdown to the user
-                        //indicating when they can next attempt to
-                        //login
-
-                        var seconds = ekey.substring(11, ekey.length) * 1.0;
-
-                        setCountdown(seconds);
-
-                        // later on this timer may be stopped
-
-                        $("#pincounter").effect("shake");
 
                     } else {
 
@@ -46226,13 +44344,13 @@ function UI() {
 
                     setTimeout(function () {
 
-                        Engine.sendTransaction('standard', '', address, amount, '', function (err, transactionid) {
-
-                            Engine.zeroDeviceKey();
+                        Engine.sendTransaction('standard', '', address, amount, ekey.DeviceKey, function (err, transactionid) {
 
                             if (!err) {
 
                                 $('#textMessageSendStd').html('You sent ' + _.escape(convertFromSatoshis(amount, COINUNIT)) + ' ' + _.escape(COINUNIT) + ' to <span style="word-wrap:break-word;">' + _.escape(address) + '</span>');
+
+
 
                                 prevtransfeed = -1;
 
@@ -46308,21 +44426,6 @@ function UI() {
                         //$("#pinconfmessage").text("Incorrect PIN " + attempts + "/3 attempts");
 
                         $("#pinconfcount").effect("shake");
-
-                    } else if (ekey.substring(0, 10) == "ErrBlocked") {
-
-                        //if the login attempt has been blocked
-                        //display a countdown to the user
-                        //indicating when they can next attempt to
-                        //login
-
-                        var seconds = ekey.substring(11, ekey.length) * 1.0;
-
-                        setCountdown(seconds);
-
-                        // later on this timer may be stopped
-
-                        $("#pincounter").effect("shake");
 
                     } else {
 
@@ -46626,7 +44729,7 @@ function UI() {
                     $("#acceptcontactprognum").text('100%');
                     $("#acceptcontactprog").width('100%');
                     selectedFriendRequest = '';
-                }, 500);
+                },500);
 
 
                 updateFriendRequests(function (err, result) {
@@ -47245,15 +45348,11 @@ function UI() {
 
     }
 
-    function rejectFriend(username, callback) {
+    function rejectFriend(username) {
 
         Engine.rejectFriendRequest(username, function (err, result) {
 
-            if (!err) {
-                updateFriendRequests();
-            }
-
-            return callback(err, result);
+            updateFriendRequests();
 
         });
     }
@@ -47311,7 +45410,7 @@ function UI() {
 
 
     //loginPIN
-    //this function takes the user's input PIN number
+    //this function takes the user's input PIN number 
     //and authenticates the user
     //if the user has not previosuly authenticated it downloads and decrypts
     //all the relevant wallet data
@@ -47353,7 +45452,6 @@ function UI() {
                         }
 
                         //is the app previosuly intialised
-
 
                         if (Engine.m_appInitialised) {
 
@@ -47414,23 +45512,19 @@ function UI() {
                                     Engine.m_settings.EmailVerified = settingsObject.EmailVerified;
 
 
-                                    if (Engine.m_settings.TwoFactor) {
-                                        $("#secheck2fa").show();
-                                        $("#sechev2fa").hide();
-                                    } else {
-                                        $("#secheck2fa").hide();
-                                        $("#sechev2fa").show();
+                                    if (!Engine.m_settings.EmailVerified) {
+
+
+
+                                        $(".footer").hide();
+                                        $('#dashheader').hide();
+                                        $("#mainWallet").hide();
+                                        $("#emailstep").show();
+
+                                        app.isScanning = true;
+
+
                                     }
-
-
-                                    if (Engine.m_settings.EmailVerified) {
-                                        $("#secheckemail").show();
-                                        $("#sechevemail").hide();
-                                    } else {
-                                        $("#secheckemail").hide();
-                                        $("#sechevemail").show();
-                                    }
-
 
                                 }
 
@@ -47444,46 +45538,6 @@ function UI() {
 
                                 Engine.m_profileImage = data.ProfileImage;
                                 Engine.m_statusText = data.Status;
-                                m_this.m_offlineKeyBackup = data.OfflineKeyBackup;
-
-                                var currentBalanceInSatoshis = convertToSatoshis(currentBalance, COINUNIT);
-
-
-                                Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                                    if (!Engine.m_offlineKeyBackup || res == "1") {
-
-                                        if (currentBalanceInSatoshis >= 2500000) {
-
-                                            bootbox.dialog({ title: '<div class="clear"><div class="h3 m-t-xs m-b-xs"><i class="fa fa-warning text-warning"></i>&nbsp;Security Warning</div><small class="text-muted"></small></div>', message: 'Backup your keys in Settings > Security Checklist.<br /><br />Currently, if you lose access to this application, you will lose access to any bitcoins you have stored in your wallet.', closeButton: false, buttons: {
-                                                main: {
-                                                    label: "I Understand",
-                                                    className: "btn-warning",
-                                                    callback: function () {
-
-                                                    }
-                                                }
-                                            }
-                                            });
-
-                                        }
-
-                                    }
-
-                                });
-
-                                Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                                    if (Engine.m_offlineKeyBackup && res == "") {
-                                        $("#secheckkeys").show();
-                                        $("#secchevkeys").hide();
-
-                                    } else {
-                                        $("#secheckkeys").hide();
-                                        $("#secchevkeys").show();
-                                    }
-
-                                });
 
                                 updateProfile();
 
@@ -47513,174 +45567,13 @@ function UI() {
                                 cordova.plugins.Keyboard.disableScroll(true);
                             }
 
-                            //initialise from cache
-                            Engine.Device.getSecureStorageObject("dataCache", Engine.m_deviceKey, Engine.decrypt, false, function (res) {
+                            //first check for a cache
+                            //this should be there after the first time a packet is intialised
+                            Engine.Device.getStorageItem("dataCache", function (res) {
 
-                                if (res != "") {
-
-                                    Engine.initialize(JSON.parse(res));
-                                    Engine.setSecDeviceKey();
-                                    Engine.zeroDeviceKey();
-
-                                    var target = document.getElementById('pairspinner');
-                                    var spinner = new Spinner(spinneropts).spin(target);
-                                    pinlock = false;
-
-                                    $("#pairspinner").show();
-                                    $("#pinspinner").hide();
-                                    $('.numdone').attr("style", "background-color:white");
-                                    $("#loginpin").hide();
-                                    $("#loginpinno").val('');
-                                    $("#paddel").hide();
-                                    $("#pinloginmessage").text("Enter your PIN number");
-
-                                    //initilaise the UI elements
-                                    initialiseDashboardFromCache(function () {
-
-                                        Engine.Device.getStorageItem("price", function (res) {
-
-                                            displayPrice(JSON.parse(res));
-
-                                        });
-
-
-                                        updateUI();
-
-                                        Engine.m_appInitialised = true;
-
-                                        $("#isactive").val(1);
-
-                                        $("#pairspinner").hide();
-
-                                        $('#dashboard').show();
-                                        $('#dashheader').show();
-
-                                        $("#mainWallet").show();
-                                        $("#footermode").val(1);
-                                        $(".footer").show();
-
-                                        $("#nonlogin").show();
-
-
-                                        if (!(typeof window.app === 'undefined')) {
-                                            app.isScanning = false;
-                                        }
-
-
-                                        //refresh account settings in case they were updated
-                                        //in the chrome app
-                                        Engine.getAccountSettings(function (err, res) {
-
-                                            if (!err) {
-
-                                                //only set the settings we need to refresh for the mobile apps
-                                                var settingsObject = JSON.parse(res);
-
-                                                Engine.m_settings.MinersFee = settingsObject.MinersFee;
-                                                Engine.m_settings.TwoFactor = settingsObject.TwoFactor;
-                                                Engine.m_settings.EmailVerified = settingsObject.EmailVerified;
-
-                                                if (Engine.m_settings.TwoFactor) {
-                                                    $("#secheck2fa").show();
-                                                    $("#sechev2fa").hide();
-                                                } else {
-                                                    $("#secheck2fa").hide();
-                                                    $("#sechev2fa").show();
-                                                }
-
-
-                                                if (Engine.m_settings.EmailVerified) {
-                                                    $("#secheckemail").show();
-                                                    $("#sechevemail").hide();
-                                                } else {
-                                                    $("#secheckemail").hide();
-                                                    $("#sechevemail").show();
-                                                }
-
-
-
-                                                //refresh user profile data incase they updated
-                                                //it via the chrome app
-                                                Engine.getUserProfile(function (err, data) {
-
-                                                    data = JSON.parse(data);
-
-                                                    m_this.m_profileImage = data.ProfileImage;
-                                                    m_this.m_statusText = data.Status;
-                                                    m_this.m_offlineKeyBackup = data.OfflineKeyBackup;
-
-
-                                                    var currentBalanceInSatoshis = convertToSatoshis(currentBalance, COINUNIT);
-
-                                                    Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                                                        if (!Engine.m_offlineKeyBackup || res == "1") {
-
-                                                            if (currentBalanceInSatoshis >= 2500000) {
-
-                                                                bootbox.dialog({ title: '<div class="clear"><div class="h3 m-t-xs m-b-xs"><i class="fa fa-warning text-warning"></i>&nbsp;Security Warning</div><small class="text-muted"></small></div>', message: 'Backup your keys in Settings > Security Checklist.<br /><br />Currently, if you lose access to this application, you will lose access to any bitcoins you have stored in your wallet.', closeButton: false, buttons: {
-                                                                    main: {
-                                                                        label: "I Understand",
-                                                                        className: "btn-warning",
-                                                                        callback: function () {
-
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                                });
-
-                                                            }
-
-                                                        }
-
-                                                    });
-
-                                                    Engine.Device.getStorageItem("ok_disp", function (res) {
-
-                                                        if (Engine.m_offlineKeyBackup && res == "") {
-                                                            $("#secheckkeys").show();
-                                                            $("#secchevkeys").hide();
-                                                        } else {
-                                                            $("#secheckkeys").hide();
-                                                            $("#secchevkeys").show();
-                                                        }
-
-
-                                                        if (Engine.m_offlineKeyBackup && res == "" && !Engine.m_settings.EmailVerified) {
-
-                                                            $("#sechevemail i").removeClass("text-muted");
-                                                            $("#sechevemail i").addClass("text-primary");
-
-                                                        }
-
-                                                        if (Engine.m_offlineKeyBackup && res == "" && Engine.m_settings.EmailVerified) {
-
-                                                            $("#sechev2fa i").removeClass("text-muted");
-                                                            $("#sechev2fa i").addClass("text-primary");
-
-                                                        }
-
-                                                    });
-
-                                                    updateProfile();
-
-                                                });
-
-
-                                            }
-
-                                        });
-
-                                    });
-
-
-                                } else {
+                                if (res.length == 0) {
 
                                     //if the app has not been initialised then we need to download the wallet data
-
-                                    //test this execution
-
 
                                     $("#pairspinner").show();
 
@@ -47698,17 +45591,18 @@ function UI() {
 
 
                                     //get the encrypted user's password from local storage
-                                    Engine.Device.getSecureStorageObject("ninki_p", Engine.m_deviceKey, Engine.decryptNp, true, function (result) {
+                                    Engine.Device.getSecureStorageObject("ninki_p", ekeyv.DeviceKey, Engine.decryptNp, function (result) {
 
                                         Engine.setStretchPass(result);
 
                                         //get the encrypted 2fa override token from local storage
-                                        Engine.Device.getSecureStorageObject("ninki_rem", Engine.m_deviceKey, Engine.decryptNp, true, function (fatoken) {
+                                        Engine.Device.getSecureStorageObject("ninki_rem", ekeyv.DeviceKey, Engine.decryptNp, function (fatoken) {
 
                                             if (fatoken.length > 0) {
 
+
                                                 //use the token to open the wallet
-                                                Engine.openWallet(guid, Bitcoin.convert.bytesToHex(fatoken), function (err, result) {
+                                                Engine.openWallet(guid, fatoken, function (err, result) {
 
                                                     if (!err) {
 
@@ -47718,14 +45612,29 @@ function UI() {
                                                             $("#pairspinner").hide();
                                                             $("#loginpinno").val('');
                                                             pinlock = false;
+                                                            //$("#enterpinalert").show();
+                                                            //$("#enterpinalertmessage").text('Token has expired');
+
+                                                            bootbox.alert("Your token has expired. Please repair your device", function () {
+
+                                                                Engine.Device.deleteStorageItem("ninki_reg");
+                                                                Engine.Device.deleteStorageItem("ninki_p");
+                                                                Engine.Device.deleteStorageItem("ninki_rem");
+                                                                Engine.Device.deleteStorageItem("guid");
+
+                                                                location.reload();
+
+                                                            });
 
                                                         } else {
+
 
                                                             //create an encrypted cache to enable quick reloading of app state
 
                                                             var dataToCache = Engine.serialize();
 
-                                                            Engine.Device.setSecureStorageObject("dataCache", dataToCache, Engine.m_deviceKey, Engine.encrypt);
+                                                            Engine.Device.setSecureStorageObject("dataCache", dataToCache, ekeyv.DeviceKey, Engine.encrypt);
+
 
                                                             //initilaise the UI elements
                                                             initialiseDashboard(function () {
@@ -47760,15 +45669,17 @@ function UI() {
                                                     } else {
 
 
+                                                        if (result == "ErrLocked") {
 
-                                                        bootbox.alert("Please re-pair your device from the Chrome App.");
+                                                            bootbox.alert("Your account is locked. Please unlock your account using the Chrome App");
 
-                                                        pinlock = false;
+                                                        } else {
 
-                                                        if (!(typeof window.app === 'undefined')) {
-                                                            app.isScanning = false;
+                                                            bootbox.alert(result);
+
                                                         }
 
+                                                        pinlock = false;
 
                                                         $("#pairspinner").hide();
                                                         $('.numdone').attr("style", "background-color:white");
@@ -47777,6 +45688,10 @@ function UI() {
                                                         $("#paddel").hide();
                                                         $("#pinloginmessage").text("Enter your PIN number");
 
+                                                        if (!(typeof window.app === 'undefined')) {
+                                                            app.isScanning = false;
+                                                        }
+
                                                     }
 
                                                 });
@@ -47784,6 +45699,136 @@ function UI() {
                                             }
 
                                         });
+
+                                    });
+
+                                } else {
+
+                                    //initialise from cache
+                                    Engine.Device.getSecureStorageObject("dataCache", ekeyv.DeviceKey, Engine.decrypt, function (res) {
+
+
+                                        if (res != "") {
+
+                                            Engine.initialize(JSON.parse(res));
+
+                                            var target = document.getElementById('pairspinner');
+                                            var spinner = new Spinner(spinneropts).spin(target);
+                                            pinlock = false;
+
+                                            $("#pairspinner").show();
+                                            $("#pinspinner").hide();
+                                            $('.numdone').attr("style", "background-color:white");
+                                            $("#loginpin").hide();
+                                            $("#loginpinno").val('');
+                                            $("#paddel").hide();
+                                            $("#pinloginmessage").text("Enter your PIN number");
+
+
+                                            Engine.Device.getSecureStorageObject("ninki_p", ekeyv.DeviceKey, Engine.decryptNp, function (result) {
+
+                                                //decrypt the password using the encryption key sent from the server
+                                                //and set the password
+                                                Engine.setStretchPass(result);
+
+                                                //initilaise the UI elements
+                                                initialiseDashboardFromCache(function () {
+
+                                                    Engine.Device.getStorageItem("price", function (res) {
+
+                                                        displayPrice(JSON.parse(res));
+
+                                                    });
+
+
+                                                    updateUI();
+
+                                                    Engine.m_appInitialised = true;
+
+
+
+
+                                                    $("#isactive").val(1);
+
+                                                    $("#pairspinner").hide();
+
+                                                    $('#dashboard').show();
+                                                    $('#dashheader').show();
+
+                                                    $("#mainWallet").show();
+                                                    $("#footermode").val(1);
+                                                    $(".footer").show();
+
+                                                    $("#nonlogin").show();
+
+
+
+
+
+
+                                                    if (!(typeof window.app === 'undefined')) {
+                                                        app.isScanning = false;
+                                                    }
+
+
+                                                    //refresh account settings in case they were updated
+                                                    //in the chrome app
+                                                    Engine.getAccountSettings(function (err, res) {
+
+                                                        if (!err) {
+
+                                                            //only set the settings we need to refresh for the mobile apps
+                                                            var settingsObject = JSON.parse(res);
+
+                                                            Engine.m_settings.MinersFee = settingsObject.MinersFee;
+                                                            Engine.m_settings.TwoFactor = settingsObject.TwoFactor;
+                                                            Engine.m_settings.EmailVerified = settingsObject.EmailVerified;
+
+                                                            if (!Engine.m_settings.EmailVerified) {
+
+                                                                $(".footer").hide();
+                                                                $('#dashheader').hide();
+                                                                $("#mainWallet").hide();
+                                                                $("#emailstep").show();
+
+                                                                app.isScanning = true;
+
+
+                                                            }
+
+                                                        }
+
+                                                    });
+
+                                                    //refresh user profile data incase they updated
+                                                    //it via the chrome app
+                                                    Engine.getUserProfile(function (err, data) {
+
+                                                        data = JSON.parse(data);
+
+                                                        m_this.m_profileImage = data.ProfileImage;
+                                                        m_this.m_statusText = data.Status;
+
+                                                        updateProfile();
+
+                                                    });
+
+
+
+                                                });
+
+                                            });
+
+                                        } else {
+
+                                            Engine.Device.deleteStorageItem("dataCache");
+                                            //Engine.Device.deleteStorageItem("balance");
+                                            bootbox.alert("Your cache has expired. Please try again.", function () {
+
+                                                location.reload();
+
+                                            });
+                                        }
 
                                     });
                                 }
@@ -47798,7 +45843,20 @@ function UI() {
 
                         if (ekeyv == "ErrDeviceDestroyed") {
 
-                            //remove this functionality
+                            Engine.Device.deleteStorageItem("ninki_reg");
+                            Engine.Device.deleteStorageItem("ninki_p");
+                            Engine.Device.deleteStorageItem("ninki_rem");
+                            Engine.Device.deleteStorageItem("guid");
+
+                            bootbox.alert("Too many failed attempts. The device has been unpaired.", function () {
+
+                                $("#loginpin").hide();
+                                $("#mainWallet").hide();
+                                $("#pairDevice").show();
+
+                                location.reload();
+
+                            });
 
                         } else {
 
@@ -47806,36 +45864,14 @@ function UI() {
                             pinlock = false;
 
                             $("#loginpinno").val('');
-                            $("#sendstdpin").val('');
                             $('.numdone').attr("style", "background-color:white");
                             $("#paddel").hide();
-
-                            window.resetPin();
-
-                            $("#paddelconf").hide();
-
 
                             if (ekeyv.substring(0, 6) == "ErrPIN") {
 
                                 var attempts = ekeyv.substring(7, 8);
 
                                 $("#pinloginmessage").text("Incorrect PIN " + attempts + "/3 attempts");
-                                $("#pincounter").effect("shake");
-
-                            } else if (ekeyv.substring(0, 10) == "ErrBlocked") {
-
-                                //if the login attempt has been blocked
-                                //display a countdown to the user
-                                //indicating when they can next attempt to
-                                //login
-
-                                var seconds = ekeyv.substring(11, ekeyv.length) * 1.0;
-
-
-                                setCountdown(seconds);
-
-                                // later on this timer may be stopped
-
                                 $("#pincounter").effect("shake");
 
                             } else {
@@ -47863,56 +45899,11 @@ function UI() {
 
     }
 
-    var countdownId = null;
-
-    function setCountdown(seconds) {
-
-        window.hideSecScreens();
-
-        showLoginPIN();
-
-        window.clearInterval(countdownId);
-
-        var d1 = new Date(), d2 = new Date(d1);
-
-        d2.setSeconds(d1.getSeconds() + seconds);
-
-        countdownId = countdown(d2,
-                function (ts) {
-                    var testdate = new Date();
-                    if (ts.value > 0) {
-
-                        window.clearInterval(countdownId);
-                        $("#pinloginmessage").text("Enter your PIN number");
-                    } else {
-                        $("#pinloginmessage").text(ts);
-                    }
-                }, countdown.SECONDS | countdown.MINUTES | countdown.HOURS);
-
-    }
-
-
-    function deleteDeviceStorage() {
-
-        Engine.Device.deleteStorageItem("dataCache");
-        Engine.Device.deleteStorageItem("ninki_rem");
-        Engine.Device.deleteStorageItem("ninki_p");
-        Engine.Device.deleteStorageItem("ninki_reg");
-        Engine.Device.deleteStorageItem("ninki_h");
-        Engine.Device.deleteStorageItem("guid");
-        Engine.Device.deleteStorageItem("coinunit");
-        Engine.Device.deleteStorageItem("currency");
-        Engine.Device.deleteStorageItem("pubcachem00");
-        Engine.Device.deleteStorageItem("pubcachem01");
-        Engine.Device.deleteStorageItem("pair");
-        Engine.Device.deleteStorageItem("price");
-        Engine.Device.deleteStorageItem("dpk");
-
-    }
 
 
     //device paring temp variables
     var deviceName = '';
+    var regToken = '';
     var secret = '';
     var enck = '';
     var iv = '';
@@ -47956,7 +45947,7 @@ function UI() {
             deviceName = splitBlob[3];
 
             //registration token for this pairing attempt
-            Engine.m_regToken = splitBlob[4];
+            regToken = splitBlob[4];
 
             //password enetered by the user
             Engine.setPass(pwd, guid);
@@ -48004,10 +45995,8 @@ function UI() {
 
                                 //show pin screen
 
-                                $('#createWalletStart').hide();
-                                $("#btnPairDevice").removeClass("disabled");
-
                                 $('#pairDevice').hide();
+                                $("#btnPairDevice").removeClass("disabled");
                                 $('#loginpin').show();
 
                                 if (!(typeof window.app === 'undefined')) {
@@ -48118,7 +46107,7 @@ function UI() {
         //their chosen PIN number is registered with the server vi a hash of the PIN + Device uuid
         //a 256 bit encryption key is generated on the server using a CSPRNG, this is used to encrypt data stored on the device
 
-        Engine.registerDevice(Engine.m_guid, deviceName, devplatform, devmodel, pinhash, Engine.m_regToken, secret, function (err, result) {
+        Engine.registerDevice(Engine.m_guid, deviceName, devplatform, devmodel, pinhash, regToken, secret, function (err, result) {
 
             if (!err) {
 
@@ -48129,15 +46118,16 @@ function UI() {
                     //the server returns the encryption key
                     //whcih is used to decrypt the hotkey and 2fa override token
 
-                    Engine.m_deviceKey = Bitcoin.convert.hexToBytes(dk.DeviceKey);
-
-                    var decblob = Engine.decryptNp(enck, Engine.m_deviceKey, iv);
+                    var decblob = Engine.decryptNp(enck, dk.DeviceKey, iv);
 
                     //slice it up
+                    //64 64
+
+
+
                     var hk = '';
                     var fatoken = '';
 
-                    //supports 128bit and 256bit keys
                     if (decblob.length == 96) {
                         hk = decblob.substring(0, 32);
                         fatoken = decblob.substring(32, 96);
@@ -48145,13 +46135,6 @@ function UI() {
                         hk = decblob.substring(0, 64);
                         fatoken = decblob.substring(64, 128);
                     }
-
-                    console.log('Hot key...');
-                    console.log(hk);
-                    console.log('2fa token...');
-                    console.log(fatoken);
-                    console.log('Dev key...');
-                    console.log(dk.DeviceKey);
 
 
                     //test opening the wallet
@@ -48164,27 +46147,23 @@ function UI() {
 
                                 //if succesfull store the encrypted data in local storage
                                 Engine.Device.setStorageItem("guid", Engine.m_oguid);
-                                Engine.Device.setStorageItem("ninki_reg", Engine.m_regToken);
-                                Engine.Device.setStorageItem("pair", "1");
+                                Engine.Device.setStorageItem("ninki_reg", regToken);
 
-
-                                Engine.Device.setSecureStorageObject("ninki_rem", Bitcoin.convert.hexToBytes(fatoken), Engine.m_deviceKey, Engine.encryptNp);
-                                //Engine.Device.setSecureStorageObject("ninki_p", Engine.m_password, Engine.m_deviceKey, Engine.encryptNp);
-                                Engine.Device.setSecureStorageObject("ninki_h", Bitcoin.convert.hexToBytes(hk), Engine.m_deviceKey, Engine.encryptNp);
+                                Engine.Device.setSecureStorageObject("ninki_rem", fatoken, dk.DeviceKey, Engine.encryptNp);
+                                Engine.Device.setSecureStorageObject("ninki_p", Engine.m_password, dk.DeviceKey, Engine.encryptNp);
+                                Engine.Device.setSecureStorageObject("ninki_h", hk, dk.DeviceKey, Engine.encryptNp);
 
                                 var dataToCache = Engine.serialize();
 
-                                Engine.Device.setSecureStorageObject("dataCache", dataToCache, Engine.m_deviceKey, Engine.encrypt);
-
-                                Engine.setSecDeviceKey();
-
-                                Engine.zeroDeviceKey();
-
-                                Engine.zeroByteArray(Engine.m_password);
+                                Engine.Device.setSecureStorageObject("dataCache", dataToCache, dk.DeviceKey, Engine.encrypt);
 
                                 pinlock = false;
                                 isPairing = false;
-                                isCreate = false;
+
+                                //cache the main account data
+
+                                dk.DeviceKey = '';
+
 
                                 $("#loginpinno").val('');
                                 $("#paddel").hide();
@@ -48380,9 +46359,11 @@ function UI() {
 
                 secret = Engine.decryptNp(jpacket.packet, Engine.m_password, jpacket.IV);
 
-                Engine.registerDevice(Engine.m_guid, deviceName, devplatform, devmodel, pinhash, Engine.m_regToken, secret, function (err, result) {
+                Engine.registerDevice(Engine.m_guid, deviceName, devplatform, devmodel, pinhash, regToken, secret, function (err, result) {
 
                     if (!err) {
+
+                        var dk = JSON.parse(result);
 
                         if (!(typeof window.app === 'undefined')) {
                             app.isScanning = true;
@@ -48391,9 +46372,6 @@ function UI() {
                         Engine.Device.setStorageItem("guid", Engine.m_oguid);
 
                         //test opening the wallet
-
-                        var fatoken = Bitcoin.convert.bytesToHex(Engine.m_deviceToken);
-                        Engine.zeroByteArray(Engine.m_deviceToken);
 
                         Engine.openWallet(Engine.m_oguid, fatoken, function (err, result) {
 
@@ -48404,12 +46382,7 @@ function UI() {
                                     //if succesfull store the encrypted data in local storage
 
                                     var dataToCache = Engine.serialize();
-
-                                    Engine.Device.setSecureStorageObject("dataCache", dataToCache, Engine.m_deviceKey, Engine.encrypt);
-
-                                    Engine.setSecDeviceKey();
-
-                                    Engine.zeroDeviceKey();
+                                    Engine.Device.setSecureStorageObject("dataCache", dataToCache, dk.DeviceKey, Engine.encrypt);
 
                                     pinlock = false;
 
@@ -48443,7 +46416,7 @@ function UI() {
                                         //show optional 2fa screen
 
 
-                                        //$("#emailstep").show();
+                                        $("#emailstep").show();
 
                                         $("#pairspinner").hide();
 
@@ -48451,29 +46424,17 @@ function UI() {
 
                                         isCreate = false;
 
+                                        app.isScanning = true;
                                         $("#isactive").val(1);
-                                        $("#loginpin").hide();
-
-
-                                        $('#welcome').hide();
-                                        $('#dashboard').show();
-                                        $('#dashheader').show();
-
-                                        $("#footermode").val(1);
-                                        $("#mainWallet").show();
-                                        $(".footer").show();
-
-
-                                        if (!(typeof window.app === 'undefined')) {
-                                            app.isScanning = true;
-                                        }
-
 
 
                                     });
 
                                 } else {
 
+                                    //if (!(typeof window.app === 'undefined')) {
+                                    //    app.isScanning = false;
+                                    //}
 
                                     $("#pairspinner").hide();
                                     bootbox.alert("Could not pair", function () {
@@ -48526,6 +46487,8 @@ function UI() {
 
         });
 
+
+
     }
 
 
@@ -48533,8 +46496,8 @@ function UI() {
 
     function closeSendNet() {
 
-        //$("#dashsend").addClass("invis");
-        //$("#dashsend").removeClass("slideUp");
+        $("#dashsend").addClass("invis");
+        $("#dashsend").removeClass("slideUp");
         $("#dashsend").hide();
 
         $("#dashsendamt").addClass("invis");
@@ -48553,7 +46516,7 @@ function UI() {
 
         $(".footer").show();
 
-        // $("#dashreceive").addClass("invis");
+        $("#dashreceive").addClass("invis");
         $("#dashreceive").removeClass("slideUp");
         $("#dashreceive").hide();
 
@@ -48578,8 +46541,8 @@ function UI() {
     function closeSendStd() {
 
 
-        //$("#dashsend").removeClass("slideUp");
-        //$("#dashsend").addClass("invis");
+        $("#dashsend").removeClass("slideUp");
+        $("#dashsend").addClass("invis");
         $("#dashsend").hide();
 
         $("#dashsendamt").removeClass("slideUp");
@@ -48593,7 +46556,7 @@ function UI() {
         $(".footer").show();
 
         $("#dashreceive").removeClass("slideUp");
-        // $("#dashreceive").addClass("invis");
+        $("#dashreceive").addClass("invis");
         $("#dashreceive").hide();
 
         $("#dashcontact").removeClass("slideUp");
@@ -52102,7 +50065,7 @@ function xor(a, b) {
 }
 }).call(this,require("buffer").Buffer)
 },{"buffer":"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\buffer\\index.js"}],"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\browserify-sign\\aesid.json":[function(require,module,exports){
-module.exports=module.exports=module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
 "2.16.840.1.101.3.4.1.4": "aes-128-cfb",
@@ -59898,7 +57861,7 @@ if (typeof Object.create === 'function') {
 }
 
 },{}],"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\browserify-sign\\node_modules\\elliptic\\package.json":[function(require,module,exports){
-module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
   "name": "elliptic",
   "version": "0.15.15",
   "description": "EC cryptography",
@@ -60689,7 +58652,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
 },{"bn.js":"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\diffie-hellman\\node_modules\\bn.js\\lib\\bn.js","brorand":"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\diffie-hellman\\node_modules\\miller-rabin\\node_modules\\brorand\\index.js"}],"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\diffie-hellman\\node_modules\\miller-rabin\\node_modules\\brorand\\index.js":[function(require,module,exports){
 module.exports=require("C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\browserify-sign\\node_modules\\elliptic\\node_modules\\brorand\\index.js")
 },{"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\browserify-sign\\node_modules\\elliptic\\node_modules\\brorand\\index.js":"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\browserify-sign\\node_modules\\elliptic\\node_modules\\brorand\\index.js"}],"C:\\Users\\Benjamin Smith\\AppData\\Roaming\\npm\\node_modules\\watchify\\node_modules\\browserify\\node_modules\\crypto-browserify\\node_modules\\diffie-hellman\\primes.json":[function(require,module,exports){
-module.exports=module.exports=module.exports={
+module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports=module.exports={
     "modp1": {
         "gen": "02",
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff"
