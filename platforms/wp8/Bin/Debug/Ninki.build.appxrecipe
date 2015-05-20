@@ -1,0 +1,1287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>BENJAMIN-LAPTOP</Machine>
+    <WindowsUser>Benjamin Smith</WindowsUser>
+    <TargetPlatformIdentifier>Windows Phone</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>ac378340-fdd8-11e4-b633-9b10313ed6bc</PackageIdentityName>
+    <IntermediateOutputPath>C:\GitLabs\ninki\ninkicordova\platforms\wp8\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Bin\Debug\com.ninki.wallet.dll">
+      <PackagePath>com.ninki.wallet.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\plugins\com.phonegap.plugins.barcodescanner\zxing.wp8.0.dll">
+      <PackagePath>zxing.wp8.0.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\BadgeLogo.png">
+      <PackagePath>Assets\BadgeLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\SquareTile150x150.png">
+      <PackagePath>Assets\SquareTile150x150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\SquareTile71x71.png">
+      <PackagePath>Assets\SquareTile71x71.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Assets\WideLogo.png">
+      <PackagePath>Assets\WideLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\images\bg_fallback.png">
+      <PackagePath>www\css\Aristo\images\bg_fallback.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\images\icon_sprite.png">
+      <PackagePath>www\css\Aristo\images\icon_sprite.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\images\slider_handles.png">
+      <PackagePath>www\css\Aristo\images\slider_handles.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\images\ui-icons_222222_256x240.png">
+      <PackagePath>www\css\Aristo\images\ui-icons_222222_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\images\ui-icons_454545_256x240.png">
+      <PackagePath>www\css\Aristo\images\ui-icons_454545_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_flat_0_aaaaaa_40x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_flat_0_aaaaaa_40x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_flat_0_eeeeee_40x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_flat_0_eeeeee_40x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_flat_55_ffffff_40x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_flat_55_ffffff_40x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_flat_75_ffffff_40x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_flat_75_ffffff_40x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_glass_65_ffffff_1x400.png">
+      <PackagePath>www\css\flick\images\ui-bg_glass_65_ffffff_1x400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_highlight-soft_100_f6f6f6_1x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_highlight-soft_25_0073ea_1x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_highlight-soft_25_0073ea_1x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-bg_highlight-soft_50_dddddd_1x100.png">
+      <PackagePath>www\css\flick\images\ui-bg_highlight-soft_50_dddddd_1x100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-icons_0073ea_256x240.png">
+      <PackagePath>www\css\flick\images\ui-icons_0073ea_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-icons_454545_256x240.png">
+      <PackagePath>www\css\flick\images\ui-icons_454545_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-icons_666666_256x240.png">
+      <PackagePath>www\css\flick\images\ui-icons_666666_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-icons_ff0084_256x240.png">
+      <PackagePath>www\css\flick\images\ui-icons_ff0084_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\ui-icons_ffffff_256x240.png">
+      <PackagePath>www\css\flick\images\ui-icons_ffffff_256x240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\images\ui-icons_3399ff_0.png">
+      <PackagePath>www\css\metro\images\ui-icons_3399ff_0.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\images\ui-icons_525252_0.png">
+      <PackagePath>www\css\metro\images\ui-icons_525252_0.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\images\ui-icons_66B3FF_0.png">
+      <PackagePath>www\css\metro\images\ui-icons_66B3FF_0.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\images\ui-icons_d4d4d4_0.png">
+      <PackagePath>www\css\metro\images\ui-icons_d4d4d4_0.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\images\ui-icons_ffffff_0.png">
+      <PackagePath>www\css\metro\images\ui-icons_ffffff_0.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\24-128.png">
+      <PackagePath>www\images\24-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a0.png">
+      <PackagePath>www\images\a0.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a1.png">
+      <PackagePath>www\images\a1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a2.png">
+      <PackagePath>www\images\a2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a3.png">
+      <PackagePath>www\images\a3.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a4.png">
+      <PackagePath>www\images\a4.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a5.png">
+      <PackagePath>www\images\a5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a6.png">
+      <PackagePath>www\images\a6.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a7.png">
+      <PackagePath>www\images\a7.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a8.png">
+      <PackagePath>www\images\a8.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\a9.png">
+      <PackagePath>www\images\a9.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\arrow_left.png">
+      <PackagePath>www\images\arrow_left.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar.png">
+      <PackagePath>www\images\avatar.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-01.png">
+      <PackagePath>www\images\avatar\128px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-02.png">
+      <PackagePath>www\images\avatar\128px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-03.png">
+      <PackagePath>www\images\avatar\128px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-04.png">
+      <PackagePath>www\images\avatar\128px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-05.png">
+      <PackagePath>www\images\avatar\128px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-06.png">
+      <PackagePath>www\images\avatar\128px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-07.png">
+      <PackagePath>www\images\avatar\128px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-08.png">
+      <PackagePath>www\images\avatar\128px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-09.png">
+      <PackagePath>www\images\avatar\128px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-10.png">
+      <PackagePath>www\images\avatar\128px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-11.png">
+      <PackagePath>www\images\avatar\128px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-12.png">
+      <PackagePath>www\images\avatar\128px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-13.png">
+      <PackagePath>www\images\avatar\128px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-14.png">
+      <PackagePath>www\images\avatar\128px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-15.png">
+      <PackagePath>www\images\avatar\128px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-16.png">
+      <PackagePath>www\images\avatar\128px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-17.png">
+      <PackagePath>www\images\avatar\128px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-18.png">
+      <PackagePath>www\images\avatar\128px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-19.png">
+      <PackagePath>www\images\avatar\128px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\128px\Avatar-20.png">
+      <PackagePath>www\images\avatar\128px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-01.png">
+      <PackagePath>www\images\avatar\16px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-02.png">
+      <PackagePath>www\images\avatar\16px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-03.png">
+      <PackagePath>www\images\avatar\16px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-04.png">
+      <PackagePath>www\images\avatar\16px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-05.png">
+      <PackagePath>www\images\avatar\16px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-06.png">
+      <PackagePath>www\images\avatar\16px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-07.png">
+      <PackagePath>www\images\avatar\16px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-08.png">
+      <PackagePath>www\images\avatar\16px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-09.png">
+      <PackagePath>www\images\avatar\16px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-10.png">
+      <PackagePath>www\images\avatar\16px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-11.png">
+      <PackagePath>www\images\avatar\16px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-12.png">
+      <PackagePath>www\images\avatar\16px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-13.png">
+      <PackagePath>www\images\avatar\16px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-14.png">
+      <PackagePath>www\images\avatar\16px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-15.png">
+      <PackagePath>www\images\avatar\16px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-16.png">
+      <PackagePath>www\images\avatar\16px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-17.png">
+      <PackagePath>www\images\avatar\16px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-18.png">
+      <PackagePath>www\images\avatar\16px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-19.png">
+      <PackagePath>www\images\avatar\16px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\16px\Avatar-20.png">
+      <PackagePath>www\images\avatar\16px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-01.png">
+      <PackagePath>www\images\avatar\24px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-02.png">
+      <PackagePath>www\images\avatar\24px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-03.png">
+      <PackagePath>www\images\avatar\24px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-04.png">
+      <PackagePath>www\images\avatar\24px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-05.png">
+      <PackagePath>www\images\avatar\24px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-06.png">
+      <PackagePath>www\images\avatar\24px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-07.png">
+      <PackagePath>www\images\avatar\24px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-08.png">
+      <PackagePath>www\images\avatar\24px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-09.png">
+      <PackagePath>www\images\avatar\24px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-10.png">
+      <PackagePath>www\images\avatar\24px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-11.png">
+      <PackagePath>www\images\avatar\24px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-12.png">
+      <PackagePath>www\images\avatar\24px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-13.png">
+      <PackagePath>www\images\avatar\24px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-14.png">
+      <PackagePath>www\images\avatar\24px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-15.png">
+      <PackagePath>www\images\avatar\24px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-16.png">
+      <PackagePath>www\images\avatar\24px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-17.png">
+      <PackagePath>www\images\avatar\24px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-18.png">
+      <PackagePath>www\images\avatar\24px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-19.png">
+      <PackagePath>www\images\avatar\24px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\24px\Avatar-20.png">
+      <PackagePath>www\images\avatar\24px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-01.png">
+      <PackagePath>www\images\avatar\256px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-02.png">
+      <PackagePath>www\images\avatar\256px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-03.png">
+      <PackagePath>www\images\avatar\256px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-04.png">
+      <PackagePath>www\images\avatar\256px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-05.png">
+      <PackagePath>www\images\avatar\256px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-06.png">
+      <PackagePath>www\images\avatar\256px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-07.png">
+      <PackagePath>www\images\avatar\256px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-08.png">
+      <PackagePath>www\images\avatar\256px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-09.png">
+      <PackagePath>www\images\avatar\256px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-10.png">
+      <PackagePath>www\images\avatar\256px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-11.png">
+      <PackagePath>www\images\avatar\256px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-12.png">
+      <PackagePath>www\images\avatar\256px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-13.png">
+      <PackagePath>www\images\avatar\256px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-14.png">
+      <PackagePath>www\images\avatar\256px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-15.png">
+      <PackagePath>www\images\avatar\256px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-16.png">
+      <PackagePath>www\images\avatar\256px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-17.png">
+      <PackagePath>www\images\avatar\256px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-18.png">
+      <PackagePath>www\images\avatar\256px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-19.png">
+      <PackagePath>www\images\avatar\256px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\256px\Avatar-20.png">
+      <PackagePath>www\images\avatar\256px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-01.png">
+      <PackagePath>www\images\avatar\32px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-02.png">
+      <PackagePath>www\images\avatar\32px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-03.png">
+      <PackagePath>www\images\avatar\32px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-04.png">
+      <PackagePath>www\images\avatar\32px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-05.png">
+      <PackagePath>www\images\avatar\32px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-06.png">
+      <PackagePath>www\images\avatar\32px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-07.png">
+      <PackagePath>www\images\avatar\32px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-08.png">
+      <PackagePath>www\images\avatar\32px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-09.png">
+      <PackagePath>www\images\avatar\32px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-10.png">
+      <PackagePath>www\images\avatar\32px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-11.png">
+      <PackagePath>www\images\avatar\32px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-12.png">
+      <PackagePath>www\images\avatar\32px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-13.png">
+      <PackagePath>www\images\avatar\32px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-14.png">
+      <PackagePath>www\images\avatar\32px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-15.png">
+      <PackagePath>www\images\avatar\32px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-16.png">
+      <PackagePath>www\images\avatar\32px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-17.png">
+      <PackagePath>www\images\avatar\32px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-18.png">
+      <PackagePath>www\images\avatar\32px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-19.png">
+      <PackagePath>www\images\avatar\32px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\32px\Avatar-20.png">
+      <PackagePath>www\images\avatar\32px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-01.png">
+      <PackagePath>www\images\avatar\512px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-02.png">
+      <PackagePath>www\images\avatar\512px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-03.png">
+      <PackagePath>www\images\avatar\512px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-04.png">
+      <PackagePath>www\images\avatar\512px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-05.png">
+      <PackagePath>www\images\avatar\512px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-06.png">
+      <PackagePath>www\images\avatar\512px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-07.png">
+      <PackagePath>www\images\avatar\512px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-08.png">
+      <PackagePath>www\images\avatar\512px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-09.png">
+      <PackagePath>www\images\avatar\512px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-10.png">
+      <PackagePath>www\images\avatar\512px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-11.png">
+      <PackagePath>www\images\avatar\512px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-12.png">
+      <PackagePath>www\images\avatar\512px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-13.png">
+      <PackagePath>www\images\avatar\512px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-14.png">
+      <PackagePath>www\images\avatar\512px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-15.png">
+      <PackagePath>www\images\avatar\512px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-16.png">
+      <PackagePath>www\images\avatar\512px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-17.png">
+      <PackagePath>www\images\avatar\512px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-18.png">
+      <PackagePath>www\images\avatar\512px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-19.png">
+      <PackagePath>www\images\avatar\512px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\512px\Avatar-20.png">
+      <PackagePath>www\images\avatar\512px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-01.png">
+      <PackagePath>www\images\avatar\64px\Avatar-01.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-02.png">
+      <PackagePath>www\images\avatar\64px\Avatar-02.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-03.png">
+      <PackagePath>www\images\avatar\64px\Avatar-03.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-04.png">
+      <PackagePath>www\images\avatar\64px\Avatar-04.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-05.png">
+      <PackagePath>www\images\avatar\64px\Avatar-05.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-06.png">
+      <PackagePath>www\images\avatar\64px\Avatar-06.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-07.png">
+      <PackagePath>www\images\avatar\64px\Avatar-07.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-08.png">
+      <PackagePath>www\images\avatar\64px\Avatar-08.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-09.png">
+      <PackagePath>www\images\avatar\64px\Avatar-09.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-10.png">
+      <PackagePath>www\images\avatar\64px\Avatar-10.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-11.png">
+      <PackagePath>www\images\avatar\64px\Avatar-11.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-12.png">
+      <PackagePath>www\images\avatar\64px\Avatar-12.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-13.png">
+      <PackagePath>www\images\avatar\64px\Avatar-13.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-14.png">
+      <PackagePath>www\images\avatar\64px\Avatar-14.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-15.png">
+      <PackagePath>www\images\avatar\64px\Avatar-15.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-16.png">
+      <PackagePath>www\images\avatar\64px\Avatar-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-17.png">
+      <PackagePath>www\images\avatar\64px\Avatar-17.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-18.png">
+      <PackagePath>www\images\avatar\64px\Avatar-18.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-19.png">
+      <PackagePath>www\images\avatar\64px\Avatar-19.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\avatar\64px\Avatar-20.png">
+      <PackagePath>www\images\avatar\64px\Avatar-20.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\basic3-137_relations_graph_connections_structure-128.png">
+      <PackagePath>www\images\basic3-137_relations_graph_connections_structure-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\cloud_security-128.png">
+      <PackagePath>www\images\cloud_security-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\Fingerprint-128.png">
+      <PackagePath>www\images\Fingerprint-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\geo-single-logo.png">
+      <PackagePath>www\images\geo-single-logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\logo.png">
+      <PackagePath>www\images\logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\logo_white.png">
+      <PackagePath>www\images\logo_white.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\ninki-logo.png">
+      <PackagePath>www\images\ninki-logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\ninki.png">
+      <PackagePath>www\images\ninki.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\ninki.s.logo.png">
+      <PackagePath>www\images\ninki.s.logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\phone-1.png">
+      <PackagePath>www\images\phone-1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\phone-2.png">
+      <PackagePath>www\images\phone-2.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\User_Exchange-128.png">
+      <PackagePath>www\images\User_Exchange-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\user_login_man-128.png">
+      <PackagePath>www\images\user_login_man-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\chosen\chosen-sprite.png">
+      <PackagePath>www\js\chosen\chosen-sprite.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\chosen\chosen-sprite%402x.png">
+      <PackagePath>www\js\chosen\chosen-sprite%402x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Images\appbar.back.rest.png">
+      <PackagePath>Images\appbar.back.rest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Images\appbar.close.rest.png">
+      <PackagePath>Images\appbar.close.rest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Images\appbar.feature.video.rest.png">
+      <PackagePath>Images\appbar.feature.video.rest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Images\appbar.next.rest.png">
+      <PackagePath>Images\appbar.next.rest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Images\appbar.save.rest.png">
+      <PackagePath>Images\appbar.save.rest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Images\appbar.stop.rest.png">
+      <PackagePath>Images\appbar.stop.rest.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\ApplicationIcon.png">
+      <PackagePath>ApplicationIcon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Background.png">
+      <PackagePath>Background.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\config.xml">
+      <PackagePath>config.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\htmlpost.xml">
+      <PackagePath>www\js\lib\bip32\htmlpost.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\css\bootstrap-theme.css">
+      <PackagePath>www\bootstrap\css\bootstrap-theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\css\bootstrap-theme.min.css">
+      <PackagePath>www\bootstrap\css\bootstrap-theme.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\css\bootstrap.css">
+      <PackagePath>www\bootstrap\css\bootstrap.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\css\bootstrap.min.css">
+      <PackagePath>www\bootstrap\css\bootstrap.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\animate.css">
+      <PackagePath>www\css\animate.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\animations.css">
+      <PackagePath>www\css\animations.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\app-mobile.css">
+      <PackagePath>www\css\app-mobile.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\app.css">
+      <PackagePath>www\css\app.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\jquery-ui.css">
+      <PackagePath>www\css\Aristo\jquery-ui.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\bootstrap-mobile.css">
+      <PackagePath>www\css\bootstrap-mobile.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\bootstrap.css">
+      <PackagePath>www\css\bootstrap.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\calcscreen.css">
+      <PackagePath>www\css\calcscreen.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\device_and.css">
+      <PackagePath>www\css\device_and.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\device_ios.css">
+      <PackagePath>www\css\device_ios.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\jquery-ui.css">
+      <PackagePath>www\css\flick\jquery-ui.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\jquery-ui.min.css">
+      <PackagePath>www\css\flick\jquery-ui.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\jquery.ui.theme.css">
+      <PackagePath>www\css\flick\jquery.ui.theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\font-awesome.min.css">
+      <PackagePath>www\css\font-awesome.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\font.css">
+      <PackagePath>www\css\font.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\icon.css">
+      <PackagePath>www\css\icon.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\landing.css">
+      <PackagePath>www\css\landing.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\jquery-ui.css">
+      <PackagePath>www\css\metro\jquery-ui.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\metro\jquery.ui.theme.css">
+      <PackagePath>www\css\metro\jquery.ui.theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\pinscreen.css">
+      <PackagePath>www\css\pinscreen.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\theme.css">
+      <PackagePath>www\css\theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\calendar\bootstrap_calendar.css">
+      <PackagePath>www\js\calendar\bootstrap_calendar.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\chosen\chosen.css">
+      <PackagePath>www\js\chosen\chosen.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datatables\datatables.css">
+      <PackagePath>www\js\datatables\datatables.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datepicker\datepicker.css">
+      <PackagePath>www\js\datepicker\datepicker.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\fullcalendar\fullcalendar.css">
+      <PackagePath>www\js\fullcalendar\fullcalendar.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\fullcalendar\theme.css">
+      <PackagePath>www\js\fullcalendar\theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\intro\introjs.css">
+      <PackagePath>www\js\intro\introjs.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jvectormap\jquery-jvectormap-1.2.2.css">
+      <PackagePath>www\js\jvectormap\jquery-jvectormap-1.2.2.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\markdown\bartik.css">
+      <PackagePath>www\js\markdown\bartik.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\markdown\epic-light.css">
+      <PackagePath>www\js\markdown\epic-light.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\markdown\epiceditor.css">
+      <PackagePath>www\js\markdown\epiceditor.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\nestable\nestable.css">
+      <PackagePath>www\js\nestable\nestable.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\slider\slider.css">
+      <PackagePath>www\js\slider\slider.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\css\bootstrap-theme.css.map">
+      <PackagePath>www\bootstrap\css\bootstrap-theme.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\css\bootstrap.css.map">
+      <PackagePath>www\bootstrap\css\bootstrap.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\fonts\glyphicons-halflings-regular.eot">
+      <PackagePath>www\bootstrap\fonts\glyphicons-halflings-regular.eot</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\fontawesome-webfont.eot">
+      <PackagePath>www\fonts\fontawesome-webfont.eot</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\icon.eot">
+      <PackagePath>www\fonts\icon.eot</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\fonts\glyphicons-halflings-regular.svg">
+      <PackagePath>www\bootstrap\fonts\glyphicons-halflings-regular.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\fontawesome-webfont.svg">
+      <PackagePath>www\fonts\fontawesome-webfont.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\icon.svg">
+      <PackagePath>www\fonts\icon.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\fonts\glyphicons-halflings-regular.ttf">
+      <PackagePath>www\bootstrap\fonts\glyphicons-halflings-regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\fontawesome-webfont.ttf">
+      <PackagePath>www\fonts\fontawesome-webfont.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\icon.ttf">
+      <PackagePath>www\fonts\icon.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <PackagePath>www\bootstrap\fonts\glyphicons-halflings-regular.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\fontawesome-webfont.woff">
+      <PackagePath>www\fonts\fontawesome-webfont.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\icon.woff">
+      <PackagePath>www\fonts\icon.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\lato.woff">
+      <PackagePath>www\fonts\lato.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\opensans\opensans-bold.woff">
+      <PackagePath>www\fonts\opensans\opensans-bold.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\opensans\opensans-light.woff">
+      <PackagePath>www\fonts\opensans\opensans-light.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\opensans\opensans.woff">
+      <PackagePath>www\fonts\opensans\opensans.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\js\bootstrap.js">
+      <PackagePath>www\bootstrap\js\bootstrap.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\bootstrap\js\bootstrap.min.js">
+      <PackagePath>www\bootstrap\js\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\accounting.min.js">
+      <PackagePath>www\js\accounting.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\app.js">
+      <PackagePath>www\js\app.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\app.plugin.js">
+      <PackagePath>www\js\app.plugin.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\appear\jquery.appear.js">
+      <PackagePath>www\js\appear\jquery.appear.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\apps\notes.js">
+      <PackagePath>www\js\apps\notes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\bootbox.min.js">
+      <PackagePath>www\js\bootbox.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\bootstrap.js">
+      <PackagePath>www\js\bootstrap.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\bootstrap.min.js">
+      <PackagePath>www\js\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\calendar\bootstrap_calendar.js">
+      <PackagePath>www\js\calendar\bootstrap_calendar.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\calendar\demo.js">
+      <PackagePath>www\js\calendar\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\easypiechart\jquery.easy-pie-chart.js">
+      <PackagePath>www\js\charts\easypiechart\jquery.easy-pie-chart.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\demo.js">
+      <PackagePath>www\js\charts\flot\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.grow.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.grow.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.min.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.orderBars.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.orderBars.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.pie.min.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.pie.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.resize.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.resize.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.spline.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.spline.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\flot\jquery.flot.tooltip.min.js">
+      <PackagePath>www\js\charts\flot\jquery.flot.tooltip.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\charts\sparkline\jquery.sparkline.min.js">
+      <PackagePath>www\js\charts\sparkline\jquery.sparkline.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\chosen\chosen.jquery.min.js">
+      <PackagePath>www\js\chosen\chosen.jquery.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\countdown.min.js">
+      <PackagePath>www\js\countdown.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datatables\demo.js">
+      <PackagePath>www\js\datatables\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datatables\jquery.csv-0.71.min.js">
+      <PackagePath>www\js\datatables\jquery.csv-0.71.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datatables\jquery.dataTables.min.js">
+      <PackagePath>www\js\datatables\jquery.dataTables.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\date.js">
+      <PackagePath>www\js\date.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datepicker\bootstrap-datepicker.js">
+      <PackagePath>www\js\datepicker\bootstrap-datepicker.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\dropzone.js">
+      <PackagePath>www\js\dropzone.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\fastclick.js">
+      <PackagePath>www\js\fastclick.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\file-input\bootstrap-filestyle.min.js">
+      <PackagePath>www\js\file-input\bootstrap-filestyle.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\file-input\bootstrap.file-input.js">
+      <PackagePath>www\js\file-input\bootstrap.file-input.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\fullcalendar\demo.js">
+      <PackagePath>www\js\fullcalendar\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\fullcalendar\fullcalendar.min.js">
+      <PackagePath>www\js\fullcalendar\fullcalendar.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\hammer.jquery.js">
+      <PackagePath>www\js\hammer.jquery.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\hammer.min.js">
+      <PackagePath>www\js\hammer.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\idle.js">
+      <PackagePath>www\js\idle.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\idle.min.js">
+      <PackagePath>www\js\idle.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\ie\excanvas.js">
+      <PackagePath>www\js\ie\excanvas.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\ie\html5shiv.js">
+      <PackagePath>www\js\ie\html5shiv.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\ie\respond.min.js">
+      <PackagePath>www\js\ie\respond.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\index.js">
+      <PackagePath>www\js\index.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\intro\demo.js">
+      <PackagePath>www\js\intro\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\intro\intro.min.js">
+      <PackagePath>www\js\intro\intro.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery-1.10.2.js">
+      <PackagePath>www\js\jquery-1.10.2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery-2.1.3.min.js">
+      <PackagePath>www\js\jquery-2.1.3.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery-ui-1.10.3.custom.min.js">
+      <PackagePath>www\js\jquery-ui-1.10.3.custom.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery-ui-1.10.4.custom.js">
+      <PackagePath>www\js\jquery-ui-1.10.4.custom.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery-ui-1.10.4.custom.min.js">
+      <PackagePath>www\js\jquery-ui-1.10.4.custom.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery-ui.min.js">
+      <PackagePath>www\js\jquery-ui.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery.hammer.js">
+      <PackagePath>www\js\jquery.hammer.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery.min.js">
+      <PackagePath>www\js\jquery.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery.mobile.min.js">
+      <PackagePath>www\js\jquery.mobile.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery.qrcode.min.js">
+      <PackagePath>www\js\jquery.qrcode.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jquery.ui.touch-punch.min.js">
+      <PackagePath>www\js\jquery.ui.touch-punch.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jvectormap\demo.js">
+      <PackagePath>www\js\jvectormap\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jvectormap\jquery-jvectormap-1.2.2.min.js">
+      <PackagePath>www\js\jvectormap\jquery-jvectormap-1.2.2.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jvectormap\jquery-jvectormap-us-aea-en.js">
+      <PackagePath>www\js\jvectormap\jquery-jvectormap-us-aea-en.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\jvectormap\jquery-jvectormap-world-mill-en.js">
+      <PackagePath>www\js\jvectormap\jquery-jvectormap-world-mill-en.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\landing.js">
+      <PackagePath>www\js\landing.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\libs\backbone-min.js">
+      <PackagePath>www\js\libs\backbone-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\libs\backbone.localStorage-min.js">
+      <PackagePath>www\js\libs\backbone.localStorage-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\libs\moment.min.js">
+      <PackagePath>www\js\libs\moment.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\libs\underscore-min.js">
+      <PackagePath>www\js\libs\underscore-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\armory.js">
+      <PackagePath>www\js\lib\bip32\armory.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\BigInteger.js">
+      <PackagePath>www\js\lib\bip32\BigInteger.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\bip32.js">
+      <PackagePath>www\js\lib\bip32\bip32.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\bip32_mig.js">
+      <PackagePath>www\js\lib\bip32\bip32_mig.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\bitcoinjs-min.js">
+      <PackagePath>www\js\lib\bip32\bitcoinjs-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\bitcoinsig.js">
+      <PackagePath>www\js\lib\bip32\bitcoinsig.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\bootstrap.min.js">
+      <PackagePath>www\js\lib\bip32\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\brainwallet.js">
+      <PackagePath>www\js\lib\bip32\brainwallet.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\crypto-min.js">
+      <PackagePath>www\js\lib\bip32\crypto-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\electrum.js">
+      <PackagePath>www\js\lib\bip32\electrum.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\hash_worker.js">
+      <PackagePath>www\js\lib\bip32\hash_worker.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\jquery.js">
+      <PackagePath>www\js\lib\bip32\jquery.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\mnemonic.js">
+      <PackagePath>www\js\lib\bip32\mnemonic.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\modsqrt.js">
+      <PackagePath>www\js\lib\bip32\modsqrt.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\qrcode.js">
+      <PackagePath>www\js\lib\bip32\qrcode.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\rfc1751.js">
+      <PackagePath>www\js\lib\bip32\rfc1751.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\sha256.js">
+      <PackagePath>www\js\lib\bip32\sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\sha512.js">
+      <PackagePath>www\js\lib\bip32\sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\bip32\tx.js">
+      <PackagePath>www\js\lib\bip32\tx.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\aes.js">
+      <PackagePath>www\js\lib\cryptico\aes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\api.js">
+      <PackagePath>www\js\lib\cryptico\api.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\cryptico.js">
+      <PackagePath>www\js\lib\cryptico\cryptico.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\cryptico.min.js">
+      <PackagePath>www\js\lib\cryptico\cryptico.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\hash.js">
+      <PackagePath>www\js\lib\cryptico\hash.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\jsbn.js">
+      <PackagePath>www\js\lib\cryptico\jsbn.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\random.js">
+      <PackagePath>www\js\lib\cryptico\random.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\rsa.js">
+      <PackagePath>www\js\lib\cryptico\rsa.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptojs\aes.js">
+      <PackagePath>www\js\lib\cryptojs\aes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptojs\pbkdf2.js">
+      <PackagePath>www\js\lib\cryptojs\pbkdf2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\jsencrypt\jsencrypt.js">
+      <PackagePath>www\js\lib\jsencrypt\jsencrypt.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\uuid.js">
+      <PackagePath>www\js\lib\uuid.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\maps\demo.js">
+      <PackagePath>www\js\maps\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\maps\gmaps.js">
+      <PackagePath>www\js\maps\gmaps.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\markdown\demo.js">
+      <PackagePath>www\js\markdown\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\markdown\epiceditor.min.js">
+      <PackagePath>www\js\markdown\epiceditor.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\nestable\demo.js">
+      <PackagePath>www\js\nestable\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\nestable\jquery.nestable.js">
+      <PackagePath>www\js\nestable\jquery.nestable.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\ninki-mobile-min.js">
+      <PackagePath>www\js\ninki-mobile-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\old\openwallet - Copy.js">
+      <PackagePath>www\js\old\openwallet - Copy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\old\openwallet.js">
+      <PackagePath>www\js\old\openwallet.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\parsley\parsley.extend.js">
+      <PackagePath>www\js\parsley\parsley.extend.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\parsley\parsley.min.js">
+      <PackagePath>www\js\parsley\parsley.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\pwstrength.js">
+      <PackagePath>www\js\pwstrength.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\slider\bootstrap-slider.js">
+      <PackagePath>www\js\slider\bootstrap-slider.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\slimscroll\jquery.slimscroll.min.js">
+      <PackagePath>www\js\slimscroll\jquery.slimscroll.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\sortable\jquery.sortable.js">
+      <PackagePath>www\js\sortable\jquery.sortable.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\spin.min.js">
+      <PackagePath>www\js\spin.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\underscore.min.js">
+      <PackagePath>www\js\underscore.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\wizard\demo.js">
+      <PackagePath>www\js\wizard\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\wizard\jquery.bootstrap.wizard.js">
+      <PackagePath>www\js\wizard\jquery.bootstrap.wizard.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\wysiwyg\bootstrap-wysiwyg.js">
+      <PackagePath>www\js\wysiwyg\bootstrap-wysiwyg.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\wysiwyg\demo.js">
+      <PackagePath>www\js\wysiwyg\demo.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\wysiwyg\jquery.hotkeys.js">
+      <PackagePath>www\js\wysiwyg\jquery.hotkeys.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\plugins\com.ionic.keyboard\www\keyboard.js">
+      <PackagePath>www\plugins\com.ionic.keyboard\www\keyboard.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\plugins\com.phonegap.plugins.barcodescanner\www\barcodescanner.js">
+      <PackagePath>www\plugins\com.phonegap.plugins.barcodescanner\www\barcodescanner.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\plugins\com.verso.cordova.clipboard\www\clipboard.js">
+      <PackagePath>www\plugins\com.verso.cordova.clipboard\www\clipboard.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\plugins\org.apache.cordova.device\www\device.js">
+      <PackagePath>www\plugins\org.apache.cordova.device\www\device.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\.DS_Store">
+      <PackagePath>www\css\.DS_Store</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\.DS_Store">
+      <PackagePath>www\fonts\.DS_Store</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\.DS_Store">
+      <PackagePath>www\js\.DS_Store</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\Aristo\images\progress_bar.gif">
+      <PackagePath>www\css\Aristo\images\progress_bar.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\css\flick\images\animated-overlay.gif">
+      <PackagePath>www\css\flick\images\animated-overlay.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\loading.gif">
+      <PackagePath>www\images\loading.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\fonts\FontAwesome.otf">
+      <PackagePath>www\fonts\FontAwesome.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\intro.jpg">
+      <PackagePath>www\images\intro.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\ninki-app-icon.jpg">
+      <PackagePath>www\images\ninki-app-icon.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p0.jpg">
+      <PackagePath>www\images\p0.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p1.jpg">
+      <PackagePath>www\images\p1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p2.jpg">
+      <PackagePath>www\images\p2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p3.jpg">
+      <PackagePath>www\images\p3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p4.jpg">
+      <PackagePath>www\images\p4.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p5.jpg">
+      <PackagePath>www\images\p5.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p6.jpg">
+      <PackagePath>www\images\p6.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p7.jpg">
+      <PackagePath>www\images\p7.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p8.jpg">
+      <PackagePath>www\images\p8.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\p9.jpg">
+      <PackagePath>www\images\p9.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\images\screenshot.jpg">
+      <PackagePath>www\images\screenshot.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\SplashScreenImage.jpg">
+      <PackagePath>SplashScreenImage.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\test.html">
+      <PackagePath>www\js\lib\cryptico\test.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datatables\datatable.json">
+      <PackagePath>www\js\datatables\datatable.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\datatables\growthrate.csv">
+      <PackagePath>www\js\datatables\growthrate.csv</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\compiler.jar">
+      <PackagePath>www\js\lib\cryptico\compiler.jar</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\lib\cryptico\README.md">
+      <PackagePath>www\js\lib\cryptico\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\www\js\slider\slider.less">
+      <PackagePath>www\js\slider\slider.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\VERSION">
+      <PackagePath>VERSION</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\GitLabs\ninki\ninkicordova\platforms\wp8\Bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
