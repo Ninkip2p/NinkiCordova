@@ -127,6 +127,7 @@ var app = {
 
             if (window.updateUIInterval) {
                 clearInterval(window.updateUIInterval);
+                clearInterval(window.updatePriceInterval);
             }
 
             //console.log(window.hasSession());
